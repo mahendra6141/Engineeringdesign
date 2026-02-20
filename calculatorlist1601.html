@@ -1,24 +1,40 @@
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, onAuthStateChanged }
-from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "PASTE_HERE",
-  authDomain: "PASTE_HERE",
-  projectId: "PASTE_HERE",
-  appId: "PASTE_HERE"
+  apiKey: "AIzaSyCynG6CBdA3VqPWfCdEGOP2xV7ZIgArw38",
+  authDomain: "eot-calculator.firebaseapp.com",
+  projectId: "eot-calculator",
+  storageBucket: "eot-calculator.firebasestorage.app",
+  messagingSenderId: "558088449913",
+  appId: "1:558088449913:web:bdfcf264f6e1869bc389a8"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    window.location.href = "login.html";
-  }
-});
+window.signup = function() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => alert("Account Created Successfully"))
+    .catch(error => alert(error.message));
+};
+
+window.login = function() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      window.location.href = "calculatorlist1601.html";
+    })
+    .catch(error => alert(error.message));
+};
 
 </script>
 <html>
@@ -59,3 +75,4 @@ onAuthStateChanged(auth, (user) => {
 </body>
 
 </html>
+
