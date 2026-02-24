@@ -42,7 +42,7 @@
 .navbar a{
   margin-left:30px;
   text-decoration:none;
-  color:white;
+  color:#87CEEB;
   font-size:16px;
   position:relative;
   transition:0.3s;
@@ -75,7 +75,7 @@ body{
 	  padding:8px 15px;   /* box banane ke liye */
       border-radius:5px; /* thoda round */
       transition:0.3s;
-	 background-color:blue;
+	
     }
 
     nav a:hover{
@@ -716,6 +716,7 @@ body{
 
 
 /*-----Get Started button css end----*/
+
 
 
 
