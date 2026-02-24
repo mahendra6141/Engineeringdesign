@@ -248,145 +248,110 @@
 
 /*-----home css start----*/
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
 .home{
   min-height:100vh;
 
-  background: 
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+  background:
+    linear-gradient(rgba(10,30,60,0.65), rgba(10,30,60,0.65)),
     url("homeimage.png");
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 
-  font-family: Arial, sans-serif;
-  color: white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:60px 20px;
+  font-family:Arial, sans-serif;
 }
 
-/* HERO SECTION */
+/* MAIN CONTAINER (About jaisa) */
 
-.home-hero{
-  text-align:center;
-  padding:120px 20px 90px;
-}
+.home section{
+  max-width:1000px;
+  width:100%;
+  padding:50px;
 
-.home-hero h1{
-  font-size:42px;
-  margin-bottom:20px;
-  letter-spacing:1px;
-}
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
 
-.home-hero p{
-  font-size:18px;
-  max-width:700px;
-  margin:0 auto;
-  opacity:0.95;
-}
-
-
-/* TOOLS SECTION (Glass Effect) */
-
-.home-tools{
-  padding:80px 8%;
-  margin:60px auto;
-  width:90%;
-
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-
-  border-radius:20px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  border-radius:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.5);
 
   color:white;
 }
 
+/* HERO */
+
+.home-hero{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.home-hero h1{
+  font-size:34px;
+  margin-bottom:20px;
+}
+
+.home-hero p{
+  font-size:17px;
+  line-height:1.7;
+}
+
+/* TOOLS */
+
 .home-tools h2{
   text-align:center;
-  margin-bottom:50px;
-  font-size:30px;
-  color:#ffffff;
+  margin:30px 0;
 }
 
 .tools-grid{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap:30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap:25px;
 }
 
 .tool-box{
-  background: rgba(255,255,255,0.15);
-  padding:30px;
-  border-radius:15px;
-  backdrop-filter: blur(6px);
-
-  box-shadow:0 8px 20px rgba(0,0,0,0.3);
-  transition:0.3s;
+  padding:20px;
+  background: rgba(255,255,255,0.12);
+  border-radius:12px;
 }
 
 .tool-box h3{
-  margin-bottom:15px;
-  color:#ffcc00;
+  margin-bottom:10px;
 }
 
 .tool-box p{
-  color:#f1f1f1;
   font-size:15px;
+  line-height:1.6;
 }
 
-.tool-box:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.5);
-}
-
-
-/* INFO SECTION (Same Theme) */
+/* INFO */
 
 .home-info{
-  padding:80px 8%;
-  margin:60px auto;
-  width:90%;
-
+  margin-top:40px;
   display:flex;
-  gap:50px;
+  gap:40px;
   flex-wrap:wrap;
-
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-
-  border-radius:20px;
-  box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
 .home-info div{
   flex:1;
-  min-width:280px;
+  min-width:250px;
 }
 
 .home-info h2{
-  margin-bottom:20px;
-  font-size:24px;
-  color:#ffcc00;
+  margin-bottom:15px;
 }
 
 .home-info ul{
-  list-style:none;
+  margin-left:20px;
 }
 
 .home-info li{
-  margin-bottom:12px;
-  font-size:16px;
-}
-
-.home-info p{
-  font-size:16px;
-  line-height:1.7;
+  margin-bottom:8px;
 }
 
 /*-----home css end----*/
@@ -776,6 +741,7 @@
 
 
 /*-----Get Started button css end----*/
+
 
 
 
