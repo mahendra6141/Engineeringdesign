@@ -68,13 +68,14 @@ body{
 
   
     nav a{
-      color:blue;
+      color:white;
       text-decoration:none;
       margin-left:20px;
       font-size:16px;
 	  padding:8px 15px;   /* box banane ke liye */
       border-radius:5px; /* thoda round */
       transition:0.3s;
+	 background-color:blue;
     }
 
     nav a:hover{
@@ -715,6 +716,7 @@ body{
 
 
 /*-----Get Started button css end----*/
+
 
 
 
