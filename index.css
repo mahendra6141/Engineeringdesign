@@ -217,95 +217,534 @@
 
 
 /*-----home css start----*/
-.home{
+ /*-----mainpage css start----*/
+ /* Reset */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f6f9;
+    }
+
+    /* Header */
+    header{
+      background:#0d47a1;
+      color:white;
+      padding:15px 50px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    header h1{
+      font-size:26px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:20px;
+      font-size:16px;
+	  padding:8px 15px;   /* box banane ke liye */
+      border-radius:5px; /* thoda round */
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      background:green;
+      color:white;       /* text white ho jayega */
+      text-decoration:none;
+    }
+
+    /* Hero Section */
+    .hero{
+      height:80vh;
+      background:linear-gradient(to right,#2196f3,#0d47a1);
+      color:white;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero h2{
+      font-size:42px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      font-size:18px;
+      max-width:600px;
+      margin-bottom:25px;
+    }
+
+    .hero button{
+      padding:12px 25px;
+      background:#ff9800;
+      border:none;
+      border-radius:5px;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    .hero button:hover{
+      background:gray;
+    }
+	.hero{
+  height:80vh;
+
+  /* Background Image */
   background: 
-    linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
-    url("homeimage.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    linear-gradient(rgba(13,71,161,0.7), rgba(33,150,243,0.7)),
+    url("backgroundimage.png");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  color:white;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  padding:20px;
+}
+
+
+    /* Features */
+    .features{
+      padding:60px 50px;
+      background:white;
+      text-align:center;
+    }
+
+    .features h2{
+      margin-bottom:40px;
+      font-size:32px;
+    }
+
+    .feature-box{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .box{
+      background:#f1f1f1;
+      padding:25px;
+      border-radius:8px;
+      box-shadow:0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .box h3{
+      margin-bottom:10px;
+      color:#0d47a1;
+    }
+
+    /* Call Section */
+    .call{
+      background:#2196f3;
+      color:white;
+      padding:50px 20px;
+      text-align:center;
+    }
+
+    .call h2{
+      margin-bottom:15px;
+    }
+
+    .call button{
+      padding:10px 22px;
+      background:white;
+      color:#2196f3;
+      border:none;
+      border-radius:5px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    /* Footer */
+    footer{
+      background:#0d47a1;
+      color:white;
+      text-align:center;
+      padding:15px;
+      font-size:14px;
+    }
+ /*-----mainpage css end----*/
+ 
+/*-----about css start----*/
+
+.aboutpage{
+  min-height:100vh;
+
+  /* Background Image + Dark Overlay */
+  background:
+    linear-gradient(rgba(10,30,60,0.75), rgba(10,30,60,0.75)),
+    url("aboutimage.png");   /* <-- yahan apni image ka naam daalo */
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
   padding:40px 20px;
   font-family:Arial, sans-serif;
 }
 
+/* Main Content Box */
 
-/* Hero Section */
+.aboutpage .about{
+  max-width:900px;
+  padding:40px;
 
-.home h2:first-of-type{
+  background:rgba(255,255,255,0.95); /* thoda transparent white */
+  border-radius:15px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+  text-align:center;
+}
+
+/* Paragraph Text */
+
+.aboutpage .about p{
+  font-size:22px;
+  line-height:1.8;
+  color:#0d47a1;
+
+  margin-bottom:20px;
+
+  font-weight:500;
+}
+
+/*-----about css end----*/
+
+/*-----home css start----*/
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.home{
+  background: 
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("homeimage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+/* HERO SECTION */
+
+.home-hero{
+  text-align:center;
+  padding:100px 20px 80px;
+}
+
+.home-hero h1{
   font-size:42px;
-  color:#0d47a1;
-  text-align:center;
-  margin-top:40px;
+  margin-bottom:20px;
+  letter-spacing:1px;
 }
 
-.home p:nth-of-type(1),
-.home p:nth-of-type(2){
-  text-align:center;
+.home-hero p{
   font-size:18px;
-  color:#444;
-  margin-top:10px;
+  max-width:700px;
+  margin:0 auto;
+  opacity:0.9;
 }
 
-/* Section Titles */
+/* TOOLS SECTION */
 
-.home h2{
-  margin-top:60px;
-  margin-bottom:25px;
+.home-tools{
+  padding:70px 10%;
+  background: rgba(255,255,255,0.95);
+  color:#222;
+}
+
+.home-tools h2{
   text-align:center;
+  margin-bottom:50px;
+  font-size:30px;
   color:#0d47a1;
-  font-size:32px;
 }
 
-/* Calculator Boxes */
+.tools-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap:30px;
+}
 
-.home .box{
-  background:gray;
-  max-width:300px;
-  margin:15px auto;
-  padding:20px;
-  border-radius:10px;
+.tool-box{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:0.3s;
+  border-top:4px solid #0d47a1;
+}
+
+.tool-box h3{
+  margin-bottom:15px;
+  color:#0d47a1;
+}
+
+.tool-box p{
+  color:#555;
+  font-size:15px;
+}
+
+.tool-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* INFO SECTION */
+
+.home-info{
+  padding:80px 10%;
+  display:flex;
+  gap:50px;
+  flex-wrap:wrap;
+  background: rgba(0,0,0,0.65);
+}
+
+.home-info div{
+  flex:1;
+  min-width:280px;
+}
+
+.home-info h2{
+  margin-bottom:20px;
+  font-size:24px;
+  color:#ffcc00;
+}
+
+.home-info ul{
+  list-style:none;
+}
+
+.home-info li{
+  margin-bottom:12px;
+  font-size:16px;
+}
+
+.home-info p{
+  font-size:16px;
+  line-height:1.7;
+}
+
+/*-----home css end----*/
+
+/*-----services css start----*/
+
+.service{
+  min-height:100vh;
+
+  /* Background Image + Dark Overlay */
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("homeimage.png"); /* <-- yahan apni image ka naam daalo */
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  padding:40px 20px;
+  font-family:Arial, sans-serif;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* Page Title */
+
+.service h2{
   text-align:center;
-  box-shadow:0 3px 10px rgba(0,0,0,0.15);
+  font-size:38px;
+  color:white;   /* Overlay ke saath white text clear dikhega */
+  margin-bottom:40px;
+  text-shadow:1px 1px 5px rgba(0,0,0,0.7);
+}
+
+/* Service Cards */
+
+.service .box{
+  background:rgba(255,255,255,0.95); /* Slightly transparent white */
+  max-width:700px;
+  margin:20px auto;
+  padding:25px 30px;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  transition:0.3s;
+  border-left:6px solid #2196f3;
+}
+
+/* Hover Effect */
+
+.service .box:hover{
+  transform:translateX(5px);
+  box-shadow:0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Headings */
+
+.service .box h3{
+  color:#2196f3;
+  margin-bottom:10px;
+  font-size:22px;
+}
+
+/* Text */
+
+.service .box p{
+  font-size:17px;
+  color:#333;
+  line-height:1.6;
+}
+
+/*-----services css end----*/
+
+
+
+/*===== Get Started Page with Background Image =====*/
+
+.getstarted{
+
+  /* Background Image + Dark Overlay */
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("calculatorlist.png");   
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  min-height:100vh;
+  padding:60px 20px;
+
+  font-family:Arial, sans-serif;
+}
+
+
+/* Page Title */
+
+.getstarted h1{
+  text-align:center;
+  font-size:42px;
+  color:#ffffff;
+  margin-bottom:50px;
+  text-shadow:2px 2px 6px rgba(0,0,0,0.6);
+}
+
+
+/* Tools Container */
+
+.tools{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:35px;
+  max-width:1100px;
+  margin:auto;
+}
+
+
+/* Calculator Card */
+
+.tools .card{
+  background:rgba(255,255,255,0.95);
+  width:300px;
+  padding:28px;
+
+  border-radius:18px;
+  text-align:center;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
+
+  transition:0.4s;
+
+  border-top:6px solid #2196f3;
+
+  backdrop-filter:blur(5px);
+}
+
+
+/* Hover Effect */
+
+.tools .card:hover{
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 15px 35px rgba(0,0,0,0.5);
+}
+
+
+/* Card Title */
+
+.tools .card h3{
+  font-size:24px;
+  color:#0d47a1;
+  margin-bottom:12px;
+}
+
+
+/* Card Text */
+
+.tools .card p{
+  font-size:16px;
+  color:#444;
+  margin-bottom:22px;
+  line-height:1.5;
+}
+
+
+/* Open Button */
+
+.tools .card button{
+  background:linear-gradient(to right,#2196f3,#0d47a1);
+
+  color:white;
+  border:none;
+
+  padding:11px 28px;
+
+  border-radius:30px;
+
+  font-size:16px;
+  font-weight:bold;
+
+  cursor:pointer;
+
   transition:0.3s;
 }
 
-.home .box:hover{
-  transform:translateY(-5px);
-  box-shadow:0 6px 15px rgba(0,0,0,0.25);
+
+/* Button Hover */
+
+.tools .card button:hover{
+  background:linear-gradient(to right,#0d47a1,#2196f3);
+  transform:scale(1.08);
 }
 
-.home .box h3{
-  color:#2196f3;
-  margin-bottom:8px;
-}
-
-/* Benefits */
-
-.home ul{
-  max-width:400px;
-  margin:0 auto;
-  list-style:none;
-  font-size:18px;
-  color:#333;
-}
-
-.home ul li{
-  margin:10px 0;
-}
-
-/* Call To Action */
-
-.home h2:last-of-type{
-  color:#ff9800;
-}
-
-.home p:last-of-type{
-  text-align:center;
-  font-size:18px;
-  margin-bottom:50px;
-  color:#555;
-}
+/*-----Get Started button css end----*/
 /*-----home css end----*/
 
 /*-----services css start----*/
@@ -500,5 +939,6 @@
 
 
 /*-----Get Started button css end----*/
+
 
 
