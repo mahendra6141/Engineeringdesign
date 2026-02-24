@@ -42,7 +42,7 @@
 .navbar a{
   margin-left:30px;
   text-decoration:none;
-  color:#87CEEB;
+  color:white;
   font-size:16px;
   position:relative;
   transition:0.3s;
@@ -716,6 +716,7 @@ body{
 
 
 /*-----Get Started button css end----*/
+
 
 
 
