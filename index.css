@@ -227,31 +227,7 @@
     color:white;
 }
 
-/* Main Content Box */
 
-.aboutpage .about{
-  max-width:900px;
-  padding:40px;
-
-  background:rgba(255,255,255,0.95); /* thoda transparent white */
-  border-radius:15px;
-
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-
-  text-align:center;
-}
-
-/* Paragraph Text */
-
-.aboutpage .about p{
-  font-size:22px;
-  line-height:1.8;
-  color:#0d47a1;
-
-  margin-bottom:20px;
-
-  font-weight:500;
-}
 
 /*-----about css end----*/
 
@@ -540,3 +516,4 @@
 
 
 /*-----Get Started button css end----*/
+
