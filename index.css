@@ -164,17 +164,14 @@
     }
  /*-----mainpage css end----*/
  
-
- 
 /*-----about css start----*/
 
 .aboutpage{
   min-height:100vh;
 
-  /* Background Image + Dark Overlay */
   background:
-    linear-gradient(rgba(10,30,60,0.75), rgba(10,30,60,0.75)),
-    url("aboutimage.png");   /* <-- yahan apni image ka naam daalo */
+    linear-gradient(rgba(10,30,60,0.5), rgba(10,30,60,0.5)),
+    url("aboutimage.png");
 
   background-size:cover;
   background-position:center;
@@ -188,33 +185,37 @@
   font-family:Arial, sans-serif;
 }
 
-/* Main Content Box */
+.about{
+    max-width:900px;
+    width:100%;
+    padding:40px;
 
-.aboutpage .about{
-  max-width:900px;
-  padding:40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
 
-  background:rgba(255,255,255,0.8); /* thoda transparent white */
-  border-radius:15px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
 
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-
-  text-align:center;
+    color:white;
 }
 
-/* Paragraph Text */
+.about h1{
+    text-align:center;
+    margin-bottom:20px;
+}
 
-.aboutpage .about p{
-  font-size:22px;
-  line-height:1.8;
-  color:#0d47a1;
+.about p{
+    line-height:1.7;
+    margin-bottom:15px;
+}
 
-  margin-bottom:20px;
-
-  font-weight:500;
+.about ul{
+    margin-left:25px;
 }
 
 /*-----about css end----*/
+ 
+
 
 
 
@@ -725,6 +726,7 @@
 
 
 /*-----Get Started button css end----*/
+
 
 
 
