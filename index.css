@@ -170,7 +170,7 @@
   min-height:100vh;
 
   background:
-    linear-gradient(rgba(10,30,60,0.5), rgba(10,30,60,0.5)),
+    linear-gradient(rgba(10,30,60,0.65), rgba(10,30,60,0.65)),
     url("aboutimage.png");
 
   background-size:cover;
@@ -181,36 +181,67 @@
   justify-content:center;
   align-items:center;
 
-  padding:40px 20px;
+  padding:60px 20px;
   font-family:Arial, sans-serif;
 }
 
+/* Main Content Box */
 .about{
     max-width:900px;
     width:100%;
-    padding:40px;
+    padding:50px;
 
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
-
-    border-radius:15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    background: rgba(255,255,255,0.15);   /* thoda clear */
+    backdrop-filter: blur(6px);          /* blur kam kiya */
+    
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
 
     color:white;
 }
 
+/* Heading */
 .about h1{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
+    font-size:32px;
+    letter-spacing:1px;
 }
 
+/* Paragraph */
 .about p{
-    line-height:1.7;
-    margin-bottom:15px;
+    line-height:1.8;
+    margin-bottom:18px;
+    font-size:16px;
 }
 
+/* List */
 .about ul{
-    margin-left:25px;
+    margin:20px 0 25px 30px;
+    padding:0;
+}
+
+.about ul li{
+    margin-bottom:10px;
+    font-size:16px;
+    list-style-type:disc;
+}
+
+/* Developed By */
+.about h3{
+    margin-top:25px;
+    font-size:20px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .about{
+        padding:30px;
+    }
+
+    .about h1{
+        font-size:24px;
+    }
 }
 
 /*-----about css end----*/
@@ -726,6 +757,7 @@
 
 
 /*-----Get Started button css end----*/
+
 
 
 
