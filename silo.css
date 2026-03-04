@@ -1,0 +1,121 @@
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  margin:0;
+  padding:20px;
+}
+
+h1,h2{
+  text-align:center;
+  margin-bottom:15px;
+  background-color:teal;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:15px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+}
+
+th{
+  background:#1e3a8a;
+  color:#fff;
+  padding:8px;
+  font-weight:600;
+}
+
+td{
+  padding:6px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+input{
+  width:100%;
+  padding:6px;
+  background:#0f172a;
+  border:1px solid #334155;
+  color:#fff;
+  text-align:center;
+}
+
+input[readonly]{
+  background:#111827;
+  color:#38bdf8;
+  font-weight:bold;
+}
+
+.btn{
+  padding:8px 15px;
+  background:#2563eb;
+  border:none;
+  color:white;
+  cursor:pointer;
+  border-radius:4px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#1d4ed8;
+}
+.result-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    width: 90%;
+    margin: 40px auto;
+}
+
+.table-section{
+    width: 45%;
+}
+
+.diagram-section{
+    width: 55%;
+    text-align: center;
+	margin-left:8px;
+}
+
+.output{
+    width: 100%;
+    border-collapse: collapse;
+    background: #1e293b;
+    color: white;
+}
+
+.output th{
+    background: #0ea5e9;
+    padding: 10px;
+}
+
+.output td{
+    border: 4px solid #334155;
+    padding: 8px;
+}
+
+.output input{
+    width: 100%;
+    text-align: center;
+    background: #0f172a;
+    color: #38bdf8;
+    border: none;
+    padding: 5px;
+}
+
+
+canvas{
+  display:block;
+  margin-right:8px auto;
+  background:transparent;
+}
+#SiloDiagram{
+  display:block;
+  margin:10px;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  border:2px solid #334155;
+  border-radius:10px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}

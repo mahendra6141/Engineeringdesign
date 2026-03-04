@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cylindrical Silo Calculator</title>
+    <link rel="stylesheet" href="silo.css">
+</head>
+<body>
+<h1>Cylindrical Silo Calculation</h1>
+
+<table>
+<tr><th>Parameter</th><th>Value</th></tr>
+
+<tr><td>Top Radius R1 (m)</td>
+<td><input id="S_R1" Value="10"></td></tr>
+
+<tr><td>Cylinder Height H1 (m)</td>
+<td><input id="S_H1" Value="20"></td></tr>
+
+<tr><td>Bottom Radius R2 (m)</td>
+<td><input id="S_R2" Value="5"></td></tr>
+
+<tr><td>Conical Height H2 (m)</td>
+<td><input id="S_H2" Value="10"></td></tr>
+
+<tr><td>Angle of Repose (deg)</td>
+<td><input id="S_angle" Value="30"></td></tr>
+
+<tr><td>Utilization(Cone Part) K (%)</td>
+<td><input id="S_K" Value="90"></td></tr>
+
+</table>
+
+<button class="btn" onclick="calcSilo()">Calculate</button>
+
+<h2>Output</h2>
+
+<div class="result-wrapper">
+
+    <div class="table-section">
+        <table class="output">
+            <tr>
+                <th>Parameter</th>
+                <th>Formula</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>Total Height</td>
+                <td>H = H1 + H2</td>
+                <td><input id="S_totalH" readonly></td>
+            </tr>
+			
+			 <tr>
+                <td>Total Geometrical Volume</td>
+                <td>Vt = Vcylinder + Vcone</td>
+                <td><input id="G_Vtotal" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Total Useful Volume</td>
+                <td>Vt = Vcyl + Vcon</td>
+                <td><input id="S_Vtotal" readonly></td>
+            </tr>
+
+            <tr>
+                <td>β (degree)</td>
+                <td>β = Atan(H2/(R1-R2))</td>
+                <td><input id="S_beta" readonly></td>
+            </tr>
+
+            <tr>
+                <td>Total Surface Area</td>
+                <td>A = Acyl + Acon</td>
+                <td><input id="S_Atotal" readonly></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="diagram-section">
+        <canvas id="SiloDiagram" width="700" height="400"></canvas>
+    </div>
+
+</div>
+
+<script src="silo.js"></script>
+</body>
+</html>
