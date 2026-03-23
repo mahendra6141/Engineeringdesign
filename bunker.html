@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bunker Calculator</title>
+<link rel="stylesheet" href="bunker.css">
+</head>
+<body>
+
+<h1 class="title"> CAPACITY of BUNKER</h1>
+
+<!-- ================= INPUT TABLE ================= -->
+<table class="bunker-table">
+
+<tr class="header">
+    <th>Parameter</th>
+    <th>Symbol</th>
+    <th>Input</th>
+</tr>
+
+<tr class="section"><td colspan="3">BUNKER DETAILS (INPUT)</td></tr>
+
+<tr>
+    <td>Opening length at top L1 (m)</td>
+    <td>L1</td>
+    <td><input type="number" id="L1" value="3.4"></td>
+</tr>
+
+<tr>
+    <td>Opening width at top B1 (m)</td>
+    <td>B1</td>
+    <td><input type="number" id="B1" value="1.5"></td>
+</tr>
+
+<tr>
+    <td>Height of rectangular part H1 (m)</td>
+    <td>H1</td>
+    <td><input type="number" id="H1" value="4.8"></td>
+</tr>
+
+<tr>
+    <td>Opening length at bottom L2 (m)</td>
+    <td>L2</td>
+    <td><input type="number" id="L2" value="1.5"></td>
+</tr>
+
+<tr>
+    <td>Opening width at bottom B2 (m)</td>
+    <td>B2</td>
+    <td><input type="number" id="B2" value="0.8"></td>
+</tr>
+
+<tr>
+    <td>Height of trapezoidal part H2 (m)</td>
+    <td>H2</td>
+    <td><input type="number" id="H2" value="4"></td>
+</tr>
+
+<tr>
+    <td>Factor for useful volume</td>
+    <td>K</td>
+    <td><input type="number" id="K" value="0.7"></td>
+</tr>
+
+<tr>
+    <td>Bulk Density (t/m³)</td>
+    <td>ρ</td>
+    <td><input type="number" id="rho" value="0.9"></td>
+</tr>
+
+<tr>
+    <td>No. of Bunkers</td>
+    <td>N</td>
+    <td><input type="number" id="N" value="11"></td>
+</tr>
+
+</table>
+
+<br>
+
+<!-- BUTTON -->
+<div style="text-align:center;">
+    <button onclick="calculate()">Calculate</button>
+</div>
+
+<br>
+
+<!-- ================= OUTPUT TABLE ================= -->
+<table class="bunker-table">
+
+<tr class="header">
+    <th>Description</th>
+    <th>Formula</th>
+    <th>Result</th>
+</tr>
+
+<tr class="section"><td colspan="3">BUNKER DETAILS (OUTPUT)</td></tr>
+
+<tr><td>Area of top opening (m<sup>2</sup>)</td><td>A1 = L1 × B1</td><td id="A1"></td></tr>
+<tr><td>Geometric volume (rectangular)</td><td>V1 = A1 × H1</td><td id="V1"></td></tr>
+
+<tr><td>Slant length (m)</td><td>l</td><td id="l"></td></tr>
+<tr><td>Slant width (m)</td><td>b</td><td id="b"></td></tr>
+
+<tr><td>Area of bottom opening (m<sup>2</sup>)</td><td>A2 = L2 × B2</td><td id="A2"></td></tr>
+<tr><td>Geometric volume (trapezoid) (m<sup>3</sup>)</td><td>V2 formula</td><td id="V2"></td></tr>
+
+<tr class="bold"><td>Total Volume of single Bunker (m<sup>3</sup>)</td><td>V = V1 + V2</td><td id="V"></td></tr>
+
+<tr class="highlight"><td>Useful Volume of single Bunker (m<sup>3</sup>)</td><td>Vuse = K × V</td><td id="Vuse"></td></tr>
+
+<tr><td>β1 (degree)</td><td>atan(2H2/(L1-L2))</td><td id="beta1"></td></tr>
+<tr><td>β2 (degree)</td><td>atan(2H2/(B1-B2))</td><td id="beta2"></td></tr>
+
+<tr class="bold"><td>Total Volume  (m<sup>3</sup>)</td><td>Vt = N × V</td><td id="Vt"></td></tr>
+<tr class="bold"><td>Total Useful Volume (m<sup>3</sup>)</td><td>Vtuse = K × Vt</td><td id="Vtuse"></td></tr>
+
+<tr class="section"><td colspan="3">SURFACE AREA</td></tr>
+
+<tr><td>Rectangular surface (m<sup>2</sup>)</td><td>Art</td><td id="Art"></td></tr>
+<tr><td>Trapezoidal surface (m<sup>2</sup>)</td><td>Att</td><td id="Att"></td></tr>
+<tr class="bold"><td>Total Surface Area (m<sup>2</sup>)</td><td>As</td><td id="As"></td></tr>
+
+<tr class="section"><td colspan="3">CAPACITY</td></tr>
+
+<tr><td>Total capacity (T)</td><td>ρ × N × V</td><td id="totalCap"></td></tr>
+<tr class="highlight"><td>Total Useful capacity (T)</td><td>K × total capacity</td><td id="useCap"></td></tr>
+
+</table>
+<br>
+
+<h3 style="text-align:center;">Bunker Diagram</h3>
+
+<div class="diagram-container">
+    <div class="diagram-title">Bunker 3D Diagram</div>
+
+    <canvas id="bunkerCanvas" width="600" height="450"></canvas>
+
+    <div class="legend">
+        <div class="legend-box">
+            <div class="legend-color total-color"></div> Total Volume
+        </div>
+        <div class="legend-box">
+            <div class="legend-color used-color"></div> Used Volume
+        </div>
+    </div>
+</div>
+<script src="bunker.js"></script>
+
+</body>
+</html>

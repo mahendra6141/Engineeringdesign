@@ -1,0 +1,117 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+.title{
+    text-align:center;
+    background:#d9e1f2;
+    padding:10px;
+    border:1px solid #999;
+}
+h1{
+	color:darkblue;
+}
+.bunker-table{
+    width:90%;
+    margin:auto;
+    border-collapse:collapse;
+    background:#fff;
+}
+
+th, td{
+    border:1px solid #999;
+    padding:6px;
+    font-size:14px;
+}
+
+.header{
+    background:#4f81bd;
+    color:#fff;
+    text-align:center;
+}
+
+.section{
+    background:#b8cce4;
+    font-weight:bold;
+    text-align:left;
+}
+
+.bold{
+    font-weight:bold;
+}
+
+.highlight{
+    background:#c6efce;
+    font-weight:bold;
+}
+
+input{
+    width:90%;
+    padding:4px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 25px;
+    background:#4f81bd;
+    color:white;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#2f5597;
+}
+/* ===== DIAGRAM SECTION ===== */
+
+.diagram-container{
+    width: 90%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.diagram-title{
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Canvas Styling */
+#bunkerCanvas{
+    background: #ffffff;
+    border: 2px solid #555;
+    border-radius: 6px;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Optional: legend box */
+.legend{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.legend-box{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #333;
+}
+
+/* colors */
+.total-color{
+    background: #2196f3;
+}
+
+.used-color{
+    background: #4caf50;
+}
