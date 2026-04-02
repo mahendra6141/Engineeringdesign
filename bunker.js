@@ -88,6 +88,22 @@ let fillRatio = Vuse / V;
 
 drawBunker(L1,B1,L2,B2,H1,H2,fillRatio,Vt,Vtuse,useCap,beta1,beta2);
 
+    // ===== SAVE FULL DATA =====
+let data = {
+  projectId: "bunker_1",   // 👈 tu change kar sakta hai
+  type: "bunker",
+
+  input: {
+    L1, B1, H1, L2, B2, H2, K, rho, N
+  },
+
+  output: {
+    V, Vuse, Vt, Vtuse, totalCap, useCap
+  }
+};
+
+saveData(data);
+
 }
 let angleX = 0.6;   // vertical tilt
 let angleY = 0.6;   // horizontal rotation
