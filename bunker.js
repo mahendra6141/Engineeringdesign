@@ -441,3 +441,22 @@ canvas.addEventListener("mousemove", (e)=>{
 
 canvas.addEventListener("mouseup", ()=> isDragging = false);
 canvas.addEventListener("mouseleave", ()=> isDragging = false);
+
+function saveData(value) {
+  fetch("https://mahendra-api-backend.onrender.com/save", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ value: value })
+  })
+  .then(res => res.json())
+  .then(data => console.log("Saved:", data))
+  .catch(err => console.log("Error:", err));
+}
+
+function testSave() {
+  let value = document.getElementById("num1").value;
+
+  saveData(value);   // 👈 backend ko bhej raha hai
+}
