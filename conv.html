@@ -83,7 +83,7 @@
 <tr>
   <td>Conveyor Horizontal Length (L)</td>
   <td>m</td>
-  <td><input id="L" value="314.6"></td>
+  <td><input id="L" value="60"></td>
 </tr>
 
 <tr>
@@ -96,6 +96,30 @@
   <td>Conveyor Slope (δ)</td>
   <td>Degrees</td>
   <td><input id="cs" value="10"></td>
+</tr>
+
+<tr>
+  <td>Trough Angle</td>
+  <td>Degrees</td>
+  <td><select id="ts" onchange="updateArea()">
+   <option>20</option>
+   <option>25</option>
+   <option>30</option>
+   <option selected>35</option>
+   <option>40</option>
+   <option>45</option>
+</select></td>
+</tr>
+
+<tr>
+  <td>Surcharge Angle</td>
+  <td>Degrees</td>
+  <td><select id="ss" onchange="updateArea()">
+   <option>0</option>
+   <option>10</option>
+   <option selected>20</option>
+   <option>30</option>
+</select></td>
 </tr>
 
 <tr>
@@ -113,7 +137,21 @@
 <tr>
   <td>Belt width (B)</td>
   <td>mm</td>
-  <td><input id="B" value="1200"></td>
+  <td><select id="B" onchange="updateArea(); updateIdlerWeight();">
+  <option>500</option>
+  <option>650</option>
+  <option>800</option>
+  <option>1000</option>
+  <option selected>1200</option>
+  <option>1400</option>
+  <option>1600</option>
+  <option>1800</option>
+  <option>2000</option>
+  <option>2200</option>
+  <option>2400</option>
+  <option>2600</option>
+  <option>2800</option>
+</select></td>
 </tr>
 
 <tr>
@@ -203,7 +241,7 @@
 <tr>
   <td>Section area (A)</td>
   <td>m²</td>
-  <td><input id="A" value="0.163"></td>
+  <td><input id="A" readonly></td>
 </tr>
 
 <tr>
@@ -329,6 +367,16 @@
   <td>-</td>
   <td><input class="result" id="Kv" readonly></td>
 </tr>
+
+<tr>
+  <td>Maximum Belt Speed</td>
+  <td>IS 11592 Table 6</td>
+  <td>m/s</td>
+  <td>
+      <input class="result" id="Vmax" readonly>
+  </td>
+</tr>
+
 <tr>
   <td>Capacity designed (Qd)</td>
   <td>Qd = n x Qr</td>
@@ -375,40 +423,70 @@
   <th>Value</th>
 </tr>
 
+
+
 <tr>
-  <td>No of idlers (Carrying)</td>
+  <td>No of Transition idlers (10 degree)</td>
   <td>-</td>
-  <td><input id="n_c" value="822"></td>
+  <td><input id="t_c1" value="2"></td>
+</tr>
+
+<tr>
+  <td>No of Transition idlers (20 degree)</td>
+  <td>-</td>
+  <td><input id="t_c2" value="2"></td>
 </tr>
 
 <tr>
   <td>No of idlers (Impact)</td>
   <td>-</td>
-  <td><input id="n_i" value="252"></td>
+  <td><input id="n_i" value="12"></td>
+</tr>
+ 
+ <tr>
+  <td>Carrying Idler Dia</td>
+  <td>mm</td>
+  <td>
+    <select id="carryDia" onchange="updateIdlerWeight()">
+	   <option value="101.6">101.6</option>
+      <option value="114.3">114.3</option>
+      <option value="127">127</option>
+      <option value="139.7">139.7</option>
+      <option value="152.4" selected>152.4</option>
+    </select>
+  </td>
 </tr>
 
 <tr>
-  <td>No of idlers (Return)</td>
-  <td>-</td>
-  <td><input id="n_r" value="101"></td>
+  <td>Return Idler Dia</td>
+  <td>mm</td>
+  <td>
+    <select id="returnDia" onchange="updateIdlerWeight()">
+	  <option value="101.6">101.6</option>
+      <option value="114.3">114.3</option>
+      <option value="127">127</option>
+      <option value="139.7">139.7</option>
+      <option value="152.4" selected>152.4</option>
+    </select>
+  </td>
 </tr>
 
 <tr>
   <td>Weight of idler (Carrying)</td>
   <td>kg</td>
-  <td><input id="m_c" value="17.7"></td>
+  <td><input id="m_c" readonly></td>
 </tr>
 
 <tr>
   <td>Weight of idler (Impact)</td>
   <td>kg</td>
-  <td><input id="m_i" value="18.7"></td>
+  <td><input id="m_i" readonly></td>
 </tr>
 
 <tr>
   <td>Weight of idler (Return)</td>
   <td>kg</td>
-  <td><input id="m_r" value="35.3"></td>
+  <td><input id="m_r" readonly></td>
 </tr>
 
 <tr>
@@ -468,6 +546,34 @@
   <th>Formula</th>
   <th>Unit</th>
   <th>Value</th>
+</tr>
+
+<tr>
+  <td>Total No. of idlers (Carrying side)</td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="n_c" readonly></td>
+</tr>
+
+<tr>
+  <td>Total No. of Self Aling Carrying idlers</td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="sa_c" readonly></td>
+</tr>
+
+<tr>
+  <td>No of idlers (Return)</td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="n_r" readonly></td>
+</tr>
+
+<tr>
+  <td>No of  Self Aling Return idlers</td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="sa_r" readonly></td>
 </tr>
 
 <tr>
