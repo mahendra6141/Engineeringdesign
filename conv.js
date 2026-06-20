@@ -31,9 +31,7 @@ function openSubTab(evt, tabName){
   document.getElementById(tabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
-if(tabName === "DrivePulley"){
-  document.getElementById("defaultSubOpen").click();
-}
+
 function openTab(evt, tabName) {
 
   let tabcontent = document.getElementsByClassName("tabcontent");
@@ -61,9 +59,196 @@ function openTab(evt, tabName) {
   if (tabName === "SnubPulley") {
     document.getElementById("defaultSnubOpen").click();
   }
+  if(tabName === "IdlerBelt"){
+    updateIdlerWeight();
+}
 }
 
 
+function getMaxSpeed(Kv, B){
+
+    // Width Group
+    let col;
+
+    if(B <= 500)
+        col = 0;
+
+    else if(B <= 650)
+        col = 1;
+
+    else if(B <= 800)
+        col = 2;
+
+    else if(B <= 1050)
+        col = 3;
+
+    else
+        col = 4;
+
+    // Speed Factor Group
+
+    let row;
+
+    if(Kv == 1)
+        row = [2.5,3,3.5,4,4.5];
+
+    else if(Kv == 2)
+        row = [2.3,2.75,3.2,3.65,4.12];
+
+    else if(Kv >=3 && Kv <=4)
+        row = [2,2.38,2.75,3.15,3.55];
+
+    else if(Kv >=5 && Kv <=6)
+        row = [1.65,2,2.35,2.65,3];
+
+    else
+        row = [1.45,1.75,2.05,2.35,2.62];
+
+    return row[col];
+}
+  const areaTable = {
+
+500:{
+    20:{0:0.0098,10:0.0142,20:0.0187,30:0.0234},
+    25:{0:0.0120,10:0.0162,20:0.0206,30:0.0252},
+    30:{0:0.0139,10:0.0180,20:0.0222,30:0.0266},
+    35:{0:0.0157,10:0.0196,20:0.0236,30:0.0278},
+	40:{0:0.0173,10:0.0210,20:0.0247,30:0.0287},
+	45:{0:0.0186,10:0.0220,20:0.0256,30:0.0293}
+},
+
+650:{
+    20:{0:0.0184,10:0.0262,20:0.03342,30:0.0427},
+    25:{0:0.0224,10:0.0299,20:0.0377,30:0.0459},
+    30:{0:0.0260,10:0.0332,20:0.0406,30:0.0484},
+    35:{0:0.0294,10:0.0362,20:0.0433,30:0.0507},
+	40:{0:0.0322,10:0.0386,20:0.0453,30:0.0523},
+	45:{0:0.0347,10:0.0407,20:0.0469,30:0.0534}
+},
+
+800:{
+    20:{0:0.0279,10:0.0405,20:0.0535,30:0.0671},
+    25:{0:0.0344,10:0.0466,20:0.0591,30:0.0722},
+    30:{0:0.0402,10:0.0518,20:0.0638,30:0.0763},
+    35:{0:0.0454,10:0.0564,20:0.0678,30:0.0798},
+	40:{0:0.0500,10:0.0603,20:0.0710,30:0.0822},
+	45:{0:0.0540,10:0.0636,20:0.0736,30:0.0840}
+},
+
+1000:{
+    20:{0:0.0478,10:0.0674,20:0.0876,30:0.109},
+    25:{0:0.0582,10:0.0771,20:0.0966,30:0.117},
+    30:{0:0.0677,10:0.0857,20:0.104,30:0.134},
+    35:{0:0.0763,10:0.0933,20:0.111,30:0.129},
+	40:{0:0.0838,10:0.0998,20:0.116,30:0.134},
+	45:{0:0.0898,10:0.105,20:0.120,30:0.136}
+},
+
+1200:{
+    20:{0:0.0700,10:0.0988,20:0.129,30:0.160},
+    25:{0:0.0853,10:0.113,20:0.142,30:0.172},
+    30:{0:0.0992,10:0.126,20:0.153,30:0.182},
+    35:{0:0.112,10:0.137,20:0.163,30:0.190},
+	40:{0:0.123,10:0.146,20:0.171,30:0.196},
+	45:{0:0.132,10:0.154,20:0.176,30:0.200}
+},
+
+1400:{
+    20:{0:0.0980,10:0.138,20:0.179,30:0.221},
+    25:{0:0.120,10:0.158,20:0.197,30:0.238},
+    30:{0:0.139,10:0.175,20:0.213,30:0.253},
+    35:{0:0.157,10:0.191,20:0.220,30:0.264},
+	40:{0:0.171,10:0.204,20:0.237,30:0.272},
+	45:{0:0.184,10:0.214,20:0.245,30:0.277}
+},
+
+1600:{
+    20:{0:0.130,10:0.182,20:0.236,30:0.293},
+    25:{0:0.159,10:0.209,20:0.261,30:0.315},
+    30:{0:0.185,10:0.233,20:0.282,30:0.334},
+    35:{0:0.208,10:0.253,20:0.300,30:0.349},
+	40:{0:0.228,10:0.270,20:0.314,30:0.360},
+	45:{0:0.244,10:0.283,20:0.324,30:0.366}
+},
+
+1800:{
+    20:{0:0.167,10:0.233,20:0.302,30:0.374},
+    25:{0:0.203,10:0.268,20:0.334,30:0.403},
+    30:{0:0.237,10:0.298,20:0.361,30:0.427},
+    35:{0:0.266,10:0.324,20:0.384,30:0.446},
+	40:{0:0.292,10:0.346,20:0.401,30:0.460},
+	45:{0:0.313,10:0.363,20:0.414,30:0.468}
+},
+
+2000:{
+    20:{0:0.207,10:0.290,20:0.376,30:0.465},
+    25:{0:0.253,10:0.332,20:0.415,30:0.501},
+    30:{0:0.294,10:0.370,20:0.448,30:0.530},
+    35:{0:0.331,10:0.403,20:0.476,30:0.554},
+	40:{0:0.362,10:0.429,20:0.490,30:0.571},
+	45:{0:0.388,10:0.450,20:0.514,30:0.581}
+},
+
+2200:{
+    20:{0:0.257,10:0.357,20:0.461,30:0.569},
+    25:{0:0.311,10:0.408,20:0.508,30:0.613},
+    30:{0:0.363,10:0.455,20:0.549,30:0.649},
+    35:{0:0.408,10:0.494,20:0.584,30:0.677},
+	40:{0:0.446,10:0.527,20:0.610,30:0.697},
+	45:{0:0.478,10:0.552,20:0.629,30:0.710}
+},
+
+2400:{
+    20:{0:0.303,10:0.423,20:0.547,30:0.677},
+    25:{0:0.368,10:0.484,20:0.604,30:0.729},
+    30:{0:0.428,10:0.539,20:0.653,30:0.772},
+    35:{0:0.482,10:0.586,20:0.694,30:0.806},
+	40:{0:0.528,10:0.625,20:0.725,30:0.830},
+	45:{0:0.566,10:0.656,20:0.748,30:0.845}
+},
+
+2600:{
+    20:{0:0.360,10:0.502,20:0.648,30:0.801},
+    25:{0:0.439,10:0.575,20:0.716,30:0.863},
+    30:{0:0.510,10:0.640,20:0.774,30:0.914},
+    35:{0:0.573,10:0.695,20:0.822,30:0.953},
+	40:{0:0.628,10:0.741,20:0.859,30:0.982},
+	45:{0:0.672,10:0.777,20:0.885,30:0.999}
+},
+
+2800:{
+    20:{0:0.413,10:0.578,20:0.749,30:0.928},
+    25:{0:0.505,10:0.663,20:0.827,30:0.998},
+    30:{0:0.585,10:0.737,20:0.894,30:1.063},
+    35:{0:0.660,10:0.803,20:0.950,30:1.104},
+	40:{0:0.721,10:0.885,20:0.993,30:1.137},
+	45:{0:0.774,10:0.897,20:1.025,30:1.158}
+}
+
+
+};
+function getSectionArea(B, ts, ss){
+
+    if(areaTable[B] &&
+       areaTable[B][ts] &&
+       areaTable[B][ts][ss] !== undefined){
+
+        return areaTable[B][ts][ss];
+    }
+
+    return 0;
+}
+
+function updateArea(){
+
+    let B  = +document.getElementById("B").value;
+    let ts = +document.getElementById("ts").value;
+    let ss = +document.getElementById("ss").value;
+
+    let A = getSectionArea(B, ts, ss);
+
+    document.getElementById("A").value = A.toFixed(4);
+}
 
 function calculate(){
   
@@ -72,18 +257,20 @@ function calculate(){
   let rho = +document.getElementById("rho").value;
   let V   = +document.getElementById("V").value;
   let K   = +document.getElementById("K").value;
-  let A   = +document.getElementById("A").value;
   let n   = +document.getElementById("n").value;
   let B   = +document.getElementById("B").value;
   let L   = +document.getElementById("L").value;
   let H   = +document.getElementById("H").value;
   let K1 = +document.getElementById("K1").value;
   let K2 = +document.getElementById("K2").value;
-   let cs = +document.getElementById("cs").value;
-
+  let cs = +document.getElementById("cs").value;
+  let ts = +document.getElementById("ts").value;
+  let ss = +document.getElementById("ss").value;
+  let A = getSectionArea(B, ts, ss);
   // Speed factor
   let Kv = K1 + K2;
   
+  let Vmax = getMaxSpeed(Kv,B);
   //designed Capacity
   let Qd = n * Qr;
 
@@ -119,39 +306,209 @@ function calculate(){
   document.getElementById("B_sp").value = B.toFixed(2);
   document.getElementById("H1").value = H.toFixed(2);
   document.getElementById("delta").value = cs.toFixed(2);
+  document.getElementById("Vmax").value = Vmax.toFixed(2);
+  
+  
+  let vmaxBox = document.getElementById("Vmax");
+
+if(V > Vmax){
+
+    vmaxBox.classList.remove("ok-result");
+    vmaxBox.classList.add("error-result");
 
 }
+else{
+
+    vmaxBox.classList.remove("error-result");
+    vmaxBox.classList.add("ok-result");
+
+}
+
+   let qmaxBox = document.getElementById("Qmax");
+if(Qmax >= Qd){
+
+    qmaxBox.classList.remove("error-result");
+    qmaxBox.classList.add("ok-result");
+
+}
+else{
+
+    qmaxBox.classList.remove("ok-result");
+    qmaxBox.classList.add("error-result");
+
+}
+
+let vminBox = document.getElementById("Vmin");
+
+if(V >= Vmin){
+    vminBox.classList.remove("error-result");
+    vminBox.classList.add("ok-result");
+}
+else{
+    vminBox.classList.remove("ok-result");
+    vminBox.classList.add("error-result");
+}
+
+} 
+window.onload = function() {
+    updateArea();
+	updateIdlerWeight();
+};
+
+
+const idlerData = {
+
+  500: {
+    101.6: {carry:29, return:78},
+    114.3: {carry:38, return:90},
+    127:   {carry:44, return:98}
+  },
+
+  650: {
+    101.6: {carry:39, return:74},
+    114.3: {carry:46, return:94},
+    127:   {carry:49, return:101}
+  },
+
+  800: {
+    114.3: {carry:76, return:151},
+    127:   {carry:78, return:162},
+    139.7: {carry:79, return:176},
+    152.4: {carry:111, return:194}
+  },
+
+  1000: {
+    114.3: {carry:86, return:181},
+    127:   {carry:102, return:192},
+    139.7: {carry:114, return:207},
+    152.4: {carry:127, return:222}
+  },
+
+  1200: {
+    114.3: {carry:96, return:213},
+    127:   {carry:123, return:229},
+    139.7: {carry:132, return:247},
+    152.4: {carry:141, return:266}
+  },
+
+  1400: {
+    139.7: {carry:142, return:280},
+    152.4: {carry:153, return:315}
+  },
+
+  1600: {
+    139.7: {carry:158, return:312},
+    152.4: {carry:170, return:343}
+  }
+
+};
+
+function updateIdlerWeight(){
+
+    let B = +document.getElementById("B").value;
+
+    let carryDia = document.getElementById("carryDia").value;
+    let returnDia = document.getElementById("returnDia").value;
+
+    let carryData = idlerData[B]?.[carryDia];
+    let returnData = idlerData[B]?.[returnDia];
+
+    let mcBox = document.getElementById("m_c");
+    let miBox = document.getElementById("m_i");
+    let mrBox = document.getElementById("m_r");
+
+    // ===== Carrying Idler =====
+    if(carryData){
+
+        let mc = carryData.carry / 9.81;
+        let mi = mc;
+
+        mcBox.value = mc.toFixed(2);
+        miBox.value = mi.toFixed(2);
+
+        mcBox.classList.remove("na-value");
+        miBox.classList.remove("na-value");
+
+    }
+    else{
+
+        mcBox.value = "NA";
+        miBox.value = "NA";
+
+        mcBox.classList.add("na-value");
+        miBox.classList.add("na-value");
+    }
+
+    // ===== Return Idler =====
+    if(returnData){
+
+        let mr = returnData.return / 9.81;
+
+        mrBox.value = mr.toFixed(2);
+
+        mrBox.classList.remove("na-value");
+
+    }
+    else{
+
+        mrBox.value = "NA";
+
+        mrBox.classList.add("na-value");
+    }
+}
+
 function calcIdler(){
 
-  let nc = +document.getElementById("n_c").value;
-  let nr = +document.getElementById("n_r").value;
+  let tc1 = +document.getElementById("t_c1").value;
+  let tc2 = +document.getElementById("t_c2").value;
   let ni = +document.getElementById("n_i").value;
 
-  let mc = +document.getElementById("m_c").value;
-  let mr_w = +document.getElementById("m_r").value;
-  let mi = +document.getElementById("m_i").value;
 
   let d1 = +document.getElementById("d1").value;
   let d2 = +document.getElementById("d2").value;
   let d3 = +document.getElementById("d3").value;
 
-  let B = +document.getElementById("B2").value;
   let L = +document.getElementById("L2").value;
 
   let Qr = +document.getElementById("Qr2").value;
   let V = +document.getElementById("V2").value;
+  
+  let B = +document.getElementById("B2").value;
+  let mc = +document.getElementById("m_c").value;
+  let mi = +document.getElementById("m_i").value;
+  let mr_w = +document.getElementById("m_r").value;
+  
+  // No of Self Align Carrying idlers
+  let sac = Math.ceil((L - 5 - 5) / 15) + 1;
+  
+  // No of Self Align Return idlers
+  let sar = Math.ceil((L - 5 - 5) / 15) + 1;
+  
+  // No of Carrying idlers
+  let nc = Math.ceil((L - 0.4 * ni - sac - tc1 - tc2) / 1) ;
 
+   // No of Return idlers
+  let nr = Math.ceil(L / 3) - sar ; 
+  
   // Belt mass
   let mB = 1.1 * (d1 + d2 + d3) * B / 1000;
 
   // Idler mass per meter
-  let mC = (mc * nc + mi * ni) / L;
-  let mr = (mr_w * nr) / L;
+  let mC = (3 * mc * nc + 3 * mc * sac + 3 * mi * ni) / L;
+  let mr = (mr_w * nr +  mr_w * sar ) / L;
 
   // Material mass
   let mG = Qr / (3.6 * V);
 
+
   // Output
+  document.getElementById("m_c").value = mc.toFixed(2);
+  document.getElementById("m_i").value = mi.toFixed(2);
+  document.getElementById("m_r").value = mr_w.toFixed(2);
+  document.getElementById("n_c").value = nc.toFixed(0);
+  document.getElementById("n_r").value = nr.toFixed(0);
+  document.getElementById("sa_c").value = sac.toFixed(0);
+  document.getElementById("sa_r").value = sar.toFixed(0);
   document.getElementById("mB").value = mB.toFixed(2);
   document.getElementById("mC").value = mC.toFixed(2);
   document.getElementById("mr").value = mr.toFixed(2);
