@@ -1,0 +1,268 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+
+background:#eef2f7;
+
+}
+
+.container{
+
+width:95%;
+max-width:1300px;
+
+margin:25px auto;
+
+background:white;
+
+border-radius:10px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+overflow:hidden;
+
+}
+
+header{
+
+background:#005792;
+
+color:white;
+
+padding:20px;
+
+text-align:center;
+
+}
+
+header h1{
+
+font-size:30px;
+
+margin-bottom:5px;
+
+}
+
+.tabs{
+
+display:flex;
+
+background:#0f4c81;
+
+}
+
+.tab{
+
+flex:1;
+
+padding:15px;
+
+border:none;
+
+background:#0f4c81;
+
+color:white;
+
+cursor:pointer;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.tab:hover{
+
+background:#1670b8;
+
+}
+
+.tab.active{
+
+background:white;
+
+color:#005792;
+
+font-weight:bold;
+
+}
+
+.tab-content{
+
+padding:30px;
+
+}
+
+.tab-content h2{
+
+margin-bottom:25px;
+
+color:#005792;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:18px;
+
+}
+
+.input-group{
+
+display:grid;
+
+grid-template-columns:220px 1fr 60px;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.input-group label{
+
+font-weight:600;
+
+}
+
+.input-group input{
+
+padding:10px;
+
+border:1px solid #bbb;
+
+border-radius:5px;
+
+font-size:15px;
+
+}
+
+.input-group span{
+
+font-weight:bold;
+
+color:#555;
+
+}
+
+.buttons{
+
+margin-top:35px;
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+}
+
+.buttons button{
+
+padding:12px 40px;
+
+border:none;
+
+border-radius:5px;
+
+cursor:pointer;
+
+font-size:16px;
+
+color:white;
+
+}
+
+#calculateBtn{
+
+background:#009879;
+
+}
+
+button[type="reset"]{
+
+background:#d9534f;
+
+}
+
+button:hover{
+
+opacity:.9;
+
+}
+
+@media(max-width:850px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.input-group{
+
+grid-template-columns:1fr;
+
+}
+
+}
+.tab-content{
+    display:none;
+    padding:30px;
+}
+
+.tab-content.active{
+    display:block;
+}
+.result-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+.result-table th{
+
+    background:#005792;
+
+    color:#fff;
+
+    padding:12px;
+
+    text-align:center;
+
+}
+
+.result-table td{
+
+    border:1px solid #ccc;
+
+    padding:10px;
+
+    text-align:center;
+
+}
+
+.result-table tr:nth-child(even){
+
+    background:#f7f7f7;
+
+}
+
+.result-table td:nth-child(1){
+
+    text-align:left;
+
+}
