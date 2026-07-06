@@ -11,9 +11,8 @@ body.silo-page{
 h1,h2{
   text-align:center;
   margin-bottom:15px;
-  margin-top:20px;
   background-color:teal;
-	padding:14px;
+	padding:20px;
 }
 
 table{
