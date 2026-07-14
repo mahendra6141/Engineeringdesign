@@ -1,0 +1,706 @@
+/*==============================*/
+/* REPORT PAGE */
+/*==============================*/
+
+.report-page{
+    width:210mm;
+    min-height:297mm;
+    background:url(letter.png) no-repeat;
+    background-size:100% 297mm;
+    position:relative;
+    margin:0 auto;
+}
+
+
+.report-content{
+
+    position:absolute;
+
+    top:42mm;
+
+    left:12mm;
+
+    right:12mm;
+
+    bottom:15mm;
+
+    z-index:1;
+
+}
+
+.letterhead{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:210mm;
+
+    height:297mm;
+
+    z-index:0;
+
+}
+
+/* Title */
+
+.report-title{
+
+    text-align:center;
+
+    font-size:24px;
+
+    color:#163b70;
+
+    margin:0 0 12px;
+
+    padding-bottom:8px;
+
+    border-bottom:3px solid #163b70;
+
+}
+
+/* Sections */
+
+.report-section{
+
+    margin-top:12px;
+
+    page-break-inside:avoid;
+
+}
+
+.report-section h2{
+
+    background:#163b70;
+
+    color:white;
+
+    padding:7px 10px;
+
+    font-size:16px;
+
+    margin:0 0 8px;
+
+}
+
+/* Tables */
+
+.report-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    font-size:12px;
+
+}
+
+.report-table th{
+
+    background:#e9eef8;
+
+}
+
+.report-table th,
+.report-table td{
+
+    border:1px solid #666;
+
+    padding:6px;
+
+}
+
+.report-table td{
+
+    background:white;
+
+}
+
+/*==============================*/
+/* Page Break */
+/*==============================*/
+
+.page-break{
+
+    page-break-after:always;
+
+    break-after:page;
+
+}
+
+/*==============================*/
+/* PRINT */
+/*==============================*/
+
+@page{
+
+    size:A4 portrait;
+
+    margin:0;
+
+}
+
+@media print{
+
+body{
+
+    margin:0;
+
+    padding:0;
+
+    background:white;
+
+}
+
+.report-page{
+
+    width:210mm;
+
+    min-height:297mm;
+
+    margin:0;
+
+}
+
+.report-section{
+
+    page-break-inside:avoid;
+
+}
+
+.page-break{
+
+    page-break-after:always;
+
+    break-after:page;
+
+}
+
+}
+@media print{
+
+    body *{
+        visibility:hidden;
+    }
+
+    #report,
+    #report *{
+        visibility:visible;
+    }
+
+    #report{
+
+        position:absolute;
+
+        left:0;
+
+        top:0;
+
+        width:100%;
+
+    }
+
+    .report-toolbar{
+        display:none;
+    }
+
+}
+
+
+/* ===== Project Manager ===== */
+
+/* ================= PROJECT MANAGER ================= */
+
+#ProjectManager{
+    min-height:80vh;
+    padding:25px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #20252b,
+    #2c333a,
+    #38414a
+    );
+}
+
+/* Main Panel */
+
+.project-section{
+
+    width:95%;
+    margin:auto;
+
+    padding:25px;
+
+    background:#f4f6f8;
+
+    border-radius:12px;
+
+    border:1px solid #b8c0c8;
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,0.30);
+}
+
+/* Banner */
+
+.software-banner{
+
+    text-align:center;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:#2f3a45;
+
+    background:
+    linear-gradient(
+    135deg,
+    #dfe5ea,
+    #cfd7de
+    );
+
+    border-radius:8px;
+
+    border:1px solid #b4bec7;
+}
+
+/* Section Titles */
+
+.project-title{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    color:white;
+
+    padding:12px;
+
+    margin:25px 0 20px;
+
+    border-radius:8px;
+
+    background:
+    linear-gradient(
+    90deg,
+    #3b4b57,
+    #556774,
+    #3b4b57
+    );
+
+    box-shadow:
+    0 4px 10px rgba(0,0,0,0.25);
+}
+
+/* Table */
+
+.project-table{
+
+    width:100%;
+
+    border-collapse:separate;
+
+    border-spacing:10px;
+}
+
+.project-table td{
+
+    padding:6px;
+
+    font-weight:600;
+
+    color:#374151;
+}
+
+/* Inputs */
+
+.project-table input{
+
+    width:100%;
+
+    padding:10px 12px;
+
+    font-size:14px;
+
+    border-radius:6px;
+
+    border:1px solid #b8c0c8;
+
+    background:#ffffff;
+
+    transition:0.25s;
+}
+
+.project-table input:focus{
+
+    outline:none;
+
+    border-color:#5f8d89;
+
+    box-shadow:
+    0 0 8px rgba(95,141,137,0.30);
+}
+
+/* Saved Project List */
+
+#projectList{
+
+    width:100%;
+
+    height:220px;
+
+    border-radius:8px;
+
+    border:1px solid #b8c0c8;
+
+    background:white;
+
+    padding:8px;
+
+    font-size:14px;
+}
+
+#projectList option{
+
+    padding:8px;
+}
+
+/* Buttons */
+
+.button-group{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+}
+
+.button-group button{
+
+    min-width:140px;
+
+    padding:11px 18px;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:white;
+
+    transition:0.25s;
+}
+
+/* Industrial Theme Buttons */
+
+.button-group button:nth-child(1){
+    background:#607d8b;
+}
+
+.button-group button:nth-child(2){
+    background:#546e7a;
+}
+
+.button-group button:nth-child(3){
+    background:#455a64;
+}
+
+.button-group button:nth-child(4){
+    background:#6b7280;
+}
+
+/* Report Buttons */
+
+.report-buttons button:nth-child(1){
+    background:#4f6f73;
+}
+
+.report-buttons button:nth-child(2){
+    background:#5c6770;
+}
+
+/* Hover */
+
+.button-group button:hover{
+
+    transform:translateY(-2px);
+
+    filter:brightness(110%);
+
+    box-shadow:
+    0 5px 12px rgba(0,0,0,0.25);
+}
+
+/* Report Section */
+
+.report-title{
+    margin-top:35px;
+}
+
+.report-buttons button{
+    min-width:220px;
+}
+
+
+/*=========== covor Page===========*/
+/*================ COVER PAGE ================*/
+
+.cover-page{
+
+    min-height:auto;
+
+    padding:15px 20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f8fafc 0%,
+        #edf2f7 45%,
+        #dbe4ee 100%
+    );
+
+    position:relative;
+}
+
+/* Main Heading */
+
+.cover-heading{
+
+    text-align:center;
+
+    font-size:42px;
+
+    color:#23404f;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    margin-top:20px;
+
+    margin-bottom:5px;
+
+}
+.cover-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+    margin:30px 0;
+
+}
+
+.cover-dept{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#374151;
+
+    text-align:left;
+
+}
+
+.cover-company{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#0f766e;
+
+    text-align:right;
+
+}
+/* Divider */
+
+.cover-page hr{
+
+    border:none;
+
+    height:2px;
+
+    background:linear-gradient(to right,#2d4f5e,#5b8796,#2d4f5e);
+
+    margin:25px 0;
+
+}
+
+/* Project Information */
+
+.project-info{
+
+    width:78%;
+
+    margin:auto;
+
+    padding:5px;
+
+    background:white;
+
+    border-radius:10px;
+
+    border-left:8px solid #2d4f5e;
+
+    box-shadow:0 3px 12px rgba(0,0,0,.12);
+
+}
+
+.project-info p{
+
+    font-size:18px;
+
+    margin:14px 0;
+
+    padding-bottom:8px;
+
+    border-bottom:1px dashed #bfc8cd;
+
+}
+
+.project-info span{
+
+    display:inline-block;
+
+    width:210px;
+
+    font-weight:bold;
+
+    color:#23404f;
+
+}
+
+/* Footer */
+
+.cover-footer{
+
+    margin-top:2px;
+
+    text-align:center;
+
+}
+
+.cover-footer p{
+
+    color:#6a7b84;
+
+    margin:5px;
+
+}
+
+.cover-footer h2{
+
+    font-size:28px;
+
+    color:#2d4f5e;
+
+    border:none;
+
+    margin:8px 0;
+
+}
+
+.cover-footer h3{
+
+    font-size:22px;
+
+    color:#4c6a78;
+
+    border:none;
+
+}
+.cover-header{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:10px;
+
+}
+
+.cover-left{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#374151;
+
+}
+
+.cover-right{
+
+    font-size:40px;
+
+    font-weight:600;
+
+    color:#0f766e;
+	
+	text-align:right;
+
+}
+
+.cover-title{
+
+    text-align:center;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    letter-spacing:3px;
+
+    margin:0px 0 20px;
+
+}
+
+.cover-project{
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:600;
+
+    color:#475569;
+
+    margin-bottom:0px;
+
+}
