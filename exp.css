@@ -50,32 +50,38 @@ margin-bottom:5px;
 
 .tabs{
 
-display:flex;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:5px;
 
-background:#0f4c81;
+    background:#0f4c81;
+
+    padding:5px;
 
 }
 
 .tab{
 
-flex:1;
+    flex:1 1 150px;
 
-padding:15px;
+    padding:15px;
 
-border:none;
+    border:none;
 
-background:#0f4c81;
+    border-radius:6px;
 
-color:white;
+    background:#0f4c81;
 
-cursor:pointer;
+    color:white;
 
-font-size:15px;
+    cursor:pointer;
 
-transition:.3s;
+    font-size:15px;
+
+    transition:.3s;
 
 }
-
 .tab:hover{
 
 background:#1670b8;
