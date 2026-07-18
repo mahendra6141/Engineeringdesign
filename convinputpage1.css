@@ -1,0 +1,219 @@
+/*==========================
+    BASIC PAGE
+==========================*/
+
+#Basic{
+    padding:20px;
+}
+
+.page-title{
+    margin-bottom:25px;
+}
+
+.page-title h2{
+    font-size:28px;
+    color:#1e3a8a;
+}
+
+.page-title p{
+    color:#666;
+}
+
+/*==========================
+    TWO COLUMN LAYOUT
+==========================*/
+
+.master-layout{
+
+    display:flex;
+
+    gap:22px;
+
+    align-items:flex-start;
+
+}
+
+.left-column,
+.right-column{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+/*==========================
+        CARD
+==========================*/
+
+.input-card{
+
+    width:100%;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    border:1px solid #dce5f1;
+
+    overflow:visible;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+/*==========================
+     CARD HEADER
+==========================*/
+
+.card-title{
+
+    background:linear-gradient(90deg,#1e3a8a,#2563eb);
+
+    color:#fff;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    padding:14px 18px;
+
+}
+
+/*==========================
+      FORM ROW
+==========================*/
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:220px 1fr 60px;
+
+    gap:12px;
+
+    align-items:center;
+
+    padding:13px 18px;
+
+    border-bottom:1px solid #edf2f7;
+
+}
+
+.form-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.form-row label{
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+.form-row input,
+.form-row select{
+
+    width:100%;
+
+    padding:9px 10px;
+
+    border:1px solid #c7d2e0;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+    transition:.25s;
+
+}
+
+.form-row input:focus,
+.form-row select:focus{
+
+    outline:none;
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 6px rgba(37,99,235,.20);
+
+}
+
+.form-row span{
+
+    text-align:center;
+
+    color:#666;
+
+    font-weight:600;
+
+}
+
+/*==========================
+      MOBILE
+==========================*/
+
+@media(max-width:1000px){
+
+.master-layout{
+
+    flex-direction:column;
+
+}
+
+.left-column,
+.right-column{
+
+    width:100%;
+
+}
+
+.form-row{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+.calculate-section{
+    margin:40px 0;
+    text-align:center;
+}
+
+.calculate-btn{
+
+    padding:15px 50px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#1565c0;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.calculate-btn:hover{
+
+    background:#0d47a1;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
