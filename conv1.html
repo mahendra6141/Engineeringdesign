@@ -1,0 +1,4576 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Conveyor Calculator</title>
+  <link rel="stylesheet" href="conv1.css">
+  <link rel="stylesheet" href="convhelper.css">
+  <link rel="stylesheet" href="convinputpage1.css">
+  <link rel="stylesheet" href="reportpage.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<!-- ===== HEADER START ===== -->
+
+<header class="main-header" style="background-color:#1e3a8a; padding:15px 40px;">
+
+  <div class="logo" style="color:#ffffff; font-size:24px; font-weight:bold;">
+    Engineering Design
+  </div>
+
+    <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="home1601.html" >Modules</a>
+    <a href="about1601.html">About</a>
+    <a href="services1601.html">Services</a>
+    <a href="contact1601.html">Contact</a>
+	<a href="calculatorlist1601.html"class="active">Calculators</a>
+  </nav>
+
+</header>
+
+
+</div>
+<div class="tab">
+  <button class="tablinks"onclick="openTab(event,'ProjectManager')" id="defaultOpen">Project Manager</button>
+  <button class="tablinks" onclick="openTab(event,'Basic')" >Basic Input </button>
+  <button class="tablinks" onclick="openTab(event,'Input')" >Designed Capacity</button>
+  <button class="tablinks" onclick="openTab(event,'IdlerBelt')">Idler & Belt Weight</button>
+  <button class="tablinks" onclick="openTab(event,'Resistance')">Resistance Calculation</button>
+  <button class="tablinks" onclick="openTab(event,'PowerCalc')">Power Calculation</button>
+   <button class="tablinks" onclick="openTab(event,'DriveInput')" >Drive Components Input</button>
+  <button class="tablinks" onclick="openTab(event,'BeltForces')">Belt Forces</button>
+  <button class="tablinks" onclick="openTab(event,'Radius')">Radius Of Curvature</button>
+  <button class="tablinks" onclick="openTab(event,'Gearbox')">Gearbox & Coupling</button>
+  <button class="tablinks" onclick="openTab(event,'DrivePulley')"> Pulley Design</button>
+  <button class="tablinks" onclick="openTab(event,'report')"> Report</button>
+  
+  
+</div>
+
+<!-- =============================================
+     ================ Project Manager =================
+     =============================================-->
+<div id="ProjectManager" class="tabcontent">
+	
+	
+<div class="software-banner">
+Conveyor Design Management System
+</div>
+
+<div class="project-section">
+
+<div class="project-title">
+PROJECT INFORMATION
+</div>
+
+<table class="project-table">
+
+<tr>
+<td>Project Name</td>
+<td><input type="text" id="projectName"></td>
+
+<td>Project No.</td>
+<td><input type="text" id="projectNo"></td>
+</tr>
+
+<tr>
+<td>Client</td>
+<td><input type="text" id="clientName"></td>
+
+<td>Plant / Area</td>
+<td><input type="text" id="plantName"></td>
+</tr>
+
+<tr>
+<td>Location</td>
+<td><input type="text" id="location"></td>
+
+<td>Prepared By</td>
+<td><input type="text" id="preparedBy"></td>
+</tr>
+
+<tr>
+<td>Date</td>
+<td><input type="date" id="projectDate"></td>
+
+<td>Revision No.</td>
+<td><input type="text" id="revision"></td>
+</tr>
+
+<tr>
+<td>Remarks</td>
+<td colspan="3">
+<input type="text" id="remarks">
+</td>
+</tr>
+
+</table>
+<div class="button-group">
+
+<button onclick="newProject()">New</button>
+
+<button onclick="saveProject()">Save</button>
+
+<button onclick="loadProject()">Load</button>
+
+<button onclick="deleteProject()">Delete</button>
+
+</div>
+
+<div class="project-title">
+SAVED PROJECTS
+</div>
+
+<select id="projectList" size="8"></select>
+
+
+
+<div class="project-title report-title">
+REPORT OPTIONS
+</div>
+
+<div class="button-group report-buttons">
+
+<button  onclick="generateReport()">
+Generate Report
+</button>
+
+<button onclick="printReport()">
+Print Report
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+<!-- =============================================
+     ================Basic INPUT Page =================
+     =============================================-->
+<div id="Basic" class="tabcontent">
+
+<div class="page-title">
+    <h2>Basic Input Data</h2>
+    <p>Enter conveyor design parameters.</p>
+</div>
+<div class="master-layout">
+<div class="left-column">
+
+
+<!-- =============================================
+     ================Left Card =================
+     =============================================-->
+
+
+<div class="input-card conveyor-card">
+
+   
+
+        <div class="card-title">
+            🚚 Conveyor Details
+			
+        </div>
+
+        <div class="form-row">
+            <label>Capacity Rated (Qr)</label>
+            <input id="Qr" value="1000">
+            <span>TPH</span>
+        </div>
+
+        <div class="form-row">
+            <label>Design Factor</label>
+            <input id="nl" value="1.25">
+            <span>-</span>
+        </div>
+
+        <div class="form-row">
+            <label>Loading Factor</label>
+            <input id="Lf" value="0.70">
+            <span>-</span>
+        </div>
+
+        <div class="form-row">
+            <label>Horizontal Length</label>
+            <input id="L" value="60">
+            <span>m</span>
+        </div>
+
+        <div class="form-row">
+            <label>Total Lift</label>
+            <input id="H" value="12.35">
+            <span>m</span>
+        </div>
+
+        <div class="form-row">
+            <label>Conveyor Slope</label>
+            <input id="cs" value="10">
+            <span>deg</span>
+        </div>
+
+ </div>
+
+<!-- ========================================= -->
+<!-- ===== Belt & Conveyor Geometry ========== -->
+<!-- ========================================= -->
+
+<div class="input-card geometry-card">
+
+<div class="card-title">
+🛞 Belt & Conveyor Geometry
+</div>
+
+<div class="form-row">
+
+<label>Belt Width</label>
+
+<select id="B"
+onchange="updateArea();">
+
+<option>500</option>
+<option>650</option>
+<option>800</option>
+<option>1000</option>
+<option selected>1200</option>
+<option>1400</option>
+<option>1600</option>
+<option>1800</option>
+<option>2000</option>
+<option>2200</option>
+<option>2400</option>
+<option>2600</option>
+<option>2800</option>
+
+</select>
+
+<span>mm</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Belt Speed</label>
+
+<input id="V" value="2">
+
+<span>m/s</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Trough Angle</label>
+
+<select id="ts" onchange="updateArea()">
+
+<option>20</option>
+<option>25</option>
+<option>30</option>
+<option selected>35</option>
+<option>40</option>
+<option>45</option>
+
+</select>
+
+<span>deg</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Surcharge Angle</label>
+
+<select id="ss" onchange="updateArea()">
+
+<option>0</option>
+<option>10</option>
+<option selected>20</option>
+<option>30</option>
+
+</select>
+
+<span>deg</span>
+
+</div>
+
+<div class="form-row">
+
+<label class="info-wrap">
+
+Slope Factor (K)
+
+<span class="info-icon">ℹ</span>
+
+<div class="info-box">
+
+ <table class="info-table">
+        <tr>
+          <th colspan="4">IS 11592-2000 (Table 9)</th>
+        </tr>
+        <tr>
+          <th>Slope Angle (°)</th>
+          <th>K</th>
+		  <th>Slope Angle (°)</th>
+          <th>K</th>
+        </tr>
+
+        <tr>
+		<td>0</td><td onclick="setValue('K','1.00')">1.00</td>
+        <td>2</td><td onclick="setValue('K','1.00')">1.00</td>
+		</tr>
+		
+        <tr>
+		<td>4</td><td onclick="setValue('K','0.99')">0.99</td>
+        <td>6</td><td onclick="setValue('K','0.98')">0.98</td>
+		</tr>
+		
+        <tr>
+		<td>8</td><td onclick="setValue('K','0.97')">0.97</td>
+        <td>10</td><td onclick="setValue('K','0.95')">0.95</td>
+		</tr>
+        <tr>
+		<td>12</td><td onclick="setValue('K','0.93')">0.93</td>
+        <td>14</td><td onclick="setValue('K','0.91')">0.91</td>
+		</tr>
+		
+        <tr>
+		<td>16</td><td onclick="setValue('K','0.89')">0.89</td>
+        <td>18</td><td onclick="setValue('K','0.85')">0.85</td>
+	   </tr>
+	   
+        <tr>
+		<td>20</td><td onclick="setValue('K','0.81')">0.81</td>
+        <td>22</td><td onclick="setValue('K','0.78')">0.78</td>
+		</tr>
+		
+        <tr>
+		<td>23</td><td onclick="setValue('K','0.73')">0.73</td>
+        <td>24</td><td onclick="setValue('K','0.71')">0.71</td>
+		</tr>
+		
+        <tr>
+		<td>25</td><td onclick="setValue('K','0.68')">0.68</td>
+        <td>26</td><td onclick="setValue('K','0.66')">0.66</td>
+		</tr>
+		
+        <tr>
+		<td>27</td><td onclick="setValue('K','0.64')">0.64</td>
+        <td>28</td><td onclick="setValue('K','0.61')">0.61</td>
+		</tr>
+		
+        <tr>
+		<td>29</td><td onclick="setValue('K','0.59')">0.59</td>
+        <td>30</td><td onclick="setValue('K','0.56')">0.56</td>
+		</tr>
+
+      </table>
+
+</div>
+
+</label>
+
+<input id="K" value="0.95">
+
+<span>-</span>
+</div>
+</div>
+<!-- ========================================= -->
+<!-- ===== Idlers Card ========== -->
+<!-- ========================================= -->
+
+<div class="input-card idler-card">
+
+<div class="card-title">
+🛞 Idler Arrangement
+</div>
+
+
+
+<div class="form-row">
+<label>Transition Idlers (10°)</label>
+<input id="t_c1" value="2">
+<span>No.</span>
+</div>
+
+<div class="form-row">
+<label>Transition Idlers (20°)</label>
+<input id="t_c2" value="2">
+<span>No.</span>
+</div>
+
+<div class="form-row">
+<label>Impact Idlers</label>
+<input id="n_i" value="12">
+<span>No.</span>
+</div>
+
+<div class="form-row">
+<label>Carrying Idler Diameter</label>
+
+<select id="carryDia">
+
+<option value="101.6">101.6</option>
+<option value="114.3">114.3</option>
+<option value="127">127</option>
+<option value="139.7">139.7</option>
+<option value="152.4" selected>152.4</option>
+
+</select>
+
+<span>mm</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Return Idler Diameter</label>
+
+<select id="returnDia">
+
+<option value="101.6">101.6</option>
+<option value="114.3">114.3</option>
+<option value="127">127</option>
+<option value="139.7">139.7</option>
+<option value="152.4" selected>152.4</option>
+
+</select>
+
+<span>mm</span>
+</div>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- === Belt Cleaning & Skirt Arrangement ==== -->
+<!-- ========================================= -->
+
+<div class="input-card cleaning-card">
+
+    <div class="card-title">
+        🧹 Belt Cleaning & Skirt Arrangement
+    </div>
+
+    <!-- Skirt Length -->
+
+    <div class="form-row">
+
+        <label>Skirt Length (L<sub>sk</sub>)</label>
+
+        <input
+            id="Lsk"
+            type="number"
+            step="0.1"
+            value="6">
+
+        <span>m</span>
+
+    </div>
+
+    <!-- Number of Cleaners -->
+
+    <div class="form-row">
+
+        <label>Number of Cleaners (n)</label>
+
+        <input
+            id="nn"
+            type="number"
+            value="3">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Cleaner Pressure -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Cleaner Pressure (P)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                Pressure between belt cleaner and belt.
+
+                <br><br>
+
+                <b>Recommended Range</b>
+
+                <br>
+
+                3 × 10<sup>4</sup> to 1 × 10<sup>5</sup> N/m²
+
+            </div>
+
+        </label>
+
+        <input
+            id="P"
+            type="number"
+            value="65000">
+
+        <span>N/m²</span>
+
+    </div>
+
+    <!-- Discharge Plough Resistance -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Discharge Plough Resistance (R<sub>p</sub>)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>Discharge Plough Resistance</h1>
+
+                Additional resistance produced by the discharge plough.
+
+                <br><br>
+
+                Enter the calculated or specified resistance value.
+
+            </div>
+
+        </label>
+
+        <input
+            id="Rp"
+            type="number"
+            value="0">
+
+        <span>N</span>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- ===== Drive System ====================== -->
+<!-- ========================================= -->
+
+<div class="input-card drive-system-card">
+
+    <div class="card-title">
+        ⚡ Drive System
+    </div>
+
+
+
+    <div class="form-row">
+
+        <label>Transmission Efficiency (η₁)</label>
+
+        <input id="eta1" value="0.95">
+
+        <span>-</span>
+
+    </div>
+	  <!-- Temperature Factor -->
+
+    <div class="form-row">
+
+        <label>Derating Factor (n<sub>t</sub>)</label>
+
+        <input
+            id="nt"
+            type="number"
+            step="0.01"
+            value="1">
+
+        <span>-</span>
+
+    </div>
+
+    <div class="form-row">
+
+        <label>Motor Reserve Factor</label>
+
+        <input id="sf" value="1.10">
+
+        <span>-</span>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<!-- =============================================
+     ================Right Card =================
+     =============================================-->
+ <div class="right-column">
+ 
+     <div class="input-card geometry-card">
+        <div class="card-title">
+            📦 Material Details
+        </div>
+		
+		<div class="form-row">
+
+<label>Material</label>
+
+<input
+id="material"
+list="materialList"
+placeholder="Type material name">
+
+<datalist id="materialList">
+
+<option value="Coal">
+<option value="Coke">
+<option value="Iron Ore">
+<option value="Sinter">
+<option value="Quartzite">
+<option value="Limestone">
+<option value="Lime">
+<option value="Manganese">
+<option value="Dolomite">
+<option value="Burnt Dolomite">
+<option value="Slag">
+<option value="Fullers Earth">
+<option value="Flue Dust">
+<option value="Char">
+<option value="Cement">
+
+</datalist>
+
+</div>
+
+        <div class="form-row">
+            <label>Bulk Density</label>
+            <input id="rho" value="1.6">
+            <span>t/m³</span>
+        </div>
+
+        <div class="form-row">
+
+            <label class="info-wrap">
+                Lump Size Factor (K₁)
+                <span class="info-icon">ℹ</span>
+
+                <!-- Existing Info Box -->
+                <div class="info-box">
+
+                   <table class="info-table">
+	   <tr><th colspan="3"><h1>IS 11592-2000 (Table 4 pg: 7)</h1></th></tr>
+      <tr>
+	  <th>Type</th>
+	  <th>Condition</th>
+	  <th>K1</th>
+	  </tr>
+	  
+      <tr>
+	  <td>Fine Grain</td>
+	  <td>&lt;10 mm</td>
+	 <td onclick="setValue('K1','0')">0</td>
+	  </tr>
+	  
+      <tr>
+	  <td>Granular</td>
+	  <td>&lt;25 mm</td>
+	  <td onclick="setValue('K1','1')">1</td>
+	  </tr>
+	  
+      <tr>
+	  <td>Sized & Unsized</td>
+	  <td>&lt;20% permissible</td>
+	  <td onclick="setValue('K1','2')">2</td>
+	  </tr>
+	  
+      <tr>
+	  <td>Sized</td>
+	  <td>&lt;60% permissible</td>
+	  <td onclick="setValue('K1','3')">3</td>
+	  </tr>
+	  
+      <tr>
+	  <td>Unsized</td>
+	  <td>Exceeds permissible</td>
+	 <td onclick="setValue('K1','4')">4</td>
+	  </tr>
+	  
+    </table>
+
+                </div>
+
+            </label>
+
+            <input id="K1" value="2">
+
+            <span>-</span>
+
+        </div>
+
+
+
+        <div class="form-row">
+
+            <label class="info-wrap">
+                Abrasiveness Factor (K₂)
+                <span class="info-icon">ℹ</span>
+
+                <div class="info-box">
+
+                    <table class="info-table">
+	<tr><th colspan="3"><h1>IS 11592-2000 (Table 5 pg: 7)</h1></th></tr>
+      <tr>
+        <th>Abrasiveness</th>
+        <th>Type of Material</th>
+        <th>K2</th>
+      </tr>
+
+      <tr>
+        <td>Non Abrasive</td>
+        <td>Free flowing materials like grains, wood chips, pulp, dust, sand</td>
+        <td onclick="setValue('K2','1')">1</td>
+      </tr>
+
+      <tr>
+        <td>Mildly Abrasive</td>
+        <td>Aggregate, sand, gravel, coal, salt, slate</td>
+        <td onclick="setValue('K2','2')">2</td>
+      </tr>
+
+      <tr>
+        <td>Abrasive</td>
+        <td>Slag, spar, limestone concentrates, pellets</td>
+        <td onclick="setValue('K2','3')">3</td>
+      </tr>
+
+      <tr>
+        <td>Very Abrasive</td>
+        <td>Iron ores, granite, flint rock, coke, sinter</td>
+         <td onclick="setValue('K2','4')">4</td>
+      </tr>
+
+    </table>
+
+                </div>
+
+            </label>
+
+            <input id="K2" value="4">
+
+            <span>-</span>
+        </div> 
+       </div>
+
+
+
+
+
+
+
+
+<div class="input-card belt-card">
+
+<div class="card-title">
+🟦 Belt Specification
+</div>
+
+
+
+<div class="form-row">
+
+<label>Belt Type</label>
+
+<select id="beltType" onchange="updateBeltData()">
+
+<option value="">Select</option>
+
+<option value="250/2">250/2</option>
+<option value="315/3">315/3</option>
+<option value="400/3">400/3</option>
+<option value="500/3">500/3</option>
+<option value="500/4">500/4</option>
+<option value="630/3">630/3</option>
+<option value="630/4">630/4</option>
+<option value="800/4">800/4</option>
+<option value="800/5">800/5</option>
+<option value="1000/4">1000/4</option>
+<option value="1000/5">1000/5</option>
+<option value="1250/4" selected>1250/4</option>
+<option value="1250/5">1250/5</option>
+<option value="1400/4">1400/4</option>
+<option value="1600/4">1600/4</option>
+<option value="1600/5">1600/5</option>
+<option value="2000/5">2000/5</option>
+
+</select>
+
+<span>-</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Carcass Thickness (δ₁)</label>
+
+<input id="d1" readonly>
+
+<span>mm</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Top Cover Thickness (δ₂)</label>
+
+<input id="d2" value="6">
+
+<span>mm</span>
+
+</div>
+
+<div class="form-row">
+
+<label>Bottom Cover Thickness (δ₃)</label>
+
+<input id="d3" value="3">
+
+<span>mm</span>
+
+</div>
+</div>
+<!-- ========================================= -->
+<!-- ===== Friction Coefficients ============= -->
+<!-- ========================================= -->
+
+<div class="input-card friction-card">
+
+    <div class="card-title">
+        ⚙️ Friction Coefficients
+    </div>
+
+    <!-- Coefficient of friction (f) -->
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Coefficient of Friction (f)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                <br>
+
+                Artificial friction coefficient (idler + belt resistance)
+
+                <br><br>
+
+                <b>Standard Values</b><br>
+
+                • 0.020 → Normal conveyor<br>
+                • 0.012 → Downhill conveyor (Brake)
+
+                <br><br>
+
+                <b>Typical Range</b><br>
+
+                • 0.016 → Best condition<br>
+                • 0.020 → Standard<br>
+                • 0.025–0.030 → Poor condition
+
+                <br><br>
+
+                <b>f increases when</b><br>
+
+                • High friction material<br>
+                • Trough angle >30°<br>
+                • High belt speed<br>
+                • Dust / Wet condition<br>
+                • Low temperature
+
+            </div>
+
+        </label>
+
+        <input id="f" value="0.03">
+
+        <span>-</span>
+
+    </div>
+
+   
+    <!-- μ1 -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            μ₁ Material-Belt Friction
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                μ₁ = Coefficient of friction between material and belt
+
+                <br><br>
+
+                Recommended Range : <b>0.5 – 0.7</b>
+
+            </div>
+
+        </label>
+
+        <input id="mu1" value="0.7">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- μ2 -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            μ₂ Material-Skirt Friction
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                μ₂ = Coefficient of friction between material and skirt plate
+
+                <br><br>
+
+                Recommended Range : <b>0.5 – 0.7</b>
+
+            </div>
+
+        </label>
+
+        <input id="mu2" value="0.7">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- C1 -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Trough Factor (C₁)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                C₁ depends upon trough angle
+
+                <br><br>
+
+                ≤30° → <b>0.4</b>
+
+                <br>
+
+                >30° to 45° → <b>0.5</b>
+
+            </div>
+
+        </label>
+
+        <input id="C1" value="0.5">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- μ0 -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Carrying Idler Friction (μ₀)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                Friction coefficient between carrying idlers and belt
+
+                <br><br>
+
+                Recommended Range : <b>0.3 – 0.4</b>
+
+            </div>
+
+        </label>
+
+        <input id="muo" value="0.4">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- μ3 -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Belt Cleaner Friction (μ₃)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Pg.17)</h1>
+
+                Coefficient of friction between belt and belt cleaner
+
+                <br><br>
+
+                Recommended Range : <b>0.6 – 0.7</b>
+
+            </div>
+
+        </label>
+
+        <input id="mu3" value="0.7">
+
+        <span>-</span>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- === Conveyor Operating Parameters ======= -->
+<!-- ========================================= -->
+
+<div class="input-card operating-card">
+
+    <div class="card-title">
+        ⚙️ Conveyor Operating Parameters
+    </div>
+
+    <!-- Gravity -->
+
+    <div class="form-row">
+
+        <label>Gravity (g)</label>
+
+        <input
+            id="g"
+            type="number"
+            step="0.01"
+            value="9.81">
+
+        <span>m/s²</span>
+
+    </div>
+
+    <!-- Material Velocity Component -->
+
+    <div class="form-row">
+
+        <label>
+            Material Speed Component (V₀)
+        </label>
+
+        <input
+            id="V0"
+            type="number"
+            step="0.01"
+            value="0">
+
+        <span>m/s</span>
+
+    </div>
+
+  
+
+</div>
+<!-- ========================================= -->
+<!-- ======== Pulley Configuration =========== -->
+<!-- ========================================= -->
+
+<div class="input-card pulley-card">
+
+    <div class="card-title">
+        🛞 Pulley Configuration
+    </div>
+
+    <!-- Carrying Side Pulleys -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            No of Drive/Head Pulleys (n₁)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+    <h1>Drive / Head Pulley</h1>
+
+    Number of drive (head) pulleys considered for
+    wrap resistance calculation.
+
+    <br><br>
+
+    <b>Reference</b><br>
+
+    IS 11592:2000 (Secondary Resistance)<br>
+    IPSS Engineering Practice
+
+    <br><br>
+
+    Wrap resistance per pulley:
+
+    <br>
+
+    • Drive / Head Pulley = <b>230 N</b>
+
+    <br><br>
+
+    Used in the equation:
+
+    <br>
+
+    <b>Rw = 230n₁ + 175n₂ + 140n₃</b>
+
+</div>
+
+        </label>
+
+        <input
+            id="n1"
+            type="number"
+            value="1">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Return Side Pulleys -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Tail Pulley (n₂)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+    <h1>Tail Pulley</h1>
+
+    Number of tail pulleys considered for
+    wrap resistance calculation.
+
+    <br><br>
+
+    <b>Reference</b><br>
+
+    IS 11592:2000 (Secondary Resistance)<br>
+    IPSS Engineering Practice
+
+    <br><br>
+
+    Wrap resistance per pulley:
+
+    <br>
+
+    • Tail Pulley = <b>175 N</b>
+
+    <br><br>
+
+    Used in the equation:
+
+    <br>
+
+    <b>Rw = 230n₁ + 175n₂ + 140n₃</b>
+
+</div>
+
+        </label>
+
+        <input
+            id="n2"
+            type="number"
+            value="1">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Other Pulleys -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+             Non-Drive Pulleys (n₃)
+
+            <span class="info-icon">ℹ</span>
+
+           <div class="info-box">
+
+    <h1>Non-Drive Pulleys</h1>
+
+    Total number of remaining non-drive pulleys
+    such as bend, snub and take-up pulleys.
+
+    <br><br>
+
+    <b>Reference</b><br>
+
+    IS 11592:2000 (Secondary Resistance)<br>
+    IPSS Engineering Practice
+
+    <br><br>
+
+    Wrap resistance per pulley:
+
+    <br>
+
+    • Bend Pulley<br>
+    • Snub Pulley<br>
+    • Take-up Pulley
+
+    <br>
+
+    Resistance = <b>140 N each</b>
+
+    <br><br>
+
+    Used in the equation:
+
+    <br>
+
+    <b>Rw = 230n₁ + 175n₂ + 140n₃</b>
+
+</div>
+
+        </label>
+
+        <input
+            id="n3"
+            type="number"
+            value="4">
+
+        <span>-</span>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- ===== Idler Configuration ============== -->
+<!-- ========================================= -->
+
+<div class="input-card idler-config-card">
+
+    <div class="card-title">
+        📐 Idler Configuration
+    </div>
+	
+	 <!-- Enable Tilted Idler -->
+
+    <div class="form-row">
+
+    <label>Forward Tilted Idlers</label>
+
+    <div class="radio-group">
+
+        <label class="radio-option">
+            <input
+                type="radio"
+                name="tiltedIdler"
+                value="Yes"
+                onchange="toggleTiltedIdler()">
+            Yes
+        </label>
+
+        <label class="radio-option">
+            <input
+                type="radio"
+                name="tiltedIdler"
+                value="No"
+                checked
+                onchange="toggleTiltedIdler()">
+            No
+        </label>
+
+    </div>
+
+    <span>-</span>
+
+</div>
+
+    <div class="form-row">
+
+        <label>Idler Tilt Angle (i)</label>
+
+        <input id="i" value="2">
+
+        <span>deg</span>
+
+    </div>
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+		Tilted Idler Length (L₁)
+		
+		<span class="info-icon">ℹ</span>
+		 
+		<div class="info-box">
+
+    <h1>IS 11592-2000 (Secondary Resistance)</h1>
+
+    Length of the carrying conveyor
+    section equipped with forward
+    tilted idlers.
+
+    <br><br>
+
+    This length is used for calculating
+    the additional resistance produced
+    by tilted carrying idlers.
+
+    <br><br>
+
+<b>Calculation</b><br>
+
+Ri = μ₀ × C₁ × i × g × L₁ × (mB + mG)
+
+<br>
+
+Ri(empty) = μ₀ × C₁ × i × g × L₁ × mB
+	
+     <br></br>
+    <b>Guideline</b><br>
+
+    Enter only the conveyor length
+    where forward tilted idlers are
+    actually installed.
+
+    <br><br>
+
+    <b>Unit</b><br>
+
+    Metre (m)
+
+</div>
+		 
+		</label>
+
+        <input id="L1" value="60">
+
+        <span>m</span>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
+<div class="calculate-section">
+
+    <button class="calculate-btn" onclick="calculate()">
+        ⚙ Calculate Conveyor Design
+    </button>
+</div>
+</div>
+
+<!-- =============================================
+     ================ Basic Calculation =================
+     =============================================-->
+	
+
+<div id="Input" class="tabcontent">
+
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+  <td>Speed factor (Kv)</td>
+  <td>Kv = K1 + K2</td>
+  <td>-</td>
+  <td><input class="result" id="Kv" readonly></td>
+</tr>
+
+<tr>
+  <td>Maximum Belt Speed</td>
+  <td>IS 11592 Table 6</td>
+  <td>m/s</td>
+  <td>
+      <input class="result" id="Vmax" readonly>
+  </td>
+</tr>
+
+<tr>
+  <td>Capacity designed (Qd)</td>
+  <td>Qd = n x Qr</td>
+  <td>TPH</td>
+  <td><input  class="result" id="Qd" readonly></td>
+</tr>
+<tr>
+  <td>Max Capacity (Qmax)</td>
+  <td>Qmax = Loading Factor x A × 3600 × V × ρ × K</td>
+  <td>t/h</td>
+  <td><input  class="result"  id="Qmax" readonly></td>
+</tr>
+
+<tr>
+  <td>Min Speed (Vmin)</td>
+  <td>Vmin = Qr / (A × 3600 × ρ × K)</td>
+  <td>m/s</td>
+  <td><input class="result"  id="Vmin" readonly></td>
+</tr>
+
+<tr>
+  <td>Material mass (mG)</td>
+  <td>mG = Qr / (3.6 × V)</td>
+  <td>kg/m</td>
+  <td><input class="result"  id="mG" readonly></td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- =============================================
+     ================ Idler And Belt =============
+     =============================================-->
+
+<div id="IdlerBelt" class="tabcontent">
+
+<h3>Idler & Belt Weight Calculation</h3>
+
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+
+
+<tr>
+  <td> No. of Carring idlers </td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="n_c" readonly></td>
+</tr>
+
+<tr>
+  <td>Self Aling Carrying idlers</td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="sa_c" readonly></td>
+</tr>
+
+<tr>
+  <td>No of Return idlers </td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="n_r" readonly></td>
+</tr>
+
+<tr>
+  <td>No of  Self Aling Return idlers</td>
+  <td>-</td>
+  <td>-</td>
+  <td><input class="result" id="sa_r" readonly></td>
+</tr>
+
+<tr>
+  <td>Mass of belt (mB)</td>
+  <td>mB = 1.1 × (δ1 + δ2 + δ3) × B</td>
+  <td>kg/m</td>
+  <td><input class="result"  id="mB" readonly></td>
+</tr>
+
+<tr>
+  <td>Carrying idler mass (mC)</td>
+  <td>mC = m × n / L</td>
+  <td>kg/m</td>
+  <td><input class="result"  id="mC" readonly></td>
+</tr>
+
+<tr>
+  <td>Return idler mass (mr)</td>
+  <td>mr = m × n / L</td>
+  <td>kg/m</td>
+  <td><input class="result"  id="mr" readonly></td>
+</tr>
+
+<tr>
+  <td>Material mass (mG)</td>
+  <td>mG = Qr / (3.6 × V)</td>
+  <td>kg/m</td>
+  <td><input class="result"  id="mG2" readonly></td>
+</tr>
+
+<tr>
+  <th>MRBT (kN/m)</th>
+  <th>Drive Pulley (mm)</th>
+  <th>High Tension Snub (mm)</th>
+  <th>Low Tension Pulley (mm)</th>
+</tr>
+
+<td><input class="ref-result" id="mrbt" readonly></td>
+
+<td><input class="ref-result" id="driveDia" readonly></td>
+
+<td><input class="ref-result" id="snubDia" readonly></td>
+
+<td><input class="ref-result" id="lowDia" readonly></td>
+
+</table>
+
+</div>
+
+<!-- =============================================
+     ================ Main Resistance =============
+     =============================================-->
+<div id="Resistance" class="tabcontent">
+
+<h3>Main Resistance </h3>
+
+
+
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+  <td>Main Resistance (Loaded)</td>
+  <td>R = f × L × g × (mC + mr + (2mB + mG) × cosδ)</td>
+  <td>N</td>
+  <td><input class="result"  id="R_loaded" readonly></td>
+</tr>
+
+<tr>
+  <td>Main Resistance (Empty Belt)</td>
+  <td>R = f × L × g × (mC + mr + 2mB × cosδ)</td>
+  <td>N</td>
+  <td><input class="result"  id="R_empty" readonly></td>
+</tr>
+
+</table>
+
+<!-- =============================================
+     ================ Secondary Resistance =======
+     =============================================-->
+
+
+<h3>Secondary Resistance </h3>
+
+
+
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+<td>Volumetric Capacity (Q)</td>
+<td>Q = Qd / (3600 × ρ)</td>
+<td>m³/s</td>
+<td><input class="result"  id="Q_vol" readonly></td>
+</tr>
+
+<tr>
+<td>Acceleration Length (La)</td>
+<td>La = (V² - V0²) / (2gμ1)</td>
+<td>m</td>
+<td><input class="result"  id="La" readonly></td>
+</tr>
+
+<tr>
+<td>Skirt width (b1)</td>
+<td>b1 = 2/3 × B</td>
+<td>m</td>
+<td><input class="result"  id="b1" readonly></td>
+</tr>
+
+<tr>
+<td>Acceleration resistance (Ra)</td>
+<td>Ra = Q ×1000×ρ×(V-V0)</td>
+<td>N</td>
+<td><input class="result"  id="Ra" readonly></td>
+</tr>
+
+<tr>
+<td>Skirt resistance (Rska)</td>
+<td>Rska=μ<sub>2</sub> x Q<sup>2</sup> x 1000 x ρx g x La/( ((V+Vo) / 2)<sup>2</sup> x b1<sup>2</sup> )</td>
+<td>N</td>
+<td><input class="result"  id="Rska" readonly></td>
+</tr>
+
+<tr>
+<td>Wrap resistance (Rw)</td>
+<td>Rw = 230n1 + 175n2 + 140n3</td>
+<td>N</td>
+<td><input class="result"  id="Rw" readonly></td>
+</tr>
+
+<tr>
+<td>Pulley  Bearing resistance (RB)</td>
+<td>RB = n × 100</td>
+<td>N</td>
+<td><input class="result"  id="RB" readonly></td>
+</tr>
+
+<tr>
+<td>Total Secondary Resistance</td>
+<td>Rs = Ra + Rska + Rw + RB</td>
+<td>N</td>
+<td><input class="result"  id="Rs" readonly></td>
+</tr>
+
+<tr>
+<td>Empty Belt Resistance</td>
+<td>Rs = Rs - (50 × n)</td>
+<td>N</td>
+<td><input class="result"  id="Rs_empty" readonly></td>
+</tr>
+
+</table>
+
+
+
+<!-- =============================================
+     ======== Secondary Special Resistance =======
+     =============================================-->	
+
+
+<h3>Special & Secondary Resistances</h3>
+
+
+
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+<td> Resistance due to idler tilting   (Rt loaded)</td>
+<td>N</td>
+<td><input class="result" id="Rt" readonly></td>
+</tr>
+
+<tr>
+<td> Resistance due to idler tilting  (Rt empty)</td>
+<td>N</td>
+<td><input class="result"  id="Rt_empty" readonly></td>
+</tr>
+
+<tr>
+<td>Resistance between handled material and skirt plates (Rsk)</td>
+<td>N</td>
+<td><input class="result"  id="Rsk" readonly></td>
+</tr>
+
+<tr>
+<td>Area of contact between belt and belt cleaner (A1)</td>
+<td>m²</td>
+<td><input class="result"  id="A1" readonly></td>
+</tr>
+
+<tr>
+<td> Resistance due to belt scraper (RBC)</td>
+<td>N</td>
+<td><input class="result"  id="RBC" readonly></td>
+</tr>
+
+<tr>
+<td>Special and secondary resistances  (Rsp total)</td>
+<td>N</td>
+<td><input class="result"  id="Rsp" readonly></td>
+</tr>
+
+<tr>
+<td>Special and secondary resistances  (Rsp empty)</td>
+<td>N</td>
+<td><input class="result"  id="Rsp_empty" readonly></td>
+</tr>
+
+<tr>
+<td>Resistance due to lifting of material       (RS1)</td>
+<td>N</td>
+<td><input class="result"  id="RS1" readonly></td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- =============================================
+     ================ Power Calculation===========
+     =============================================-->
+<div id="PowerCalc" class="tabcontent">
+
+<h3>Power Calculation</h3>
+
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+<td>Peripheral Force (Loaded)</td>
+<td>Te = R + Rs + Rsp + Rs1</td>
+<td>N</td>
+<td><input class="result"  id="Te" readonly></td>
+</tr>
+
+<tr>
+<td>Peripheral Force (Empty)</td>
+<td>Te = R + Rs + Rsp</td>
+<td>N</td>
+<td><input class="result"  id="Te_empty" readonly></td>
+</tr>
+
+<tr>
+<td>Power at Drive Pulley</td>
+<td>P = Te × V / 1000</td>
+<td>kW</td>
+<td><input class="result"  id="Pdp" readonly></td>
+</tr>
+
+<tr>
+<td>Power after losses</td>
+<td>Pa = P + (Rwd+Rbd)×V/1000</td>
+<td>kW</td>
+<td><input class="result"  id="Pa" readonly></td>
+</tr>
+
+<tr>
+<td>Motor Power</td>
+<td>Pm = sf × Pa / η1 / nt</td>
+<td>kW</td>
+<td><input class="result"  id="Pm" readonly></td>
+</tr>
+
+<tr>
+<td><b>Recommended Standard Motor</b></td>
+<td></td>
+<td>KW</td>
+<td class="selection-box" id="Pms"></td>
+</tr>
+
+<tr>
+   <td>Manufacturer Selected Motor Power</td>
+   <td></td>
+   <td>kW</td>
+     <td><input
+	     class="selection-box"
+        id="selectedMotorPower"
+        type="number"
+        step="0.1"
+		oninput="calcShaft()"
+        placeholder="Enter Manufacturer Motor Rating">
+	</td>
+    
+</tr>
+
+</table>
+
+</div> 
+
+<!-- =============================================
+     ================Drive Input  =================
+     =============================================-->
+<div id="DriveInput" class="tabcontent">
+
+<div class="page-title">
+    <h2>Basic Input Data</h2>
+    <p>Enter conveyor design parameters.</p>
+</div>
+<div class="master-layout">
+<div class="left-column">
+<!-- =============================================
+     ================Left Card  =================
+     =============================================-->
+
+
+<!-- ========================================= -->
+<!-- ===== Belt Forces Parameters ============ -->
+<!-- ========================================= -->
+
+<div class="input-card belt-force-card">
+
+    <div class="card-title">
+        ⚡ Belt Forces Parameters
+    </div>
+
+    <!-- Wrap Angle -->
+
+    <div class="form-row">
+
+        <label>Wrap Angle (φ)</label>
+
+        <input id="phi" value="210">
+
+        <span>deg</span>
+
+    </div>
+
+    <!-- Friction Coefficient -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Drive Pulley Friction (μ)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Table 16)</h1>
+
+                Coefficient of friction between
+                drive pulley and conveyor belt.
+
+                <br><br>
+
+                <b>Typical Values</b>
+
+                <br>
+
+                Dry Rubber Lagging : 0.40–0.45
+
+                <br>
+
+                Wet Rubber Lagging : 0.35
+
+                <br>
+
+                Dirty Condition : 0.25–0.30
+
+                <br>
+
+                Very Wet : 0.20
+
+                <br><br>
+
+                Click the value from the detailed
+                table if required.
+
+            </div>
+
+        </label>
+
+        <input id="mu_bf" value="0.35">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Drive Factor -->
+
+    <div class="form-row">
+
+        <label>Drive Factor (ξ)</label>
+
+        <input id="xi" value="2">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Carrying Idler Spacing -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Carrying Idler Spacing (Pc)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Table 17)</h1>
+
+                Recommended spacing between
+                carrying idlers.
+
+                <br><br>
+
+                Typical Values
+
+                <br>
+
+                • 1.5 m
+
+                <br>
+
+                • 1.2 m
+
+                <br>
+
+                • 1.0 m
+
+                <br><br>
+
+                Select according to belt width
+                and bulk density.
+
+            </div>
+
+        </label>
+
+        <input id="Pc" value="1">
+
+        <span>m</span>
+
+    </div>
+
+    <!-- Return Idler Spacing -->
+
+    <div class="form-row">
+
+        <label class="info-wrap">
+
+            Return Idler Spacing (Pr)
+
+            <span class="info-icon">ℹ</span>
+
+            <div class="info-box">
+
+                <h1>IS 11592-2000 (Table 17)</h1>
+
+                Recommended spacing between
+                return idlers.
+
+                <br><br>
+
+                Typical Value
+
+                <br>
+
+                3.0 m
+
+            </div>
+
+        </label>
+
+        <input id="Pr" value="3">
+
+        <span>m</span>
+
+    </div>
+
+    <!-- Maximum Sag -->
+
+    <div class="form-row">
+
+        <label>Maximum Belt Sag (S)</label>
+
+        <input id="S" value="0.02">
+
+        <span>-</span>
+
+    </div>
+</div>
+<!-- ========================================= -->
+<!-- ===== Drive Pulley Design =============== -->
+<!-- ========================================= -->
+
+<div class="input-card drive-pulley-card">
+
+    <div class="card-title">
+        🛞 Drive Pulley Design
+    </div>
+
+    <!-- ================================= -->
+    <!-- Shaft Diameter Parameters -->
+    <!-- ================================= -->
+
+
+    <div class="form-row">
+        <label>Permissible Stress for Steel C-40 (τs)</label>
+        <input id="tsd" value="6.374">
+        <span>kN/cm²</span>
+    </div>
+
+    <div class="form-row">
+        <label>Bending Stress Concentration Factor (Kb)</label>
+        <input id="Kb" value="2">
+        <span>-</span>
+    </div>
+
+    <div class="form-row">
+        <label>Torsion Stress Concentration Factor (Kt)</label>
+        <input id="Kt" value="1.5">
+        <span>-</span>
+    </div>
+
+    <div class="form-row">
+        <label>Angle Between T₁ & T₂ (α)</label>
+        <input id="alphaa" value="35">
+        <span>deg</span>
+    </div>
+
+    <div class="form-row">
+        <label>Weight of Rotating Parts (W)</label>
+        <input id="W" value="14950">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Arm of Force (a)</label>
+        <input id="a" value="35">
+        <span>cm</span>
+    </div>
+
+    <div class="form-row">
+        <label>Speed (n₂)</label>
+        <input id="n2_s" value="38.22">
+        <span>rpm</span>
+    </div>
+</div>
+<!-- ========================================= -->
+<!-- ===== Snub Pulley Design ================ -->
+<!-- ========================================= -->
+
+<div class="input-card snub-pulley-card">
+
+    <div class="card-title">
+        🛞 Snub Pulley Design
+    </div>
+
+    <!-- ================================= -->
+    <!-- Shaft Diameter Parameters -->
+    <!-- ================================= -->
+
+    
+
+    <div class="form-row">
+        <label>Weight of Rotating Parts (W)</label>
+        <input id="W_s" value="3800">
+        <span>N</span>
+    </div>
+</div>
+
+
+<!-- ========================================= -->
+<!-- ===== Radius of Curvature Input ========= -->
+<!-- ========================================= -->
+
+<div class="input-card radius-card">
+
+    <div class="card-title">
+        📐 Radius of Curvature
+    </div>
+
+    <div class="form-row">
+
+        <label>Young's Modulus of Belt (Eb)</label>
+
+        <input
+            id="Yv"
+            type="number"
+            step="1"
+            value="455">
+
+        <span>kN/m²</span>
+
+    </div>
+
+    <div class="form-row">
+
+        <label>Horizontal Length of Curve (L₄)</label>
+
+        <input
+            id="ddpc"
+            type="number"
+            step="0.1"
+            value="100">
+
+        <span>m</span>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- ===== Bend Pulley Design ================ -->
+<!-- ========================================= -->
+
+<div class="input-card bend-pulley-card">
+
+    <div class="card-title">
+        🛞 Bend Pulley Design
+    </div>
+
+    <div class="form-row">
+        <label>Weight of Rotating Parts (W)</label>
+        <input id="W_bp" value="4800">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Conveyor Slope in Take-Up Area (δ₁)</label>
+        <input id="delta_bp" value="0">
+        <span>deg</span>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+<!-- =============================================
+     ================Right Card =================
+     =============================================-->
+ <div class="right-column">
+ 
+
+
+<!-- ========================================= -->
+<!-- ===== Gearbox Selection ================= -->
+<!-- ========================================= -->
+
+<div class="input-card gearbox-card">
+
+    <div class="card-title">
+        ⚙️ Gearbox Selection
+    </div>
+
+    <!-- Selected Motor Power -->
+
+    <div class="form-row">
+
+        <label>Selected Motor Power</label>
+
+        <input id="N_g" value="200">
+
+        <span>kW</span>
+
+    </div>
+
+    <!-- Selected Pulley Diameter -->
+
+    <div class="form-row">
+
+        <label>Selected Pulley Diameter</label>
+
+        <input id="D_g" value="1">
+
+        <span>m</span>
+
+    </div>
+
+    <!-- Selected Motor Speed -->
+
+    <div class="form-row">
+
+        <label>Selected Motor Speed</label>
+
+        <input id="n_1" value="990">
+
+        <span>rpm</span>
+
+    </div>
+
+    <!-- Service Factor -->
+
+    <div class="form-row">
+
+        <label>Service Factor (f₁)</label>
+
+        <input id="f1" value="1.5">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Start Factor -->
+
+    <div class="form-row">
+
+        <label>Start Factor (f₂)</label>
+
+        <input id="f2" value="1.08">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Thermal Factor -->
+
+    <div class="form-row">
+
+        <label>Thermal Factor (fₜ)</label>
+
+        <input id="ft" value="0.63">
+
+        <span>-</span>
+
+    </div>
+
+    <!-- Thermal Capacity -->
+
+    <div class="form-row">
+
+        <label>Selected Thermal Capacity (PG₁)</label>
+
+        <input id="PG1" value="330">
+
+        <span>kW</span>
+
+    </div>
+
+</div>
+<!-- ========================================= -->
+<!-- ===== Tail Pulley Design ================ -->
+<!-- ========================================= -->
+
+<div class="input-card tail-pulley-card">
+
+    <div class="card-title">
+        🛞 Tail Pulley Design
+    </div>
+
+    <!-- ================================= -->
+    <!-- Shaft Diameter Parameters -->
+    <!-- ================================= -->
+
+    <div class="section-title">
+        Shaft Diameter Parameters
+    </div>
+
+    <div class="form-row">
+        <label>Pulley Bearing Resistance (RB)</label>
+        <input id="RB_tp" value="100">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Wrap Resistance (Rw)</label>
+        <input id="Rw1_tp" value="175">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Weight of Rotating Parts (W)</label>
+        <input id="W_tp" value="7900">
+        <span>N</span>
+    </div>
+
+  
+
+</div>
+<!-- ========================================= -->
+<!-- ===== Take-Up Pulley Design ============= -->
+<!-- ========================================= -->
+
+<div class="input-card takeup-pulley-card">
+
+    <div class="card-title">
+        🛞 Take-Up Pulley Design
+    </div>
+
+    <div class="section-title">
+        Shaft Diameter Parameters
+    </div>
+
+    <div class="form-row">
+        <label>Distance Between Drive Pulley & Take-Up Unit (L₁)</label>
+        <input id="L1_tu" value="6.96">
+        <span>m</span>
+    </div>
+
+    <div class="form-row">
+        <label>Angle of Tilt of Idler Axis (i)</label>
+        <input id="i_tu" value="2">
+        <span>deg</span>
+    </div>
+
+    <div class="form-row">
+        <label>Troughing Angle of Return Idlers (τ)</label>
+        <input id="tau" value="10">
+        <span>deg</span>
+    </div>
+
+    <div class="form-row">
+        <label>Pulley Bearing Resistance (RB)</label>
+        <input id="RB_tu" value="100">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Wrap Resistance (Rw)</label>
+        <input id="Rw_tu" value="140">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Wrap Resistance (Rw₁)</label>
+        <input id="Rw1_tu" value="175">
+        <span>N</span>
+    </div>
+
+    <div class="form-row">
+        <label>Weight of Rotating Parts (W)</label>
+        <input id="W_tu" value="7900">
+        <span>N</span>
+    </div>
+
+</div>
+
+</div>	
+</div>	
+
+
+ 
+ 
+ <div class="calculate-section">
+
+    <button class="calculate-btn"
+            onclick="calculateDriveComponents()">
+
+        ⚙ Calculate Drive Components
+
+    </button>
+</div>
+</div>
+<!-- =============================================
+     ================ Belt Force =================
+     =============================================-->
+<div id="BeltForces" class="tabcontent">
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+<td>e^(μφ)</td>
+<td>exp(μ × φ)</td>
+<td>-</td>
+<td><input class="result"  id="emphi" readonly></td>
+</tr>
+
+<tr>
+<td>Min tension return (T2min)</td>
+<td>Te×ξ/(e^(μφ)-1)</td>
+<td>KN</td>
+<td><input class="result"  id="T2min" readonly></td>
+</tr>
+
+<tr>
+<td>Max belt tension (Tmax)</td>
+<td>Te(ξ/(e^(μφ)-1)+1)</td>
+<td>KN</td>
+<td><input class="result"  id="Tmax" readonly></td>
+</tr>
+
+<tr>
+<td>Tmin carrying</td>
+<td>Pc(mB+mG)g/8S</td>
+<td>KN</td>
+<td><input class="result"  id="Tmin_c" readonly></td>
+</tr>
+
+<tr>
+<td>Tmin return</td>
+<td>Pr·mB·g/8S</td>
+<td>KN</td>
+<td><input class="result"  id="Tmin_r" readonly></td>
+</tr>
+
+<tr>
+<td>Loading Of Belt</td>
+<td>T(max) / B</td>
+<td>KN/m</td>
+<td><input class="result"  id="beltl" readonly></td>
+</tr>
+
+<tr>
+<td><b>Selected Belt Rating</b></td>
+<td>-</td>
+<td>kN/m</td>
+<td>
+    <input class="result selection-result" id="rmbtl" >
+</td>
+</tr>
+
+<tr>
+<td><b>Percentage Belt Tension Loading</b></td>
+<td>%</td>
+<td>-</td>
+<td>
+    <input class="result selection-result" id="prel" >
+</td>
+</tr>
+
+<tr>
+<td><b>Belt Selection Status</b></td>
+<td>-</td>
+<td>-</td>
+<td id="beltStatus" class="status-box"></td>
+</tr>
+
+
+
+</table>
+
+</div>
+
+
+
+<!-- ========================================= -->
+<!-- =============== CONCAVE ================= -->
+<!-- ========================================= -->
+<div id="Radius" class="tabcontent">
+<h3>Concave  Radius Of Curvature</h3>
+<table>
+<tr>
+<td> Tension at the curve</td>
+<td>Tc max</td>
+<td><input class="result"  id="tmaxc" readonly></td>
+</tr>
+<tr>
+<td> Minimum radius for partialy loaded belt</td>
+<td>Rc</td>
+<td><input class="result"  id="Rc" readonly></td>
+</tr>
+</table>
+<!-- ========================================= -->
+<!-- ================ CONVEX ================= -->
+<!-- ========================================= -->
+<h3>Convex Radius Of Curvature</h3>
+<table>
+<tr>
+<td>Minimum Radius</td>
+<td>12 × B</td>
+<td>m</td>
+<td><input class="result" id="Rcv" readonly></td>
+</tr>
+</table>
+</div>
+<!-- =============================================
+     ============Gear box and Copuling ===========
+     =============================================-->
+<div id="Gearbox" class="tabcontent">
+
+<h3>Gearbox & Coupling Selection</h3>
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Formula</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+<td>Speed (n2)</td>
+<td>n2 = 60×V/(π×D)</td>
+<td>rpm</td>
+<td><input class="result"  id="n_2" readonly></td>
+</tr>
+
+<tr>
+<td>Calculated Gear Ratio (i)</td>
+<td>i = n1 / n2</td>
+<td>-</td>
+<td><input class="result"  id="ratio" readonly></td>
+</tr>
+
+<tr>
+<td>Allowable Gear Ratio Range</td>
+<td>0.95 × i to 1.10 × i</td>
+<td>-</td>
+<td><input class="gear" id="ratioRange" readonly></td>
+</tr>
+
+<tr>
+<td><b>Selected Gear Ratio</b></td>
+<td>-</td>
+<td>-</td>
+<td>
+    <input class="selection-input"
+           id="selectedRatio"
+           type="number"
+           step="0.01"
+		     oninput="checkGearRatio()"
+           placeholder="Enter Gear Ratio" >
+</td>
+</tr>
+
+<tr> 
+<td>Gear Ratio Status</td>
+<td>-</td>
+<td>-</td>
+<td class="selection-status" id="ratioStatus"></td>
+</tr>
+
+<tr>
+<td>Nominal Power (PN)</td>
+<td>PN = N × f1 × f2</td>
+<td>kW</td>
+<td><input class="result"  id="PN" readonly></td>
+</tr>
+
+<tr>
+<td>Thermal Check</td>
+<td>PG1 × ft</td>
+<td>kW</td>
+<td><input class="result"  id="thermal" readonly></td>
+</tr>
+
+<tr>
+<td>High-speed coupling index</td>
+<td>1.5×N/(0.01×n1)</td>
+<td>KW/rpm</td>
+<td><input class="result"  id="HS" readonly></td>
+</tr>
+
+<tr>
+<td>Low-speed coupling index</td>
+<td>1.5×N/(0.01×n2)</td>
+<td>KW/rpm</td>
+<td><input class="result"  id="LS" readonly></td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- =============================================
+     ==============Drive Pulley ==================
+     =============================================-->
+<div id="DrivePulley" class="tabcontent">
+
+<h3>Calculation of Drive Pulley</h3>
+
+
+
+<table>
+<tr>
+<th>Parameter</th>
+<th>Unit</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Resultant Load (R)</td>
+<td>kN</td>
+<td><input class="result"  id="R_s" readonly></td>
+</tr>
+
+<tr>
+<td>Bending Moment (Mb)</td>
+<td>kN·cm</td>
+<td><input class="result"  id="Mb" readonly></td>
+</tr>
+
+<tr>
+<td>Torque (Mt)</td>
+<td>kN·cm</td>
+<td><input class="result"  id="Mt" readonly></td>
+</tr>
+
+<tr>
+<td>Shaft Diameter (d)</td>
+<td>mm</td>
+<td><input class="result"  id="d" readonly></td>
+</tr>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+<!-- =============================================
+     ==============Tail Pulley ==================
+     =============================================-->
+
+
+<h3>Calculation of Tail Pulley</h3>
+
+
+<table>
+<tr>
+<td> Tensile force on carrying side   (Ttc)</td>
+<td>N</td>
+<td><input class="result"  id="Ttc" readonly></td>
+</tr>
+
+<tr>
+<td> Tensile force on return side (Ttr)</td>
+<td>N</td>
+<td><input class="result"  id="Ttr" readonly></td>
+</tr>
+
+<tr>
+<td>Resultant load on pulley (R)</td>
+<td>kN</td>
+<td><input class="result"  id="R_tp" readonly></td>
+</tr>
+
+<tr>
+<td>Bending moment  (Mb)</td>
+<td>kN·cm</td>
+<td><input class="result"  id="Mb_tp" readonly></td>
+</tr>
+
+<tr>
+<td>Pulley shaft diameter (d)</td>
+<td>mm</td>
+<td><input class="result"  id="d_tp" readonly></td>
+</tr>
+
+</table>
+
+
+
+
+
+<!-- =============================================
+     ==============Snub Pulley ==================
+     =============================================-->
+
+
+<h3>Calculation of Snub Pulley</h3>
+
+
+
+<table>
+<tr>
+<td>Resultant Load (R)</td>
+<td>kN</td>
+<td><input class="result"  id="R_snub" readonly></td>
+</tr>
+
+<tr>
+<td>Bending Moment (Mb)</td>
+<td>kN·cm</td>
+<td><input class="result"  id="Mb_snub" readonly></td>
+</tr>
+
+<tr>
+<td>Shaft Dia (d)</td>
+<td>mm</td>
+<td><input class="result"  id="d_snub" readonly></td>
+</tr>
+
+</table>
+
+
+
+
+
+<!-- =============================================
+     ==============Takeup Pulley ==================
+     =============================================-->
+
+
+<h3>Calculation of Take-Up Pulley</h3>
+
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+<th>Parameter</th>
+<th>Unit</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>Inlet Belt tension (Ttu)</td>
+<td>N</td>
+<td><input class="result"  id="Ttu" readonly></td>
+</tr>
+
+<tr>
+<td>Outlet Belt tension (Ttu')</td>
+<td>N</td>
+<td><input class="result"  id="Ttu2" readonly></td>
+</tr>
+
+<tr>
+<td>Resultant Load (R)</td>
+<td>kN</td>
+<td><input class="result"  id="R_tu" readonly></td>
+</tr>
+
+<tr>
+<td>Bending Moment (Mb)</td>
+<td>kN·cm</td>
+<td><input class="result"  id="Mb_tu" readonly></td>
+</tr>
+
+<tr>
+<td>Shaft Dia (d)</td>
+<td>mm</td><td>
+<input class="result"  id="d_tu" readonly></td>
+</tr>
+
+</table>
+
+
+<!-- =============================================
+     ==============Bend Pulley ==================
+     =============================================-->
+
+
+<h3>Calculation of Bend Pulley</h3>
+
+
+
+<h3>Results</h3>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>Unit</th>
+  <th>Value</th>
+</tr>
+
+<tr>
+<td>Resultant Load (R)</td>
+<td>kN</td>
+<td><input class="result"  id="R_bp" readonly></td>
+</tr>
+
+<tr>
+<td>Bending Moment (Mb)</td>
+<td>kN·cm</td>
+<td><input class="result"  id="Mb_bp" readonly></td>
+</tr>
+
+<tr>
+<td>Shaft Diameter (d)</td>
+<td>mm</td>
+<td><input class="result"  id="d_bp" readonly></td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!--================ REPORT TAB =====================-->
+<!--================================================-->
+
+<div id="report" class="tabcontent" >
+
+<div class="report-page">
+
+<img src="letter.png" class="letterhead">
+
+<div class="report-content">
+
+<div class="report-toolbar">
+
+<button onclick="printReport()">
+🖨 Print Report
+</button>
+
+</div>
+
+<h1 class="report-title">
+CONVEYOR DESIGN REPORT
+</h1>
+
+<!--================================================-->
+<!-- Project Information -->
+<!--================================================-->
+
+<h2>Project Information</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Project Name</th>
+<td id="rProjectName"></td>
+
+<th>Project No.</th>
+<td id="rProjectNo"></td>
+</tr>
+
+<tr>
+<th>Client</th>
+<td id="rClient"></td>
+
+<th>Plant / Area</th>
+<td id="rPlant"></td>
+</tr>
+
+<tr>
+<th>Location</th>
+<td id="rLocation"></td>
+
+<th>Prepared By</th>
+<td id="rPreparedBy"></td>
+</tr>
+
+<tr>
+<th>Date</th>
+<td id="rDate"></td>
+
+<th>Revision No.</th>
+<td id="rRevision"></td>
+</tr>
+
+<tr>
+<th>Remarks</th>
+<td colspan="3" id="rRemarks"></td>
+</tr>
+
+</table>
+</div>
+</div>
+<!---=============Page Break ============
+ ========================================-------->
+ <div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+<!--================================================-->
+<!-- Basic Conveyor Details -->
+<!--================================================-->
+
+<h2>Basic Conveyor Details</h2>
+
+<table class="report-table">
+
+<tr>
+
+<th>Capacity Rated (Qr)</th>
+<td id="rQr"></td>
+
+<th>Unit</th>
+<td>TPH</td>
+
+</tr>
+
+<tr>
+
+<th>Design Factor</th>
+<td id="rnl"></td>
+
+<th>Unit</th>
+<td>-</td>
+
+</tr>
+
+<tr>
+
+<th>Loading Factor</th>
+<td id="rLf"></td>
+
+<th>Unit</th>
+<td>-</td>
+
+</tr>
+
+<tr>
+
+<th>Horizontal Length (L)</th>
+<td id="rL"></td>
+
+<th>Unit</th>
+<td>m</td>
+
+</tr>
+
+<tr>
+
+<th>Total Lift (H)</th>
+<td id="rH"></td>
+
+<th>Unit</th>
+<td>m</td>
+
+</tr>
+
+<tr>
+
+<th>Conveyor Slope</th>
+<td id="rcs"></td>
+
+<th>Unit</th>
+<td>deg</td>
+
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Belt & Conveyor Geometry -->
+<!--================================================-->
+
+<h2>Belt & Conveyor Geometry</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Belt Width (B)</th>
+<td id="rB"></td>
+
+<th>Unit</th>
+<td>mm</td>
+</tr>
+
+<tr>
+<th>Belt Speed (V)</th>
+<td id="rV"></td>
+
+<th>Unit</th>
+<td>m/s</td>
+</tr>
+
+<tr>
+<th>Trough Angle</th>
+<td id="rts"></td>
+
+<th>Unit</th>
+<td>deg</td>
+</tr>
+
+<tr>
+<th>Surcharge Angle</th>
+<td id="rss"></td>
+
+<th>Unit</th>
+<td>deg</td>
+</tr>
+
+<tr>
+<th>Slope Factor (K)</th>
+<td id="rK"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Idler Arrangement -->
+<!--================================================-->
+
+<h2>Idler Arrangement</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Transition Idlers (10°)</th>
+<td id="rt_c1"></td>
+
+<th>Unit</th>
+<td>No.</td>
+</tr>
+
+<tr>
+<th>Transition Idlers (20°)</th>
+<td id="rt_c2"></td>
+
+<th>Unit</th>
+<td>No.</td>
+</tr>
+
+<tr>
+<th>Impact Idlers</th>
+<td id="rn_i"></td>
+
+<th>Unit</th>
+<td>No.</td>
+</tr>
+
+<tr>
+<th>Carrying Idler Diameter</th>
+<td id="rcarryDia"></td>
+
+<th>Unit</th>
+<td>mm</td>
+</tr>
+
+<tr>
+<th>Return Idler Diameter</th>
+<td id="rreturnDia"></td>
+
+<th>Unit</th>
+<td>mm</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Drive System -->
+<!--================================================-->
+
+<h2>Drive System</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Transmission Efficiency (η₁)</th>
+<td id="reta1"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Motor Reserve Factor</th>
+<td id="rsf"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+</table>
+
+
+</div>
+</div>
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+ 
+ 
+ 
+
+<!--================================================-->
+<!-- Belt Cleaning & Skirt Arrangement -->
+<!--================================================-->
+
+<h2>Belt Cleaning & Skirt Arrangement</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Skirt Length (Lsk)</th>
+<td id="rLsk"></td>
+
+<th>Unit</th>
+<td>m</td>
+</tr>
+
+<tr>
+<th>Number of Cleaners (n)</th>
+<td id="rnn"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Cleaner Pressure (P)</th>
+<td id="rP"></td>
+
+<th>Unit</th>
+<td>N/m²</td>
+</tr>
+
+<tr>
+<th>Discharge Plough Resistance (Rp)</th>
+<td id="rRp"></td>
+
+<th>Unit</th>
+<td>N</td>
+</tr>
+
+</table>
+
+<!--================================================-->
+<!-- Material Details -->
+<!--================================================-->
+
+<h2>Material Details</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Bulk Density (ρ)</th>
+<td id="rrho"></td>
+
+<th>Unit</th>
+<td>t/m³</td>
+</tr>
+
+<tr>
+<th>Lump Size Factor (K₁)</th>
+<td id="rK1"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Abrasiveness Factor (K₂)</th>
+<td id="rK2"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Belt Specification -->
+<!--================================================-->
+
+<h2>Belt Specification</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Belt Type</th>
+<td id="rbeltType"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Carcass Thickness (δ₁)</th>
+<td id="rd1"></td>
+
+<th>Unit</th>
+<td>mm</td>
+</tr>
+
+<tr>
+<th>Top Cover Thickness (δ₂)</th>
+<td id="rd2"></td>
+
+<th>Unit</th>
+<td>mm</td>
+</tr>
+
+<tr>
+<th>Bottom Cover Thickness (δ₃)</th>
+<td id="rd3"></td>
+
+<th>Unit</th>
+<td>mm</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Friction Coefficients -->
+<!--================================================-->
+
+<h2>Friction Coefficients</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Coefficient of Friction (f)</th>
+<td id="rf"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Material-Belt Friction (μ₁)</th>
+<td id="rmu1"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Material-Skirt Friction (μ₂)</th>
+<td id="rmu2"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Trough Factor (C₁)</th>
+<td id="rC1"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Carrying Idler Friction (μ₀)</th>
+<td id="rmuo"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Belt Cleaner Friction (μ₃)</th>
+<td id="rmu3"></td>
+
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+</table>
+
+
+
+
+
+</div>
+</div>
+
+<!---=============Page Break ============
+ ========================================-------->
+ <div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+
+<!--================================================-->
+<!-- Conveyor Operating Parameters -->
+<!--================================================-->
+
+<h2>Conveyor Operating Parameters</h2>
+
+<table class="report-table">
+
+<tr>
+    <th>Gravity (g)</th>
+    <td id="rg"></td>
+
+    <th>Unit</th>
+    <td>m/s²</td>
+</tr>
+
+<tr>
+    <th>Material Speed Component (V₀)</th>
+    <td id="rV0"></td>
+
+    <th>Unit</th>
+    <td>m/s</td>
+</tr>
+
+<tr>
+    <th>Temperature Factor (nt)</th>
+    <td id="rnt"></td>
+
+    <th>Unit</th>
+    <td>-</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Pulley Configuration -->
+<!--================================================-->
+
+<h2>Pulley Configuration</h2>
+
+<table class="report-table">
+
+<tr>
+    <th>Carrying Side Pulleys (n₁)</th>
+    <td id="rn1"></td>
+
+    <th>Unit</th>
+    <td>-</td>
+</tr>
+
+<tr>
+    <th>Return Side Pulleys (n₂)</th>
+    <td id="rn2"></td>
+
+    <th>Unit</th>
+    <td>-</td>
+</tr>
+
+<tr>
+    <th>Other Non-Drive Pulleys (n₃)</th>
+    <td id="rn3"></td>
+
+    <th>Unit</th>
+    <td>-</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Idler Configuration -->
+<!--================================================-->
+
+<h2>Idler Configuration</h2>
+
+<table class="report-table">
+
+<tr>
+    <th>Idler Tilt Angle (i)</th>
+    <td id="ri"></td>
+
+    <th>Unit</th>
+    <td>deg</td>
+</tr>
+
+<tr>
+    <th>Tilted Idler Length (L₁)</th>
+    <td id="rL1"></td>
+
+    <th>Unit</th>
+    <td>mm</td>
+</tr>
+
+</table>
+
+</div>
+</div>
+
+
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+<!--================================================-->
+<!-- Basic Calculation Results -->
+<!--================================================-->
+
+<h2>Basic Calculation Results</h2>
+
+<table class="report-table">
+
+<tr>
+    <th>Parameter</th>
+    <th>Formula / Reference</th>
+    <th>Unit</th>
+    <th>Value</th>
+</tr>
+
+<tr>
+    <td>Speed Factor (Kv)</td>
+    <td>Kv = K₁ + K₂</td>
+    <td>-</td>
+    <td id="rKv"></td>
+</tr>
+
+<tr>
+    <td>Maximum Belt Speed</td>
+    <td>IS 11592 Table 6</td>
+    <td>m/s</td>
+    <td id="rVmax"></td>
+</tr>
+
+<tr>
+    <td>Capacity Designed (Qd)</td>
+    <td>Qd = n × Qr</td>
+    <td>TPH</td>
+    <td id="rQd"></td>
+</tr>
+
+<tr>
+    <td>Maximum Capacity (Qmax)</td>
+    <td>Loading Factor × A × 3600 × V × ρ × K</td>
+    <td>TPH</td>
+    <td id="rQmax"></td>
+</tr>
+
+<tr>
+    <td>Minimum Belt Speed (Vmin)</td>
+    <td>Qr / (A × 3600 × ρ × K)</td>
+    <td>m/s</td>
+    <td id="rVmin"></td>
+</tr>
+
+<tr>
+    <td>Material Mass (mG)</td>
+    <td>Qr / (3.6 × V)</td>
+    <td>kg/m</td>
+    <td id="rmG"></td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Idler & Belt Weight Calculation -->
+<!--================================================-->
+
+<h2>Idler & Belt Weight Calculation</h2>
+
+<table class="report-table">
+
+<tr>
+    <th>Parameter</th>
+    <th>Formula / Description</th>
+    <th>Unit</th>
+    <th>Value</th>
+</tr>
+
+<tr>
+    <td>No. of Carrying Idlers</td>
+    <td>-</td>
+    <td>-</td>
+    <td id="rn_c"></td>
+</tr>
+
+<tr>
+    <td>Self Aligning Carrying Idlers</td>
+    <td>-</td>
+    <td>-</td>
+    <td id="rsa_c"></td>
+</tr>
+
+<tr>
+    <td>No. of Return Idlers</td>
+    <td>-</td>
+    <td>-</td>
+    <td id="rn_r"></td>
+</tr>
+
+<tr>
+    <td>Self Aligning Return Idlers</td>
+    <td>-</td>
+    <td>-</td>
+    <td id="rsa_r"></td>
+</tr>
+
+<tr>
+    <td>Mass of Belt (mB)</td>
+    <td>mB = 1.1 × (δ₁ + δ₂ + δ₃) × B</td>
+    <td>kg/m</td>
+    <td id="rmB"></td>
+</tr>
+
+<tr>
+    <td>Carrying Idler Mass (mC)</td>
+    <td>mC = m × n / L</td>
+    <td>kg/m</td>
+    <td id="rmC"></td>
+</tr>
+
+<tr>
+    <td>Return Idler Mass (mr)</td>
+    <td>mr = m × n / L</td>
+    <td>kg/m</td>
+    <td id="rmr"></td>
+</tr>
+
+<tr>
+    <td>Material Mass (mG)</td>
+    <td>mG = Qr / (3.6 × V)</td>
+    <td>kg/m</td>
+    <td id="rmG2"></td>
+</tr>
+
+</table>
+
+<br>
+
+<table class="report-table">
+
+<tr>
+    <th>MRBT (kN/m)</th>
+    <th>Drive Pulley Diameter (mm)</th>
+    <th>High Tension Snub Pulley (mm)</th>
+    <th>Low Tension Pulley (mm)</th>
+</tr>
+
+<tr>
+    <td id="rmrbt"></td>
+    <td id="rdriveDia"></td>
+    <td id="rsnubDia"></td>
+    <td id="rlowDia"></td>
+</tr>
+
+</table>
+
+</div>
+</div>
+
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+ <!--================================================-->
+<!-- Main Resistance -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Main Resistance</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Main Resistance (Loaded)</td>
+<td id="rR_loaded"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Main Resistance (Empty Belt)</td>
+<td id="rR_empty"></td>
+<td>N</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Secondary Resistance -->
+<!--================================================-->
+
+
+<div class="report-section">
+
+<h2>Secondary Resistance</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Volumetric Capacity (Q)</td>
+<td id="rQ_vol"></td>
+<td>m³/s</td>
+</tr>
+
+<tr>
+<td>Acceleration Length (La)</td>
+<td id="rLa"></td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Skirt Width (b₁)</td>
+<td id="rb1"></td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Acceleration Resistance (Ra)</td>
+<td id="rRa"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Skirt Resistance (Rska)</td>
+<td id="rRska"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Wrap Resistance (Rw)</td>
+<td id="rRw"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Pulley Bearing Resistance (RB)</td>
+<td id="rRB"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Total Secondary Resistance</td>
+<td id="rRs"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Empty Belt Resistance</td>
+<td id="rRs_empty"></td>
+<td>N</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Special & Secondary Resistance -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Special & Secondary Resistance</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Resistance due to Idler Tilting (Loaded)</td>
+<td id="rRt"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Resistance due to Idler Tilting (Empty)</td>
+<td id="rRt_empty"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Material–Skirt Plate Resistance (Rsk)</td>
+<td id="rRsk"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Cleaner Contact Area (A₁)</td>
+<td id="rA1"></td>
+<td>m²</td>
+</tr>
+
+<tr>
+<td>Belt Cleaner Resistance (RBC)</td>
+<td id="rRBC"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Total Special Resistance (Rsp)</td>
+<td id="rRsp"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Special Resistance (Empty Belt)</td>
+<td id="rRsp_empty"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Resistance due to Material Lift (RS₁)</td>
+<td id="rRS1"></td>
+<td>N</td>
+</tr>
+
+</table>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+<!--================================================-->
+<!-- Power Calculation -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Power Calculation</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Peripheral Force (Loaded)</td>
+<td id="rTe"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Peripheral Force (Empty)</td>
+<td id="rTe_empty"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Power at Drive Pulley</td>
+<td id="rPdp"></td>
+<td>kW</td>
+</tr>
+
+<tr>
+<td>Power after Losses</td>
+<td id="rPa"></td>
+<td>kW</td>
+</tr>
+
+<tr>
+<td>Motor Power</td>
+<td id="rPm"></td>
+<td>kW</td>
+</tr>
+
+<tr>
+<td>Recommended Standard Motor</td>
+<td id="rPms"></td>
+<td>kW</td>
+</tr>
+
+<tr>
+<td>Selected Manufacturer Motor</td>
+<td id="rSelectedMotorPower"></td>
+<td>kW</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Drive Input Parameters -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Drive Input Parameters</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Wrap Angle (φ)</td>
+<td id="rphi"></td>
+<td>deg</td>
+</tr>
+
+<tr>
+<td>Drive Pulley Friction (μ)</td>
+<td id="rmu_bf"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Drive Factor (ξ)</td>
+<td id="rxi"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Carrying Idler Spacing (Pc)</td>
+<td id="rPc"></td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Return Idler Spacing (Pr)</td>
+<td id="rPr"></td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Maximum Belt Sag (S)</td>
+<td id="rS"></td>
+<td>-</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Drive Pulley Design Inputs -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Drive Pulley Design Inputs</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Permissible Stress for Steel C-40 (τs)</td>
+<td id="rtsd"></td>
+<td>kN/cm²</td>
+</tr>
+
+<tr>
+<td>Bending Stress Concentration Factor (Kb)</td>
+<td id="rKb"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Torsion Stress Concentration Factor (Kt)</td>
+<td id="rKt"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Angle Between T₁ & T₂ (α)</td>
+<td id="ralphaa"></td>
+<td>deg</td>
+</tr>
+
+<tr>
+<td>Weight of Rotating Parts (W)</td>
+<td id="rW"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Arm of Force (a)</td>
+<td id="ra"></td>
+<td>cm</td>
+</tr>
+
+<tr>
+<td>Speed (n₂)</td>
+<td id="rn2_s"></td>
+<td>rpm</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+</div>
+</div>
+
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+<!--================================================-->
+<!-- Snub Pulley Design Inputs -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Snub Pulley Design Inputs</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Weight of Rotating Parts (W)</td>
+<td id="rW_s"></td>
+<td>N</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Radius of Curvature Inputs -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Radius of Curvature Inputs</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Young's Modulus of Belt (Eb)</td>
+<td id="rYv"></td>
+<td>kN/m²</td>
+</tr>
+
+<tr>
+<td>Horizontal Length of Curve (L₄)</td>
+<td id="rddpc"></td>
+<td>m</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Bend Pulley Design Inputs -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Bend Pulley Design Inputs</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Weight of Rotating Parts (W)</td>
+<td id="rW_bp"></td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>Conveyor Slope in Take-Up Area (δ₁)</td>
+<td id="rdelta_bp"></td>
+<td>deg</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Gearbox Selection -->
+<!--================================================-->
+
+<h2>Gearbox Selection</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Selected Motor Power</th>
+<td id="rN_g"></td>
+<th>Unit</th>
+<td>kW</td>
+</tr>
+
+<tr>
+<th>Selected Pulley Diameter</th>
+<td id="rD_g"></td>
+<th>Unit</th>
+<td>m</td>
+</tr>
+
+<tr>
+<th>Selected Motor Speed</th>
+<td id="rn_1"></td>
+<th>Unit</th>
+<td>rpm</td>
+</tr>
+
+<tr>
+<th>Service Factor (f₁)</th>
+<td id="rf1"></td>
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Start Factor (f₂)</th>
+<td id="rf2"></td>
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Thermal Factor (fₜ)</th>
+<td id="rft"></td>
+<th>Unit</th>
+<td>-</td>
+</tr>
+
+<tr>
+<th>Selected Thermal Capacity (PG₁)</th>
+<td id="rPG1"></td>
+<th>Unit</th>
+<td>kW</td>
+</tr>
+
+</table>
+<!--================================================-->
+<!-- Tail Pulley Design -->
+<!--================================================-->
+
+<h2>Tail Pulley Design</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+<th>Remarks</th>
+</tr>
+
+<tr>
+<td>Pulley Bearing Resistance (RB)</td>
+<td id="rRB_tp"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Wrap Resistance (Rw)</td>
+<td id="rRw1_tp"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Weight of Rotating Parts (W)</td>
+<td id="rW_tp"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+</table>
+
+
+
+
+
+</div>
+</div>
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+ <!--================================================-->
+<!-- Take-Up Pulley Design -->
+<!--================================================-->
+
+<h2>Take-Up Pulley Design</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+<th>Remarks</th>
+</tr>
+
+<tr>
+<td>Distance Between Drive Pulley & Take-Up Unit (L₁)</td>
+<td id="rL1_tu"></td>
+<td>m</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Angle of Tilt of Idler Axis (i)</td>
+<td id="ri_tu"></td>
+<td>deg</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Troughing Angle of Return Idlers (τ)</td>
+<td id="rtau"></td>
+<td>deg</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Pulley Bearing Resistance (RB)</td>
+<td id="rRB_tu"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Wrap Resistance (Rw)</td>
+<td id="rRw_tu"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Wrap Resistance (Rw₁)</td>
+<td id="rRw1_tu"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Weight of Rotating Parts (W)</td>
+<td id="rW_tu"></td>
+<td>N</td>
+<td>-</td>
+</tr>
+
+</table>
+ 
+ 
+ 
+
+
+
+<!--================================================-->
+<!-- Belt Forces -->
+<!--================================================-->
+
+<h2>Belt Forces</h2>
+
+<table class="report-table">
+
+<tr>
+    <th>e^(μφ)</th>
+    <td id="remphi"></td>
+    <th>Unit</th>
+    <td>-</td>
+</tr>
+
+<tr>
+    <th>Minimum Return Tension (T2min)</th>
+    <td id="rT2min"></td>
+    <th>Unit</th>
+    <td>kN</td>
+</tr>
+
+<tr>
+    <th>Maximum Belt Tension (Tmax)</th>
+    <td id="rTmax"></td>
+    <th>Unit</th>
+    <td>kN</td>
+</tr>
+
+<tr>
+    <th>Minimum Carrying Tension</th>
+    <td id="rTmin_c"></td>
+    <th>Unit</th>
+    <td>kN</td>
+</tr>
+
+<tr>
+    <th>Minimum Return Tension</th>
+    <td id="rTmin_r"></td>
+    <th>Unit</th>
+    <td>kN</td>
+</tr>
+
+<tr>
+    <th>Belt Loading</th>
+    <td id="rbeltl"></td>
+    <th>Unit</th>
+    <td>kN/m</td>
+</tr>
+
+<tr>
+    <th>Selected Belt Rating</th>
+    <td id="rrmbtl"></td>
+    <th>Unit</th>
+    <td>kN/m</td>
+</tr>
+
+<tr>
+    <th>Percentage Belt Tension Loading</th>
+    <td id="rprel"></td>
+    <th>Unit</th>
+    <td>%</td>
+</tr>
+
+<tr>
+    <th>Belt Selection Status</th>
+    <td id="rbeltStatus"></td>
+    <th>Unit</th>
+    <td>-</td>
+</tr>
+</table>
+<!--================================================-->
+<!-- Radius of Curvature Calculation -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Radius of Curvature Calculation</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Maximum Tension at Curve (Tc max)</td>
+<td id="rtmaxc"></td>
+<td>kN</td>
+</tr>
+
+<tr>
+<td>Minimum Concave Radius (Rc)</td>
+<td id="rRc"></td>
+<td>m</td>
+</tr>
+
+<tr>
+<td>Minimum Convex Radius (Rcv)</td>
+<td id="rRcv"></td>
+<td>m</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+
+</div>
+</div>
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+<!--================================================-->
+<!-- Gearbox & Coupling Selection -->
+<!--================================================-->
+
+<div class="report-section">
+
+<h2>Gearbox & Coupling Selection</h2>
+
+<table class="report-table">
+
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Unit</th>
+</tr>
+
+<tr>
+<td>Speed (n₂)</td>
+<td id="rn_2"></td>
+<td>rpm</td>
+</tr>
+
+<tr>
+<td>Calculated Gear Ratio (i)</td>
+<td id="rratio"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Allowable Gear Ratio Range</td>
+<td id="rratioRange"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Selected Gear Ratio</td>
+<td id="rselectedRatio"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Gear Ratio Status</td>
+<td id="rratioStatus"></td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Nominal Power (PN)</td>
+<td id="rPN"></td>
+<td>kW</td>
+</tr>
+
+<tr>
+<td>Thermal Check</td>
+<td id="rthermal"></td>
+<td>kW</td>
+</tr>
+
+<tr>
+<td>High-Speed Coupling Index</td>
+<td id="rHS"></td>
+<td>kW/rpm</td>
+</tr>
+
+<tr>
+<td>Low-Speed Coupling Index</td>
+<td id="rLS"></td>
+<td>kW/rpm</td>
+</tr>
+
+</table>
+
+</div>
+<!--================================================-->
+<!-- Drive Pulley Calculation -->
+<!--================================================-->
+
+<h2>Drive Pulley Calculation</h2>
+
+<table class="report-table">
+<tr><th>Parameter</th><th>Value</th><th>Unit</th></tr>
+<tr><td>Resultant Load (R)</td><td id="rR_s"></td><td>kN</td></tr>
+<tr><td>Bending Moment (Mb)</td><td id="rMb"></td><td>kN·cm</td></tr>
+<tr><td>Torque (Mt)</td><td id="rMt"></td><td>kN·cm</td></tr>
+<tr><td>Shaft Diameter (d)</td><td id="rd"></td><td>mm</td></tr>
+</table>
+
+<!--================================================-->
+<!-- Tail Pulley Calculation -->
+<!--================================================-->
+
+<h2>Tail Pulley Calculation</h2>
+
+<table class="report-table">
+<tr><th>Parameter</th><th>Value</th><th>Unit</th></tr>
+<tr><td>Tensile Force (Carrying Side)</td><td id="rTtc"></td><td>N</td></tr>
+<tr><td>Tensile Force (Return Side)</td><td id="rTtr"></td><td>N</td></tr>
+<tr><td>Resultant Load</td><td id="rR_tp"></td><td>kN</td></tr>
+<tr><td>Bending Moment</td><td id="rMb_tp"></td><td>kN·cm</td></tr>
+<tr><td>Shaft Diameter</td><td id="rd_tp"></td><td>mm</td></tr>
+</table>
+
+
+
+
+
+</div>
+</div>
+
+<!---=============Page Break ============
+ ========================================-------->
+<div class="page-break"></div>
+
+<div class="report-page">
+ <img src="letter.png" class="letterhead">
+
+  <div class="report-content">
+ <!---=============Page Break ============
+ ========================================-------->
+ <!--================================================-->
+<!-- Snub Pulley Calculation -->
+<!--================================================-->
+
+<h2>Snub Pulley Calculation</h2>
+
+<table class="report-table">
+<tr><th>Parameter</th><th>Value</th><th>Unit</th></tr>
+<tr><td>Resultant Load</td><td id="rR_snub"></td><td>kN</td></tr>
+<tr><td>Bending Moment</td><td id="rMb_snub"></td><td>kN·cm</td></tr>
+<tr><td>Shaft Diameter</td><td id="rd_snub"></td><td>mm</td></tr>
+</table>
+<!--================================================-->
+<!-- Take-Up Pulley Calculation -->
+<!--================================================-->
+
+<h2>Take-Up Pulley Calculation</h2>
+
+<table class="report-table">
+<tr><th>Parameter</th><th>Value</th><th>Unit</th></tr>
+<tr><td>Inlet Belt Tension</td><td id="rTtu"></td><td>N</td></tr>
+<tr><td>Outlet Belt Tension</td><td id="rTtu2"></td><td>N</td></tr>
+<tr><td>Resultant Load</td><td id="rR_tu"></td><td>kN</td></tr>
+<tr><td>Bending Moment</td><td id="rMb_tu"></td><td>kN·cm</td></tr>
+<tr><td>Shaft Diameter</td><td id="rd_tu"></td><td>mm</td></tr>
+</table>
+
+<!--================================================-->
+<!-- Bend Pulley Calculation -->
+<!--================================================-->
+
+<h2>Bend Pulley Calculation</h2>
+
+<table class="report-table">
+<tr><th>Parameter</th><th>Value</th><th>Unit</th></tr>
+<tr><td>Resultant Load</td><td id="rR_bp"></td><td>kN</td></tr>
+<tr><td>Bending Moment</td><td id="rMb_bp"></td><td>kN·cm</td></tr>
+<tr><td>Shaft Diameter</td><td id="rd_bp"></td><td>mm</td></tr>
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+<!-- ================= Engineering Assistant ================= -->
+
+<div id="assistantBtn" onclick="toggleAssistant()">
+    🤖
+</div>
+
+<div id="assistantPanel">
+
+    <div class="assistantHeader">
+
+        <span>🤖 Engineering Assistant</span>
+
+        <button onclick="toggleAssistant()">✕</button>
+
+    </div>
+
+    <div id="assistantBody"></div>
+
+</div> 
+
+
+
+<!-- Drive Assistant -->
+
+<div id="driveAssistantBtn" onclick="toggleDriveAssistant()">
+    🤖
+</div>
+
+<div id="driveAssistantPanel">
+
+    <div class="assistantHeader">
+        <span>🤖 Drive Assistant</span>
+        <button onclick="toggleDriveAssistant()">✕</button>
+    </div>
+
+    <div id="driveAssistantBody"></div>
+
+</div>
+
+
+	 
+<script src="conv1.js"></script>
+<script src="convhelper.js"></script>
+
+</body>
+</html>
