@@ -154,3 +154,119 @@ coalGrad.addColorStop(1,"#0f0f0f");
 window.onload = function(){
    updateSiloDiagram(4,20,1,10,0); // initially empty silo
 }
+// ==========================================
+// SAVE SILO CALCULATION TO DATABASE
+// ==========================================
+
+async function saveSiloCalculation() {
+
+    // -----------------------------
+    // Get input values
+    // -----------------------------
+
+    let R1 = +document.getElementById("S_R1").value;
+    let H1 = +document.getElementById("S_H1").value;
+    let R2 = +document.getElementById("S_R2").value;
+    let H2 = +document.getElementById("S_H2").value;
+    let angle = +document.getElementById("S_angle").value;
+    let K = +document.getElementById("S_K").value;
+
+    // -----------------------------
+    // Get calculated results
+    // -----------------------------
+
+    let totalH = +document.getElementById("S_totalH").value;
+    let Vtotal = +document.getElementById("S_Vtotal").value;
+    let Vg = +document.getElementById("G_Vtotal").value;
+    let beta = +document.getElementById("S_beta").value;
+    let Atotal = +document.getElementById("S_Atotal").value;
+
+    // -----------------------------
+    // Project ID
+    // -----------------------------
+
+    // Temporary test project
+    let projectId = "cef4ca37-8d58-474c-a609-ab93d443fd88";
+
+    // -----------------------------
+    // Data to save
+    // -----------------------------
+
+    let data = {
+
+        project_id: projectId,
+
+        calculator_type: "silo",
+
+        calculation_name: "Silo Volume Calculation",
+
+        input_data: {
+            R1: R1,
+            H1: H1,
+            R2: R2,
+            H2: H2,
+            angle: angle,
+            K: K
+        },
+
+        result_data: {
+            total_height: totalH,
+            usable_volume: Vtotal,
+            geometric_volume: Vg,
+            beta: beta,
+            total_area: Atotal
+        }
+    };
+
+
+    // -----------------------------
+    // Send to Cloudflare Worker
+    // -----------------------------
+
+    try {
+
+        let response = await fetch(
+            "https://engineering-design-api.mahendrasirvi5000.workers.dev/calculations",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(data)
+            }
+        );
+
+
+        let result = await response.json();
+
+
+        if (result.success) {
+
+            alert("Silo calculation saved successfully!");
+
+            console.log("Saved calculation:", result);
+
+        } else {
+
+            alert(
+                "Failed to save calculation:\n" +
+                result.error
+            );
+
+            console.error(result);
+
+        }
+
+    } catch (error) {
+
+        console.error("Database error:", error);
+
+        alert(
+            "Database connection error.\n" +
+            "Please try again."
+        );
+
+    }
+}
