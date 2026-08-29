@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EOT Crane Motor Selection Calculator</title>
+
+<link rel="stylesheet" href="crn.css">
+<link rel="stylesheet" href="cranesave.css">
+
+
+</head>
+<body>
+
+<h2>EOT Crane Motor Selection Calculator (Double Girder)</h2>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event,'Input')"id="defaultOpen">Basic Input</button>
+  <button class="tablinks" onclick="openTab(event,'Hoist')" >Hoist Motor</button>
+  <button class="tablinks" onclick="openTab(event,'Travel')">Travel Motion</button>
+  <button class="tablinks" onclick="openTab(event,'Brake')">Brake</button>
+  <button class="tablinks" onclick="openTab(event,'Rope')">Wire Rope</button>
+  <button class="tablinks" onclick="openTab(event,'Sheave')">Sheave</button>
+  <button class="tablinks" onclick="openTab(event,'Drum_dia')">Rope Drum Dia</button>
+  <button class="tablinks" onclick="openTab(event,'Drum_Len')">Rope Drum Length</button>
+  <button class="tablinks" onclick="openTab(event,'Wheel')">Wheel (Load And Slection)</button>
+  <button class="tablinks" onclick="openTab(event,'Gearbox')">Gear Box</button>
+  <button class="tablinks" onclick="openTab(event,'BarrelCoupling')">BarrelCoupling</button>
+  <button class="tablinks" onclick="openTab(event,'Buffer')">Buffers</button>
+  <button class="tablinks" onclick="openTab(event,'Stress')">Rope Drum Stress</button>  
+</div>
+<!-- ===================================================== -->
+<!-- ====================== Baisc Input ======================== -->
+<!-- ===================================================== -->
+<div id="Input" class="tabcontent">
+    <div class="section-title">
+        Basic Crane Input
+    </div>
+    <div class="input-layout">
+
+
+        <div class="input-card hoist-card">
+            <div class="card-title">
+                Hoist Input
+            </div>
+
+<h2>Hoist Motor (MH & AH)</h2>
+<table>
+<tr><th><b>Input</b></th><th><b>MH</b></th><th><b>AH</b></th></tr>
+<tr><td><b>Safe Working Load Q (Ton)</td>
+<td><input id="mh_q" value="120"></td>
+<td><input id="ah_q" value="20"></td></tr>
+
+<tr><td><b>Bottom Block Wt. including Rope Wt. Q1 (Ton)</td>
+<td><input id="mh_q1" value="6"></td>
+<td><input id="ah_q1" value="1.22"></td></tr>
+
+<tr><td><b>Mass of Tong Q2 (Ton)</td>
+<td><input id="mh_q2" value="25"></td>
+<td><input id="ah_q2" value="0"></td></tr>
+
+<tr><td><b>Rated Speed V (m/min)</td>
+<td><input id="mh_v" value="6"></td>
+<td><input id="ah_v" value="16"></td></tr>
+
+<tr><td><b>Gears Stages (n)</td>
+<td><input id="mh_n" value="4"></td>
+<td><input id="ah_n" value="3"></td></tr>
+
+<tr><td><b>Pulley Count (m)</td>
+<td><input id="mh_m" value="5"></td>
+<td><input id="ah_m" value="1"></td></tr>
+
+<tr><td><b>Derating Factor (Camb)</td>
+<td><input id="mh_camb" value="0.95"></td>
+<td><input id="ah_camb" value="0.95"></td></tr>
+
+<tr>
+    <td><b>Electrical Power Margin (%)</b></td>
+    <td><input id="mh_power_margin" value="10"></td>
+    <td><input id="ah_power_margin" value="10"></td>
+</tr>
+
+
+
+<tr><td><b>No. of Poles (P)</b></td>
+<td>
+<select id="mh_pole" onchange="calcHoist()">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="6">6</option>
+<option value="8" selected>8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</td>
+
+<td>
+<select id="ah_pole" onchange="calcHoist()">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="6">6</option>
+<option value="8" selected>8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</td>
+</tr>
+<tr><td><b>NO.of Motors (N)</td>
+<td><input id="mh_mo" value="2"></td>
+<td><input id="ah_mo" value="1"></td>
+</tr>
+
+
+</table>
+
+      
+
+
+<div class="project-actions">
+
+    <input 
+        type="text" 
+        id="projectName" 
+        placeholder="Enter Project Name"
+    >
+
+    <button type="button" onclick="saveProject()">
+        💾 Save
+    </button>
+
+    <select id="savedProjects" onchange="loadProject()">
+        <option value="">Load Saved Project</option>
+    </select>
+
+    <button type="button" class="delete-project" onclick="deleteProject()">
+        🗑 Delete
+    </button>
+
+</div>
+
+</div>
+ 
+<!-- ===================================================== -->
+<!-- ====================== BRAKE ======================== -->
+<!-- ===================================================== -->
+<div class="input-card Brake">
+
+    <div class="mechanism-row">
+
+        <label for="mechanism_class">
+            Mechanism Classification
+        </label>
+
+        <select id="mechanism_class">
+            <option value="M1">M1</option>
+            <option value="M2">M2</option>
+            <option value="M3">M3</option>
+            <option value="M4">M4</option>
+            <option value="M5">M5</option>
+            <option value="M6">M6</option>
+            <option value="M7">M7</option>
+            <option value="M8" selected>M8</option>
+        </select>
+
+    </div>
+	<br>
+<div class="card-title"> Brake Selection</div>
+<table>
+    <tr>
+        <th><b>Input parameter</b></th>
+        <th><b>Coefficient of Reserve (S)</b></th>
+        <th><b>Operation Type</b></th>
+    </tr>
+
+    <tr>
+        <td><b>MH</b></td>
+
+        <td>
+            <input id="mh-s1" type="number" value="1.25">
+            
+        </td>
+
+        <td>
+            <select id="mh-op">
+                <option value="DC">DC Operation</option>
+                <option value="AC">AC Operation</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><b>AH</b></td>
+
+        <td>
+            <input id="ah-s1" type="number" value="1.25">
+        </td>
+
+        <td>
+            <select id="ah-op">
+                <option value="DC">DC Operation</option>
+                <option value="AC">AC Operation</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><b>CT</b></td>
+
+        <td>
+            <input id="ct-s1" type="number" value="1.25">
+        </td>
+
+        <td>
+            <select id="ct-op">
+                <option value="DC">DC Operation</option>
+                <option value="AC">AC Operation</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td><b>LT</b></td>
+
+        <td>
+            <input id="lt-s1" type="number" value="1.25">
+        </td>
+
+        <td>
+            <select id="lt-op">
+                <option value="DC">DC Operation</option>
+                <option value="AC">AC Operation</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<br>
+<!---=================================================== -->
+<!-- ===================== WIRE ROPE ===================== -->
+<!-- ===================================================== -->
+<div class="card-title">Wire Rope Selection</div>
+      <table>
+        <tr>
+    <th><b>parameter</b></th>
+    <th><b>MH</b></th>
+     <th><b>AH</b></th>
+    </tr>
+        <tr><td><b>Number of Falls (F)</b></td>
+        <td><input id="F" type="number" value="12"></td>
+        <td><input id="f" type="number" value="4"></td>
+         </tr>
+         <tr>
+    <td><b>Rope Core Type</b></td>
+    <td>
+        <select id="mh_core">
+            <option value="FC">Fiber Core</option>
+            <option value="SC">Steel Core</option>
+        </select>
+    </td>
+    <td>
+        <select id="ah_core">
+            <option value="FC">Fiber Core</option>
+            <option value="SC">Steel Core</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Rope Grade</b></td>
+    <td>
+        <select id="mh_grade">
+            <option value="1570">1570</option>
+            <option value="1770">1770</option>
+            <option value="1960">1960</option>
+        </select>
+    </td>
+    <td>
+        <select id="ah_grade">
+            <option value="1570">1570</option>
+            <option value="1770">1770</option>
+            <option value="1960">1960</option>
+        </select>
+    </td>
+</tr>
+</table>
+ </div> 
+
+
+
+<!-- ===================================================== -->
+<!-- ====================== TRAVEL ======================== -->
+<!-- ===================================================== -->
+<div class="input-card travel-card">
+
+            <div class="card-title">
+                Travel Motion (CT & LT)
+            </div>
+
+<table>
+<tr>
+    <th>Input</th>
+    <th>CT Normal</th>
+    <th>LT Normal</th>
+    <th>CT Emergency</th>
+    <th>LT Emergency</th>
+</tr>
+
+<tr><td><b>Weight of trolley/crane G(TON)</b></td>
+<td><input id="ct_g" value="60"></td>
+<td><input id="lt_g" value="190"></td>
+<td><input id="ct_gE"></td>
+<td><input id="lt_gE"></td>
+</tr>
+
+<tr><td><b>Rated Speed V (m/min)</b></td>
+<td><input id="ct_v" value="40"></td>
+<td><input id="lt_v" value="80"></td>
+<td><input id="ct_vE"></td>
+<td><input id="lt_vE"></td>
+</tr>
+
+<tr><td><b>Acceleration (cm/sec^2)</b></td>
+<td><input id="ct_a" value="12"></td>
+<td><input id="lt_a" value="17"></td>
+<td><input id="ct_ar" value="7"></td>
+<td><input id="lt_ar" value="12"></td>
+</tr>
+
+<tr><td><b>Gear Stages(m)</b></td>
+<td><input id="ct_m" value="3"></td>
+<td><input id="lt_m" value="3"></td>
+<td><input id="ct_mE"></td>
+<td><input id="lt_mE"></td>
+</tr>
+
+<tr><td><b>Friction (F)</b></td>
+<td><input id="ct_f" value="8"></td>
+<td><input id="lt_f" value="8"></td>
+<td><input id="ct_fE"></td>
+<td><input id="lt_fE"></td>
+</tr>
+
+<tr><td><b>No. of Motors(n)</b></td>
+<td><input id="ct_n" value="2"></td>
+<td><input id="lt_n" value="8"></td>
+<td><input id="ct_nE"></td>
+<td><input id="lt_nE"></td>
+</tr>
+
+<tr><td class="info-wrap">
+  <b>Torque Factor (T)</b>
+  <span class="info-icon">ℹ</span>
+
+  <span class="info-box">
+    As per IS 3177 : 2020<br>
+    Torque Factor <br>
+    Page No: 39
+  </span>
+</td>
+    <!-- CT Normal -->
+    <td>
+        <select id="ct_T">
+            <option value="1.7">1.7 – a.c. Slip Ring Induction motors</option>
+            <option value="1.6">1.6 – a.c. motors, fed from DOL</option>
+            <option value="1.5" selected>1.5 – a.c. motors when operated from VFDs</option>
+        </select>
+    </td>
+
+    <!-- LT Normal -->
+    <td>
+        <select id="lt_T">
+            <option value="1.7">1.7 – a.c. Slip Ring Induction motors</option>
+            <option value="1.6">1.6 – a.c. motors, fed from DOL</option>
+            <option value="1.5" selected>1.5 – a.c. motors when operated from VFDs</option>
+        </select>
+    </td>
+
+    <!-- CT Emergency -->
+    <td>
+        <select id="ct_TE">
+            <option value="1.7">1.7 – a.c. Slip Ring Induction motors</option>
+            <option value="1.6">1.6 – a.c. motors, fed from DOL</option>
+            <option value="1.5" selected>1.5 – a.c. motors when operated from VFDs</option>
+        </select>
+    </td>
+
+    <!-- LT Emergency -->
+    <td>
+        <select id="lt_TE">
+            <option value="1.7">1.7 – a.c. Slip Ring Induction motors</option>
+            <option value="1.6">1.6 – a.c. motors, fed from DOL</option>
+            <option value="1.5" selected>1.5 – a.c. motors when operated from VFDs</option>
+        </select>
+    </td>
+</tr>
+
+
+
+<tr><td><b>Derating Factor (Camb)</b></td>
+<td><input id="ct_camb" value="0.95"></td>
+<td><input id="lt_camb" value="0.95"></td>
+<td><input id="ct_cambE"></td>
+<td><input id="lt_cambE"></td>
+</tr>
+<tr>
+    <td><b>Electrical Power Margin (%)</b></td>
+    <td><input id="ct_power_margin" value="10"></td>
+    <td><input id="lt_power_margin" value="10"></td>
+    <td><input id="ct_power_marginE"></td>
+    <td><input id="lt_power_marginE"></td>
+</tr>
+
+
+<tr><td><b>No. of Poles(P)</b></td>
+<td>
+<select id="ct_pole">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="6" selected>6</option>
+<option value="8">8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</td>
+
+<td>
+<select id="lt_pole">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="6" selected>6</option>
+<option value="8">8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</td>
+
+<td>
+<select id="ct_poleE">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="6">6</option>
+<option value="8">8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</td>
+
+<td>
+<select id="lt_poleE">
+<option value="2">2</option>
+<option value="4">4</option>
+<option value="6">6</option>
+<option value="8">8</option>
+<option value="10">10</option>
+<option value="12">12</option>
+</select>
+</td>
+</tr>
+</table>
+
+</div>
+<!-- ===================================================== -->
+<!-- ================= ROPE DRUM LENGTH ================== -->
+<!-- ===================================================== -->
+<div class="input-card Drum-length">
+<div class="card-title">Rope Drum Length</div>
+
+<table>
+<tr>
+<th>Parameter</th><th>MH</th><th>AH</th>
+</tr>
+
+<tr>
+<td><b>Lift Height L (m)</b></td>
+<td><input id="HL" value="30"></td>
+<td><input id="hl" value="32"></td>
+</tr>
+
+<tr>
+<td><b>No. of Rope Drum (k)</b></td>
+<td><input id="DFk" value="1"></td>
+<td><input id="dfk" value="1"></td>
+</tr>
+
+
+<tr>
+<td><b>Groove Pitch p (mm)</b></td>
+<td><input id="P" value="35"></td>
+<td><input id="p" value="30"></td>
+</tr>
+
+<tr>
+<td><b>No. of Extra Grooves(n)</b></td>
+<td><input id="em" value="5"></td>
+<td><input id="ea" value="5"></td>
+</tr>
+
+<tr>
+<td><b>Ungrooved Length at Center d2 (mm)</b></td>
+<td><input id="D2" value="500"></td>
+<td><input id="d2" value="100"></td>
+</tr>
+
+<tr>
+<td><b>Clamp distance at Drum End d3 (mm)</b></td>
+<td><input id="D3" value="290"></td>
+<td><input id="d3" value="200"></td>
+</tr>
+</table>
+<br>
+
+
+<!-- ===================================================== -->
+<!-- ==================== SHEAVE TAB ===================== -->
+<!-- ===================================================== -->
+<div class="card-title">Sheave Calculation</div>
+
+
+      <table>
+        <tr>
+    <th><b>parameter</b></th>
+    <th><b>MH</b></th>
+    <th><b>AH</b></th>
+    </tr>
+
+        <tr>
+    <td><b>Wire Rope Construction</b></td>
+    <td>
+        <select id="ropeConst_MH" onchange="updateCrc()" >
+            <option value="">-- Select --</option>
+            <option value="1" selected>6 × 36 / 6 × 37 / Compacted</option>
+            <option value="1.12">6 × 24</option>
+            <option value="1.25">6 × 19</option>
+        </select>
+    </td>
+    <td>
+        <select id="ropeConst_AH" onchange="updateCrc()">
+            <option value="">-- Select --</option>
+            <option value="1" selected>6 × 36 / 6 × 37 / Compacted</option>
+            <option value="1.12">6 × 24</option>
+            <option value="1.25">6 × 19</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td><b>Crc</b></td>
+    <td><input id="Crc_MH" type="number" readonly></td>
+    <td><input id="Crc_AH" type="number" readonly></td>
+</tr>
+ </table>
+<br>
+<!-- ===================================================== -->
+<!-- ==================== GEAR BOX ======================= -->
+<!-- ===================================================== -->
+<div class="card-title">Gear Box Ratio Selection</div>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>MH</th>
+  <th>AH</th>
+  <th>CT</th>
+  <th>LT</th>
+</tr>
+
+
+
+
+<tr>
+  <td>Duty Factor DF</td>
+  <td><input id="df_mh" value="1.6"></td>
+  <td><input id="df_ah" value="1.6"></td>
+  <td><input id="df_ct" value="1.6"></td>
+  <td><input id="df_lt" value="1.6"></td>
+</tr>
+</table>
+</div>
+
+<!-- ===================================================== -->
+<!-- ========= Wheel Load And Wheel Slection ============= -->
+<!-- ===================================================== --> 
+<div class="input-card wheel"> 
+<div class="card-title"> <h2>Wheel Load & Wheel Selection</h2></div>      
+
+    <h3><b>CT Wheel Load</b></h3>
+    <table>
+    
+  
+      
+    <tr><td>Max. Hook distance Wheel Gauge (p)</td>
+    <td><input id="ct_p0" type="number" value="4200"></td>
+    </tr>
+    
+    <tr><td>Max. Hook distance Wheel Base (q)</td><td>
+      <input id="ct_q0" type="number" value="2225"></td></tr>
+      
+    <tr><td>CT Gauge (y)</td><td>
+      <input id="ct_y0" type="number" value="8000"></td>
+      </tr>
+      
+    <tr><td>CT Base (z)</td><td>
+      <input id="ct_z0" type="number" value="3950"></td>
+      </tr>
+     
+     <tr><td>No. of Wheels (n)</td>
+    <td><input id="ct_n0" type="number" value="4"></td>
+    </tr>
+  </table>
+  
+<h3><b>LT Wheel Load</b></h3>
+
+  <table>
+
+    
+    <tr><td>Min Hook Approach (A)</td>
+    <td><input id="lt_A0" type="number" value="2"></td>
+    </tr>
+    
+    <tr><td>Max Hook Approach (B)</td>
+    <td><input id="lt_B0" type="number" value="4"></td>
+    </tr>
+    
+    <tr><td>Crane Span (S)</td>
+    <td><input id="lt_S0" type="number" value="30"></td>
+    </tr>
+    
+    <tr><td>No. of Wheels (n)</td>
+    <td><input id="lt_n0" type="number" value="16"></td>
+    </tr>
+    
+  </table>
+
+  <!-- ================= INPUT PARAMETERS ================= -->
+  <h3><b>Wheel Input Parameters</b></h3>
+  <table>
+    <tr>
+      <th>Parameter</th>
+      <th>Symbol</th>
+      <th>CT</th>
+      <th>LT</th>
+    </tr>
+
+    <tr>
+      <td>Limiting Pressure of Wheel</td>
+      <td>PL</td>
+      <td><input id="ct_pl" type="number" value="6.5"></td>
+      <td><input id="lt_pl" type="number" value="6.5"></td>
+    </tr>
+	
+	<tr>
+    <td><b>Selected Rail Size</b></td>
+	<td>-</td>
+
+    <td>
+        <select id="ct_rail_size" oninput="onInput()">
+            <option value="">Select Rail</option>
+            <option value="30">30 lb./yd</option>
+            <option value="60">60 lb./yd</option>
+            <option value="CR50">CR : 50</option>
+            <option value="CR60">CR : 60</option>
+            <option value="CR80">CR : 80</option>
+            <option value="CR100">CR : 100</option>
+            <option value="CR120">CR : 120</option>
+            <option value="CR140">CR : 140</option>
+        </select>
+    </td>
+
+    <td>
+        <select id="lt_rail_size" oninput="onInput()">
+            <option value="">Select Rail</option>
+            <option value="30">30 lb./yd</option>
+            <option value="60">60 lb./yd</option>
+            <option value="CR50">CR : 50</option>
+            <option value="CR60">CR : 60</option>
+            <option value="CR80">CR : 80</option>
+            <option value="CR100">CR : 100</option>
+            <option value="CR120">CR : 120</option>
+            <option value="CR140">CR : 140</option>
+        </select>
+    </td>
+</tr>
+    
+
+
+    <tr>
+      <td>Top Width (mm)</td>
+      <td>b</td>
+      <td><input id="ct_b" type="number" value="100"></td>
+      <td><input id="lt_b" type="number" value="100"></td>
+    </tr>
+
+    <tr>
+      <td>Corner Radius (mm)</td>
+      <td>r</td>
+      <td><input id="ct_r" type="number" value="8"></td>
+      <td><input id="lt_r" type="number" value="8"></td>
+    </tr>
+
+    <tr>
+      <td>Coefficient (Wheel RPM)</td>
+      <td>C1</td>
+      <td><input id="ct_c1" type="number" value="1.091"></td>
+      <td><input id="lt_c1" type="number" value="0.973"></td>
+    </tr>
+
+    <tr>
+      <td>Coefficient (Mechanism)</td>
+      <td>C2</td>
+      <td><input id="ct_c2" type="number" value="0.8"></td>
+      <td><input id="lt_c2" type="number" value="0.8"></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===================================================== -->
+<!-- =============== BARREL COUPLING ===================== -->
+<!-- ===================================================== -->
+<div class="input-card Barrel-Coupling">
+<div class="card-title">Barrel Coupling (Between Gearbox & Rope Drum)</div> 
+
+    <table>
+        <tr>
+            <th><b>Input Parameter</b></th>
+            <th><b>MH</b></th>
+            <th><b>AH</b></th>
+        </tr>
+
+ 
+
+
+        <tr>
+            <td><b>Transmission Ratio ir</b></td>
+            <td><input id="bc_ir_mh" type="number" value="6"></td>
+            <td><input id="bc_ir_ah" type="number" value="2"></td>
+        </tr>
+
+        <tr>
+            <td><b>Service Factor K1</b></td>
+            <td><input id="bc_k1_mh" type="number" value="2"></td>
+            <td><input id="bc_k1_ah" type="number" value="2"></td>
+        </tr>
+
+        <tr>
+            <td><b>Operating Factor K2</b></td>
+            <td><input id="bc_k2_mh" type="number" value="0.93"></td>
+            <td><input id="bc_k2_ah" type="number" value="0.97"></td>
+        </tr>
+
+        <tr>
+            <td><b>Drum Self Mass Md (kg)</b></td>
+            <td><input id="bc_md_mh" type="number" value="7100"></td>
+            <td><input id="bc_md_ah" type="number" value="1450"></td>
+        </tr>
+    </table>
+<br>
+<!-- ===================================================== -->
+<!-- ==================== BUFFERS ======================= -->
+<!-- ===================================================== -->
+<div class="card-title"><h2>Buffers Selection</h2></div> 
+
+
+<h3><b>CT Buffer Selection</b></h3>
+<table>
+<tr><td>Design Speed Percent (%) C</td>
+<td><input id="ctb_C" type="number" value="0.7"></td></tr>
+
+<tr><td>Compression Stroke L (m)</td>
+<td><input id="ctb_L" type="number" value="0.01"></td></tr>
+</table>
+
+
+
+<h3><b>LT Buffer Selection</b></h3>
+<table>
+<tr><td>Span S (m)</td>
+<td><input id="ltb_S" type="number" value="27"></td></tr>
+<tr><td>Min Trolley Approach a (m)</td>
+<td><input id="ltb_a" type="number" value="2.5"></td></tr>
+<tr><td>Design Speed Factor C</td>
+<td><input id="ltb_C" type="number" value="0.7"></td></tr>
+<tr><td>Compression Stroke L (m)</td>
+<td><input id="ltb_L" type="number" value="0.4"></td></tr>
+</table>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- ============ ROPE DRUM STRESS ======================= -->
+<!-- ===================================================== -->
+<div class="input-card Stress">
+<h2>Rope Drum Stress Calculation</h2>
+
+<table>
+<tr>
+  <th>Parameter</th>
+  <th>MH</th>
+  <th>AH</th>
+</tr>
+
+
+
+<tr><td>Outer Drum Dia D (cm)</td>
+<td><input id="d_mhs" type="number" value="200"></td>
+<td><input id="d_ahs" type="number" value="195"></td></tr>
+
+<tr><td>Inner Drum Dia d (cm)</td>
+<td><input id="di_mhs" type="number" value="100"></td>
+<td><input id="di_ahs" type="number" value="95"></td></tr>
+
+<tr><td>Pitch p (cm)</td>
+<td><input id="p_mhs" type="number" value="3.2"></td>
+<td><input id="p_ahs" type="number" value="3.7"></td></tr>
+
+<tr><td>Thickness below groove t (cm)</td>
+<td><input id="t_mhs" type="number" value="2.7"></td>
+<td><input id="t_ahs" type="number" value="2.7"></td></tr>
+
+
+</table>
+</div>
+
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- ====================== HOIST ======================== -->
+<!-- ===================================================== -->
+
+<div id="Hoist" class="tabcontent">
+<button type="button" onclick="calculateAll()" class="calculate-btn">
+    Calculate ALL
+</button>
+
+<div class="input-layout">
+<div class="input-card hoist-result">
+<div class="section-title">
+        MH and AH Motor Power
+    </div>
+<table>
+<tr><th><b>Parameter</b></th><th><b>MH</b></th><th><b>AH</b></th></tr>
+
+<tr><td><b>Total Weight M (Ton)</td>
+<td class="result" id="mh_M"></td>
+<td class="result" id="ah_M"></td></tr>
+
+<tr><td><b>Overall Efficiency (E)</td>
+<td class="result" id="mh_E"></td>
+<td class="result" id="ah_E"></td></tr>
+
+<tr><td><b>Mechanical Power (Pmech.)</td>
+<td class="result" id="mh_Pmech"></td>
+<td class="result" id="ah_Pmech"></td></tr>
+
+<tr><td><b>Required Motor Power ( Pele.)</td>
+<td class="result" id="mh_Pele"></td>
+<td class="result" id="ah_Pele"></td></tr>
+
+<tr><td><b>Selected Motor (kW)</b></td>
+<td class="result" id="mh_motor"></td>
+<td class="result" id="ah_motor"></td></tr>
+
+<tr><td><b>Selected Motor RPM</b></td>
+<td class="result" id="mh_rpm"></td>
+<td class="result" id="ah_rpm"></td></tr>
+
+
+<tr>
+<td><b>Selected Motor given by manufacturer (kW)</b></td>
+<td><input id="mh_motors" oninput="onInput()"></td>
+<td><input id="ah_motors" oninput="onInput()"></td>
+</tr>
+
+<tr>
+<td><b>Selected Motor RPM given by manufacturer</b></td>
+<td><input id="mh_rpms" oninput="onInput()"></td>
+<td><input id="ah_rpms" oninput="onInput()"></td>
+</tr>
+</table>
+
+</div>
+
+<div class="input-card hoist-motor">
+
+
+    <summary>Motor Specification</summary>
+
+    <div class="motor-spec-content">
+        <p class="frame-size">
+    <b>Motor Frame Size:</b>
+
+    <span class="motor-label">MH:</span>
+    <span id="mh_frame"></span>
+
+
+
+    <span class="motor-label">AH:</span>
+    <span id="ah_frame"></span>
+</p>
+
+<p class="motor-pole">
+
+     <b>Motor Quantity:</b>
+	    <span class="motor-label">MH:</span>
+    <span id="mh_qty"></span>
+
+    <span class="frame-separator">|</span>
+
+    <span class="motor-label">AH:</span>
+    <span id="ah_qty"></span>
+	
+    <b>Motor Pole:</b>
+
+    <span class="motor-label">MH:</span>
+    <span id="mh_pole_spec"></span>
+
+    <span class="frame-separator">|</span>
+
+    <span class="motor-label">AH:</span>
+    <span id="ah_pole_spec"></span>
+	
+	
+</p>
+
+<div class="frame-recommendation">
+
+    <div id="mh_frame_info"></div>
+
+    <div id="ah_frame_info"></div>
+
+</div>
+        <p><b>Motor Type:</b> 3-Phase TEFC Squirrel Cage Induction Motor</p>
+        <p><b>Voltage:</b> 415 ±10% V</p>
+        <p><b>Frequency:</b> 50 ±5% Hz</p>
+        <p><b>Ambient:</b> 50°C</p>
+        <p><b>Rating:</b> Continuous</p>
+        <p><b>Temperature Rise:</b> 70°C</p>
+        <p><b>Insulation:</b> Class F with Class B Temperature Rise</p>
+        <p><b>Protection:</b> IP55</p>
+        <p><b>Combined Variation:</b> ±10% (Absolute Sum)</p>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- ====================== TRAVEL ======================== -->
+<!-- ===================================================== -->
+
+<div id="Travel" class="tabcontent">
+
+<div class="input-layout">
+
+<div class="input-card travel-result">
+<div class="section-title">
+        CT and LT Motor Power
+    </div>
+<table>
+<tr>
+    <th>Parameter</th>
+    <th>CT Normal</th>
+    <th>LT Normal</th>
+    <th>CT-E (Emergency)</th>
+    <th>LT-E (Emergency)</th>
+</tr>
+
+<tr><td><b>Overall Efficiency (N)</b></td>
+<td class="result" id="ct_N"></td>
+<td class="result" id="lt_N"></td>
+<td class="result" id="ct_NE"></td>
+<td class="result" id="lt_NE"></td>
+</tr>
+
+<tr><td><b>Running Power (Pr)</b></td>
+<td class="result" id="ct_Pr"></td>
+<td class="result" id="lt_Pr"></td>
+<td class="result" id="ct_PrE"></td>
+<td class="result" id="lt_PrE"></td>
+</tr>
+
+<tr><td><b>Acceleration Power(Pa)</b></td>
+<td class="result" id="ct_Pa"></td>
+<td class="result" id="lt_Pa"></td>
+<td class="result" id="ct_PaE"></td>
+<td class="result" id="lt_PaE"></td>
+</tr>
+
+<tr><td><b>Mechanical Power (Pmech.)</b></td>
+<td class="result" id="ct_Pmech"></td>
+<td class="result" id="lt_Pmech"></td>
+<td class="result" id="ct_PmechE"></td>
+<td class="result" id="lt_PmechE"></td>
+</tr>
+
+<tr><td><b>Required Motor Power (Pele.)</b></td>
+<td class="result" id="ct_Pele"></td>
+<td class="result" id="lt_Pele"></td>
+<td class="result" id="ct_PeleE"></td>
+<td class="result" id="lt_PeleE"></td>
+</tr>
+
+<tr><td><b>Selected Motor (kW)</b></td>
+<td class="result" id="ct_motor"></td>
+<td class="result" id="lt_motor"></td>
+<td class="result" id="ct_motorE"></td>
+<td class="result" id="lt_motorE"></td>
+</tr>
+
+<tr><td><b>Selected Motor RPM</b></td>
+<td class="result" id="ct_rpm"></td>
+<td class="result" id="lt_rpm"></td>
+<td class="result" id="ct_rpmE"></td>
+<td class="result" id="lt_rpmE"></td>
+</tr>
+
+<tr><td><b>Selected Motor (kW) given by manufacturer</b></td>
+<td><input id="ct_motors"   disabled></td>
+<td><input id="lt_motors"   disabled></td>
+<td><input id="ct_motorEs" oninput="onInput()"></td>
+<td><input id="lt_motorEs" oninput="onInput()"></td></tr>
+
+
+<tr><td><b>Selected Motor RPM given by manufacturer</b></td>
+<td><input id="ct_rpms"   disabled></td>
+<td><input id="lt_rpms"   disabled></td>
+<td><input id="ct_rpmEs" oninput="onInput()"></td>
+<td><input id="lt_rpmEs" oninput="onInput()" ></td>
+</table>
+
+</div>
+<!-- =========================================
+     TRAVEL MOTOR SPECIFICATION
+     ========================================= -->
+
+<div class="input-card hoist-motor">
+
+
+    <summary>Motor Specification</summary>
+
+    <div class="motor-spec-content">
+                 <p class="frame-size">
+	<b>Motor Quantity:</b>
+
+    <span class="frame-item">
+        <strong>CT</strong>
+        <span id="ct_qty"></span>
+    </span>
+
+    <span class="frame-item">
+        <strong>LT</strong>
+        <span id="lt_qty"></span>
+    </span>
+	
+    <b>Motor Frame Size:</b>
+
+    <span class="frame-item">
+        <strong>CT</strong>
+        <span id="ct_frame"></span>
+    </span>
+
+    <span class="frame-item">
+        <strong>LT</strong>
+        <span id="lt_frame"></span>
+    </span>
+</p>
+<p class="motor-pole">
+    <b>Motor Pole:</b>
+
+    CT:
+    <span id="ct_pole_spec"></span>
+
+    &nbsp; | &nbsp;
+
+    LT:
+    <span id="lt_pole_spec"></span>
+</p>
+
+<div class="frame-info">
+    <div id="ct_frame_info"></div>
+    <div id="lt_frame_info"></div>
+</div>
+        <p><b>Motor Type:</b> 3-Phase TEFC Squirrel Cage Induction Motor</p>
+        <p><b>Voltage:</b> 415 ±10% V</p>
+        <p><b>Frequency:</b> 50 ±5% Hz</p>
+        <p><b>Ambient:</b> 50°C</p>
+        <p><b>Rating:</b> Continuous</p>
+        <p><b>Temperature Rise:</b> 70°C</p>
+        <p><b>Insulation:</b> Class F with Class B Temperature Rise</p>
+        <p><b>Protection:</b> IP55</p>
+        <p><b>Combined Variation:</b> ±10% (Absolute Sum)</p>
+
+    </div>
+
+</div>
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- ====================== BRAKE ======================== -->
+<!-- ===================================================== -->
+
+<div id="Brake" class="tabcontent">
+<div class="input-layout">
+<div class="input-card Brake-result">
+<div class="brake-table-wrapper">
+<div class="section-title">
+        Brake Selection
+    </div>
+<table>
+  <tr>
+    <th>Parameter</th>
+    <th>MH Based on Electrical Power</th>
+    <th>MH Based on Mechanical Power</th>
+    <th>AH Based on Electrical Power</th>
+    <th>AH Based on Mechanical Power</th>
+    <th>CT Based on Electrical Power</th>
+    <th>CT Based on Mechanical Power</th>
+    <th>LT Based on Electrical Power</th>
+    <th>LT Based on Mechanical Power</th>
+  </tr>
+  
+  <tr>
+    <td><b>Required Torque (T) (Kgm)</b></td>
+    <td class="result" id="mh_T1"></td>
+    <td class="result" id="mh_T1m"></td>
+    <td class="result" id="ah_T1"></td>
+    <td class="result" id="ah_T1m"></td>
+    <td class="result" id="ct_T1"></td>
+    <td class="result" id="ct_T1m"></td>
+    <td class="result" id="lt_T1"></td>
+    <td class="result" id="lt_T1m"></td>
+</tr>
+
+<tr>
+    <td><b>No. of Slected Brake</b></td>
+    <td colspan="2" class="result" id="mh_br"></td>
+    <td colspan="2" class="result" id="ah_br"></td>
+    <td colspan="2" class="result" id="ct_br"></td>
+    <td colspan="2" class="result" id="lt_br"></td>
+</tr>
+
+<tr>
+    <td><b>Selected Drum Torque rating (kgm)</b></td>
+    <td class="result" id="mh_drumt"></td>
+    <td class="result" id="mh_drumtm"></td>
+    <td class="result" id="ah_drumt"></td>
+    <td class="result" id="ah_drumtm"></td>
+    <td class="result" id="ct_drumt"></td>
+    <td class="result" id="ct_drumtm"></td>
+    <td class="result" id="lt_drumt"></td>
+    <td class="result" id="lt_drumtm"></td>
+</tr>
+
+  
+<tr>
+    <td><b>Selected Drum Brake Dia (mm)</b></td>
+    <td  class="result" id="mh_drum"></td>
+    <td  class="result" id="mh_drumm"></td>
+    <td  class="result" id="ah_drum"></td>
+    <td  class="result" id="ah_drumm"></td>
+    <td  class="result" id="ct_drum"></td>
+    <td  class="result" id="ct_drumm"></td>
+    <td  class="result" id="lt_drum"></td>
+    <td  class="result" id="lt_drumm"></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- ===================== WIRE ROPE ===================== -->
+<!-- ===================================================== -->
+
+<div id="Rope" class="tabcontent">
+<div class="input-layout">
+<div class="input-card wire-rope-result">
+<div class="section-title">
+        Wire-Rope Selection
+    </div>
+<table>
+ <tr><th><b>Parameter</b></th><th><b>MH</b></th><th><b>AH</b></th></tr>
+<tr><td><b>Total Weight (M)</b></td>
+<td class="result" id="mh_W2"></td>
+<td class="result" id="ah_w2"></td>
+</tr>
+
+  <tr><td><b>Load per Rope (S)</b></td>
+<td class="result" id="mh_F2"></td>
+<td class="result" id="ah_F2"></td>
+ </tr>
+  <tr><td><b>Required Breaking Strength</b></td>
+<td class="result" id="mh_B2"></td>
+<td class="result" id="ah_b2"></td>
+ </tr>
+ <tr><td><b>Required Breaking Load</b></td>
+<td class="result" id="mh_L2"></td>
+<td class="result" id="ah_l2"></td>
+ </tr>
+ <tr>
+    <td><b>Selected Rope Diameter (mm)</b></td>
+    <td class="result" id="mh_dia"></td>
+    <td class="result" id="ah_dia"></td>
+</tr>
+<tr>
+    <td><b>Rope Diameter given by manufacturer</b></td>
+   <td><input id="mh_diamanu" oninput="onInput()"></td>
+   <td><input id="ah_diamanu" oninput="onInput()"></td>
+
+</tr>
+</table>   
+</div>
+
+</div>
+</div>
+
+<!-- ===================================================== -->
+<!-- ==================== SHEAVE TAB ===================== -->
+<!-- ===================================================== -->
+<div id="Sheave" class="tabcontent">
+ <div class="input-layout">
+<div class="input-card sheave-result">
+<div class="section-title">
+        MH and AH  Sheave
+    </div>    
+     <table>
+    <tr><th><b>Parameter</b></th><th><b>MH</b></th><th><b>AH</b></th></tr>
+    
+    <tr><td><b>Main Sheave at Axis (Dm)</b></td>
+    <td class="result" id="mh_Dm"></td>
+    <td class="result" id="ah_Dm"></td>
+    </tr> 
+    <tr><td><b>Main Sheave Bottom (Dm')</b></td>
+    <td class="result" id="mh_Dmm"></td>
+    <td class="result" id="ah_Dmm"></td>
+    </tr>
+    <tr><td><b>Equalizer Sheave Axis (De)</b></td>
+    <td class="result" id="mh_De"></td>
+    <td class="result" id="ah_De"></td>
+    </tr>
+    <tr><td><b>Equalizer Sheave Axis (De')</b></td>
+    <td class="result" id="mh_Dee"></td>
+    <td class="result" id="ah_Dee"></td>
+    </tr>
+    <tr><td><b>Selected Main Sheave PCD (mm) </b></td>
+    <td><input id="mh_Dpp" type="number" oninput="onInput()"></td>
+    <td><input id="ah_Dpp" type="number" oninput="onInput()"></td>
+    </tr> 
+	<tr><td><b>Selected Eq Sheave PCD (mm) </b></td>
+    <td><input id="mh_epp" type="number" oninput="onInput()"></td>
+    <td><input id="ah_epp" type="number" oninput="onInput()"></td>
+    </tr> 
+    </table>
+
+</div>
+
+
+
+<div class="input-card recommended-sheave">
+
+    <div class="section-title">
+        Recommended Sheave Selection AS Per (IPSS:1-08-002-18)	
+    </div>
+
+    <div class="recommended-sheave-content">
+
+        <!-- MH -->
+        <div class="sheave-recommendation">
+
+            <div class="recommendation-title">
+                MH
+            </div>
+
+            <div class="recommendation-row">
+                <span>Selected Rope Dia</span>
+                <strong>
+                    <span id="mh_rope_dia_rec"></span> mm
+                </strong>
+            </div>
+			
+			<!-- MAIN SHEAVE -->
+
+<div class="recommendation-row">
+    <span>Main Sheave Designation</span>
+    <strong id="mh_main_sheave_designation"></strong>
+</div>
+
+<div class="recommendation-row">
+    <span>Main Selected Sheave Dia</span>
+    <strong>
+        <span id="mh_main_sheave_dia"></span> mm
+    </strong>
+</div>
+
+<div class="recommendation-row final-pcd">
+    <span>Main Selected Sheave PCD</span>
+    <strong>
+        <span id="mh_main_sheave_pcd"></span> mm
+    </strong>
+</div>
+
+
+<!-- EQUALIZER SHEAVE -->
+
+<div class="recommendation-row">
+    <span>Eq. Sheave Designation</span>
+    <strong id="mh_eq_sheave_designation"></strong>
+</div>
+
+<div class="recommendation-row">
+    <span>Eq. Selected Sheave Dia</span>
+    <strong>
+        <span id="mh_eq_sheave_dia"></span> mm
+    </strong>
+</div>
+
+<div class="recommendation-row final-pcd">
+    <span>Eq. Selected Sheave PCD</span>
+    <strong>
+        <span id="mh_eq_sheave_pcd"></span> mm
+    </strong>
+</div>
+
+        </div>
+
+
+        <!-- AH -->
+        <div class="sheave-recommendation">
+
+            <div class="recommendation-title">
+                AH
+            </div>
+
+            <div class="recommendation-row">
+                <span>Selected Rope Dia</span>
+                <strong>
+                    <span id="ah_rope_dia_rec"></span> mm
+                </strong>
+            </div>
+			<!-- MAIN SHEAVE -->
+
+<div class="recommendation-row">
+    <span>Main Sheave Designation</span>
+    <strong id="ah_main_sheave_designation"></strong>
+</div>
+
+<div class="recommendation-row">
+    <span>Main Selected Sheave Dia</span>
+    <strong>
+        <span id="ah_main_sheave_dia"></span> mm
+    </strong>
+</div>
+
+<div class="recommendation-row final-pcd">
+    <span>Main Selected Sheave PCD</span>
+    <strong>
+        <span id="ah_main_sheave_pcd"></span> mm
+    </strong>
+</div>
+
+
+<!-- EQUALIZER SHEAVE -->
+
+<div class="recommendation-row">
+    <span>Eq. Sheave Designation</span>
+    <strong id="ah_eq_sheave_designation"></strong>
+</div>
+
+<div class="recommendation-row">
+    <span>Eq. Selected Sheave Dia</span>
+    <strong>
+        <span id="ah_eq_sheave_dia"></span> mm
+    </strong>
+</div>
+
+<div class="recommendation-row final-pcd">
+    <span>Eq. Selected Sheave PCD</span>
+    <strong>
+        <span id="ah_eq_sheave_pcd"></span> mm
+    </strong>
+</div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- ================= ROPE DRUM DIA ===================== -->
+<!-- ===================================================== -->
+
+<div id="Drum_dia" class="tabcontent">
+ <div class="input-layout">
+<div class="input-card drum-dia-result"> 
+<div class="section-title">
+        MH and AH Rope Drum Dia.
+    </div>
+<table>
+<tr>
+<th>Result</th><th>MH</th><th>AH</th>
+</tr>
+
+<tr>
+<td>Drum Dia at Axis Dd (mm)</td>
+<td class="result" id="mh_DA"></td>
+<td class="result" id="ah_da"></td>
+</tr>
+
+<tr>
+<td>Drum Dia at Groove Bottom Dd'</td>
+<td class="result" id="mh_DG"></td>
+<td class="result" id="ah_dg"></td>
+</tr>
+
+<tr>
+<td>Drum dia at Shell OD Drd (mm)</td>
+<td class="result" id="mh_SOD"></td>
+<td class="result" id="ah_sod"></td>
+</tr>
+
+<tr>
+<td>Selected Drum PCD given by manufacturer  D (mm)</td>
+<td><input id="DPCD" type="number" oninput="onInput()"></td>
+<td><input id="dpcd" type="number" oninput="onInput()"></td>
+</tr>
+
+</table>
+
+
+</div>
+</div>
+</div>
+
+<!-- ===================================================== -->
+<!-- ================= ROPE DRUM LENGTH ================== -->
+<!-- ===================================================== -->
+
+<div id="Drum_Len" class="tabcontent">
+ <div class="input-layout">
+<div class="input-card drum-length-result"> 
+<div class="section-title">
+        MH and AH Rope-Drum Length
+    </div>
+<table>
+<tr>
+<th>Result</th><th>MH</th><th>AH</th>
+</tr>
+
+<tr>
+<td><b>Active Grooves g</b></td>
+<td class="result" id="mh_AG"></td>
+<td class="result" id="ah_ag"></td>
+</tr>
+
+<tr>
+<td><b>Total Grooves  (G)</b></td>
+<td class="result" id="mh_TG"></td>
+<td class="result" id="ah_tg"></td>
+</tr>
+
+<tr>
+<td><b>Grooved Distance on both side d1 (mm)</b></td>
+<td class="result" id="mh_GD"></td>
+<td class="result" id="ah_gd"></td>
+</tr>
+
+<tr>
+<td><b>Total Drum Length (mm)</b></td>
+<td class="result" id="mh_TD"></td>
+<td class="result" id="ah_td"></td>
+</tr>
+
+<tr>
+<td><b>Slected Total Drum Length  given by manufacturer (mm)</b></td>
+<td><input id="mh_TDs" type="number" oninput="onInput()"></td>
+<td><input id="ah_tds" type="number" oninput="onInput()"></td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- ===================================================== -->
+<!-- ========= Wheel Load And Wheel Slection ============= -->
+<!-- ===================================================== -->
+<div id="Wheel" class="tabcontent">
+ <div class="input-layout">
+<div class="input-card wheel-result"> 
+<div class="section-title">
+        CT and LT wheel Selection
+    </div>
+<table>
+  <tr>
+    <th>CT Wheel Load</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Max Wheel Load (Pmax)</td>
+    <td class="result" id="ct_pmax1"></td>
+  </tr>
+  <tr>
+    <td>Min Wheel Load (Pmin)</td>
+    <td class="result" id="ct_pmin1"></td>
+  </tr>
+</table>
+
+ 
+   <table>
+   <tr>
+   <th>LT Wheel Load</th>
+   <th>Value</th>
+   </tr>
+   <tr>
+   <td>Max Wheel Load (Pmax)</td>
+   <td class="result" id="lt_pmax1">—</td>
+   </tr>
+   <tr>
+   <td>Min Wheel Load (Pmin)</td>
+   <td class="result" id="lt_pmin1"></td>
+   </tr>
+   
+   </table>
+
+ 
+  <!-- ================= OUTPUT PARAMETERS ================= -->
+  <h2>Wheel Selection Output</h2>
+  <table>
+    <tr>
+      <th>Parameter</th>
+      <th>CT</th>
+      <th>LT</th>
+    </tr>
+
+
+    <tr>
+      <td>Mean Wheel Load (Pmean (Ton)</td>
+      <td class="result" id="ct_pmean"></td>
+      <td class="result" id="lt_pmean"></td>
+    </tr>
+
+    <tr>
+      <td>Mean Load (Fmean)(kN)</td>
+      <td class="result" id="ct_f1"></td>
+      <td class="result" id="lt_f1"></td>
+    </tr>
+
+    <tr>
+      <td>Useful Rail Width (w) (mm)</td>
+      <td class="result" id="ct_w"></td>
+      <td class="result" id="lt_w"></td>
+    </tr>
+
+    <tr>
+      <td>Calculated Wheel Dia (D) (mm)</td>
+      <td class="result" id="ct_d_calc"></td>
+      <td class="result" id="lt_d_calc"></td>
+    </tr>
+     <tr>
+      <td>Selected  Wheel Dia. (mm)</td>
+      <td><input id="ct_d_manu" oninput="onInput()"></td>
+      <td><input id="lt_d_manu" oninput="onInput()"></td>
+    </tr>
+  </table>
+</div>
+
+<div class="input-card recommended-wheel">
+
+    <div class="section-title">
+        Recommended Wheel Selection As Per ( IPSS:1-08-001-18 )
+    </div>
+
+    <div class="recommended-wheel-content">
+
+
+        <!-- ================= CT ================= -->
+
+        <div class="wheel-recommendation">
+
+            <div class="recommendation-title">
+                CT Wheel
+            </div>
+
+            <div class="recommendation-row">
+                <span>Selected Rail Size</span>
+                <strong id="ct_rail_rec"></strong>
+            </div>
+
+            <div class="recommendation-row">
+                <span>Recommended Wheel Size</span>
+                <strong id="ct_wheel_size_rec"></strong>
+            </div>
+
+            <div class="recommendation-row final-wheel">
+                <span>Recommended Wheel Dia</span>
+                <strong>
+                    <span id="ct_wheel_dia_rec"></span> mm
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- ================= LT ================= -->
+
+        <div class="wheel-recommendation">
+
+            <div class="recommendation-title">
+                LT Wheel
+            </div>
+
+            <div class="recommendation-row">
+                <span>Selected Rail Size</span>
+                <strong id="lt_rail_rec"></strong>
+            </div>
+
+            <div class="recommendation-row">
+                <span>Recommended Wheel Size</span>
+                <strong id="lt_wheel_size_rec"></strong>
+            </div>
+
+            <div class="recommendation-row final-wheel">
+                <span>Recommended Wheel Dia</span>
+                <strong>
+                    <span id="lt_wheel_dia_rec"></span> mm
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- ==================== GEAR BOX ======================= -->
+<!-- ===================================================== -->
+ <div id="Gearbox" class="tabcontent">
+ <div class="input-layout">
+<div class="input-card gear-box-result">
+<div class="section-title">
+        Gear-Box Selection
+    </div> 
+  <table>
+<tr>
+   <th><b>Parameter</b></th>
+   <th><b>MH</b></th>
+   <th><b>AH</b></th>
+   <th><b>CT</b></th>
+   <th><b>LT</b></th>
+   </tr>
+
+<tr>
+  <td><b>Required Gearbox Power</b></td>
+  <td class="result" id="pg_mh"></td>
+  <td class="result" id="pg_ah"></td>
+  <td class="result" id="pg_ct"></td>
+  <td class="result" id="pg_lt"></td>
+</tr>
+
+<tr>
+  <td><b>Required Gear Ratio r</b></td>
+  <td class="result" id="r_mh"></td>
+  <td class="result" id="r_ah"></td>
+  <td class="result" id="r_ct"></td>
+  <td class="result" id="r_lt"></td>
+</tr>
+
+<tr>
+  <td><b>Manufacturer Gear Ratio</b></td>
+  <td><input id="r_mh_manu" type="number" oninput="onInput()"></td>
+  <td><input id="r_ah_manu" type="number" oninput="onInput()"></td>
+  <td><input id="r_ct_manu" type="number" oninput="onInput()"></td>
+  <td><input id="r_lt_manu" type="number" oninput="onInput()"></td>
+</tr>
+
+</table>
+
+</div>
+</div>
+</div>
+<!-- ===================================================== -->
+<!-- =============== BARREL COUPLING ===================== -->
+<!-- ===================================================== -->
+
+<div id="BarrelCoupling" class="tabcontent">
+<div class="input-layout">
+
+<div class="input-card barrel-result">
+ <div class="section-title">
+        MH and AH Barrel Coupling
+    </div>
+    <table>
+        <tr>
+            <th><b>Result</b></th>
+            <th><b>MH</b></th>
+            <th><b>AH</b></th>
+        </tr>
+
+        <tr>
+            <td><b>Net Mass Mnet (kg)</b></td>
+            <td class="result" id="bc_mnet_mh"></td>
+            <td class="result" id="bc_mnet_ah"></td>
+        </tr>
+
+        <tr>
+            <td><b>Net Load Wnet (N)</b></td>
+            <td class="result" id="bc_wnet_mh"></td>
+            <td class="result" id="bc_wnet_ah"></td>
+        </tr>
+        <tr>
+            <td><b>Approx. Self weight of Rope Drum Wd (N)</b></td>
+            <td class="result" id="bc_Wd_mh"></td>
+            <td class="result" id="bc_Wd_ah"></td>
+        </tr>
+
+        <tr>
+            <td><b>Drum Speed n (RPM)</b></td>
+            <td class="result" id="bc_speed_mh"></td>
+            <td class="result" id="bc_speed_ah"></td>
+        </tr>
+
+          <tr>
+            <td><b>Drum Static Pull Fp (N)</b></td>
+            <td class="result" id="bc_static_mh"></td>
+            <td class="result" id="bc_static_ah"></td>
+        </tr>
+
+        <tr>
+            <td><b>Radial Load Fr (N)</b></td>
+            <td class="result" id="bc_radial_mh"></td>
+            <td class="result" id="bc_radial_ah"></td>
+        </tr>
+        
+        <tr>
+            <td><b>Required Torque based on Consumed Power Power for each coupling T (Nm)</b></td>
+            <td class="result" id="bc_torque_mhc"></td>
+            <td class="result" id="bc_torque_ahc"></td>
+        </tr>
+
+        <tr>
+            <td><b>Required Torque based on installed Power for each coupling T (Nm)</b></td>
+            <td class="result" id="bc_torque_mh"></td>
+            <td class="result" id="bc_torque_ah"></td>
+        </tr>
+        
+      
+        
+        <tr>
+            <td><b>Size Of Coupling</b></td>
+            <td class="result" id="sizeMH"></td>
+            <td class="result" id="sizeAH"></td>
+        </tr>
+        
+        <tr>
+            <td><b>Slected Rated Torque(KNm)</b></td>
+            <td class="result" id="rated_torque_mh"></td>
+            <td class="result" id="rated_torque_ah"></td>
+        </tr>
+        
+        <tr>
+            <td><b>Slected Radial Load  (KN)</b></td>
+            <td class="result" id="rated_radial_mh"></td>
+            <td class="result" id="rated_radial_ah"></td>
+        </tr>
+    </table>
+   
+
+</div>
+</div>
+</div>
+
+<!-- ===================================================== -->
+<!-- ==================== BUFFERS ======================= -->
+<!-- ===================================================== -->
+
+<div id="Buffer" class="tabcontent">
+<div class="input-layout">
+<div class="input-card buffer-result">
+<div class="section-title">
+        CT Buffer
+    </div>
+<table>
+<tr><td>Design Speed Vd (m/s)</td>
+<td class="result" id="ctb_vd"></td></tr>
+
+<tr><td>Kinetic Energy (kJ)</td>
+<td class="result" id="ctb_ke"></td></tr>
+
+<tr><td>Buffer Force (kN)</td>
+<td class="result" id="ctb_f"></td></tr>
+</table>
+
+<br>
+<div class="section-title">
+        LT Buffer
+    </div>
+<table>
+<tr><td>Resultant Mass M (T)</td>
+<td class="result" id="ltb_m"></td></tr>
+
+<tr><td>Design Speed Vd (m/s)</td>
+<td class="result" id="ltb_vd"></td></tr>
+
+<tr><td>Kinetic Energy (kJ)</td>
+<td class="result" id="ltb_ke"></td></tr>
+
+<tr><td>Buffer Force (kN)</td>
+<td class="result" id="ltb_f"></td></tr>
+</table>
+
+</div>
+</div>
+</div>
+
+<!-- ===================================================== -->
+<!-- ============ ROPE DRUM STRESS ======================= -->
+<!-- ===================================================== -->
+<div id="Stress" class="tabcontent">
+<div class="input-layout">
+<div class="input-card stress-result">
+<div class="section-title">
+        MH and AH Rope-Drum Stresses
+    </div>
+<table>
+ <tr>
+            <th><b>Parameter</b></th>
+            <th><b>MH</b></th>
+            <th><b>AH</b></th>
+        </tr>
+<tr><td>Crushing Stress σcr (kg/cm²)</td>
+<td class="result" id="cr_mhs"></td>
+<td class="result" id="cr_ahs"></td></tr>
+
+<tr><td>Bending Stress σb (kg/cm²)</td>
+<td class="result" id="sb_mhs"></td>
+<td class="result" id="sb_ahs"></td></tr>
+
+<tr><td>Combined Crushing + Bending σ</td>
+<td class="result" id="sc_mhs"></td>
+<td class="result" id="sc_ahs"></td></tr>
+
+<tr><td>Torsional Stress τ (kg/cm²)</td>
+<td class="result" id="ts_mhs"></td>
+<td class="result" id="ts_ahs"></td></tr>
+
+<tr><td><b>Combined Stress σcomb</b></td>
+<td class="result" id="comb_mhs"></td>
+<td class="result" id="comb_ahs"></td></tr>
+</table>
+
+</div>
+</div>
+</div>
+  
+<script src="Crane.js"></script>
+<script src="cranesave.js"></script>
+
+
+
+
+
+</body>
+</html>
+
+
+

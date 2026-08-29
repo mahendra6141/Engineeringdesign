@@ -1,0 +1,1637 @@
+/* =========================================================
+   EOT CRANE CALCULATOR - FINAL CRN.CSS
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 22px 28px 40px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+     background: #eef4f8;
+    color: #1f2933;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+body > h2:first-child {
+    margin: 0 0 22px;
+
+    text-align: center;
+
+    font-size: 27px;
+    font-weight: 700;
+
+    color: #173f63;
+
+    letter-spacing: 0.2px;
+}
+
+
+/* =========================================================
+   TAB BAR
+========================================================= */
+
+.tab {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-bottom: 25px;
+    padding: 7px;
+
+    background: #ffffff;
+
+    border: 1px solid #d5dce3;
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tablinks {
+    border: 1px solid transparent;
+
+    padding: 11px 15px;
+
+    background: #eef2f6;
+    color: #344454;
+
+    cursor: pointer;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tablinks:hover {
+    background: #dfe7ef;
+    color: #173f63;
+}
+
+.tablinks.active {
+    background: #1f4e78;
+    color: #ffffff;
+
+    border-color: #1f4e78;
+
+    box-shadow:
+        0 2px 5px rgba(31, 78, 120, 0.25);
+}
+
+
+/* =========================================================
+   TAB CONTENT
+========================================================= */
+
+.tabcontent {
+    display: none;
+
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title {
+    margin: 0 0 18px;
+    padding: 13px 17px;
+
+    background: #ffffff;
+
+    border-left: 5px solid #1f4e78;
+    border-radius: 7px;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #173f63;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================================
+   MASTER INPUT LAYOUT
+========================================================= */
+
+.input-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+    align-items: stretch;
+}
+
+
+
+.input-card {
+    background: linear-gradient(
+        145deg,
+        #f8fcff,
+        #eef6fb
+    );
+
+    border: 1px solid #b8d1df;
+
+    border-top: 4px solid #1976a8;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 5px 15px rgba(31, 78, 120, 0.12);
+
+    min-width: 0;
+
+    height: 100%;
+}
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.card-title {
+    margin: 0 0 18px;
+
+    padding: 10px 12px;
+
+    background: linear-gradient(
+        90deg,
+        #e1f1f8,
+        #f3f9fc
+    );
+
+    border-left: 4px solid #1976a8;
+
+    border-bottom: 1px solid #c4dce8;
+
+    border-radius: 6px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #14506f;
+}
+
+.hoist-card {
+    grid-column: span 7;
+}
+.hoist-result {
+    grid-column: span 7;
+}
+.hoist-motor {
+    grid-column: span 5;
+}
+.travel-result {
+    grid-column: span 7;
+}
+.Brake {
+    grid-column: span 5;
+
+    width: 100%;
+}
+.Brake-result {
+    grid-column: span 12;
+
+    width: 100%;
+	
+}
+.Wire-Rope {
+    grid-column: span 5;
+
+    width: 100%;
+}
+.wire-rope-result {
+    grid-column: span 7;
+}
+.travel-card {
+    grid-column: span 7;
+}
+.Drum-length {
+    grid-column: span 5;
+}
+.Sheave {
+    grid-column: span 6;
+}
+.sheave-result {
+    grid-column: span 7;
+}
+.recommended-sheave {
+    grid-column: span 5;
+}
+.recommended-wheel {
+    grid-column: span 5;
+}
+.drum-dia-result {
+    grid-column: span 7;
+}
+.drum-length-result {
+    grid-column: span 7;
+}
+.Gear-box {
+    grid-column: span 6;
+}
+.wheel {
+    grid-column: span 6;
+}
+.wheel-result {
+    grid-column: span 7;
+}
+.gear-box-result {
+    grid-column: span 7;
+}
+.barrel-result {
+    grid-column: span 7;
+}
+.buffer-result {
+    grid-column: span 7;
+}
+.stress-result {
+    grid-column: span 7;
+}
+.Barrel-Coupling {
+    grid-column: span 6;
+}
+.Buffer {
+    grid-column: span 6;
+}
+.Stress {
+    grid-column: 1 / -1;
+}
+.card-full {
+    grid-column: 1 / -1;
+}
+
+
+h2 {
+    margin: 20px 0 14px;
+
+    font-size: 19px;
+
+    color: #173f63;
+}
+
+h3 {
+    margin: 16px 0 10px;
+
+    font-size: 16px;
+
+    color: #344454;
+}
+
+.input-card table,
+.tabcontent > table {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #d7dee5;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    table-layout: auto;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+table th {
+
+    padding: 11px 10px;
+
+    background: #1f4e78;
+
+    color: #ffffff;
+
+    border-right:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    border-bottom:
+        1px solid #173f63;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+table th:last-child {
+    border-right: none;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+table td {
+
+    padding: 9px 10px;
+
+    border-right:
+        1px solid #e1e6eb;
+
+    border-bottom:
+        1px solid #e1e6eb;
+
+    font-size: 13px;
+
+    background: #ffffff;
+
+    /*
+       Allows long parameter names
+       to wrap instead of forcing
+       the entire table wider.
+    */
+    overflow-wrap: anywhere;
+}
+
+table td:last-child {
+    border-right: none;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   ALTERNATE ROW
+========================================================= */
+
+table tr:nth-child(even) td {
+    background: #f8fafc;
+}
+
+table tr:hover td {
+    background: #eef4f9;
+}
+
+
+/* =========================================================
+   FIRST COLUMN
+========================================================= */
+
+table td:first-child {
+
+    font-weight: 600;
+
+    color: #344454;
+
+    /*
+       Do not make this too wide.
+       It can shrink when required.
+    */
+    min-width: 0;
+}
+
+
+/* =========================================================
+   TABLE INPUTS
+========================================================= */
+
+table input,
+table select {
+
+    width: 100%;
+
+    /*
+       Prevent input from forcing
+       table wider than its card.
+    */
+    min-width: 0;
+
+    height: 34px;
+
+    padding: 6px 9px;
+
+    border:
+        1px solid #bfc9d3;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+}
+
+
+/* =========================================================
+   INPUT HOVER
+========================================================= */
+
+table input:hover,
+table select:hover {
+
+    border-color: #8fa5b8;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+========================================================= */
+
+table input:focus,
+table select:focus {
+
+    outline: none;
+
+    border-color: #1f4e78;
+
+    box-shadow:
+        0 0 0 2px rgba(31, 78, 120, 0.12);
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+table select {
+    cursor: pointer;
+}
+
+input[readonly] {
+
+    background: #eef1f4 !important;
+
+    color: #596673;
+
+    cursor: not-allowed;
+}
+
+input:disabled,
+select:disabled {
+
+    background: #eef1f4;
+
+    color: #8a939c;
+
+    cursor: not-allowed;
+}
+
+.input-row {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 150px;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 12px;
+}
+
+.input-row label {
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.input-row input,
+.input-row select {
+
+    width: 100%;
+
+    height: 35px;
+
+    padding: 7px 10px;
+
+    border:
+        1px solid #bfc9d3;
+
+    border-radius: 5px;
+
+    background: #ffffff;
+
+    font-size: 14px;
+}
+
+.input-row input:focus,
+.input-row select:focus {
+
+    outline: none;
+
+    border-color: #1f4e78;
+
+    box-shadow:
+        0 0 0 2px rgba(31, 78, 120, 0.12);
+}
+
+.sub-title {
+
+    margin: 18px 0 12px;
+
+    padding: 9px 12px;
+
+    background: #eef3f8;
+
+    border-left:
+        4px solid #1f4e78;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #173f63;
+}
+.mechanism-row {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 170px;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 15px 16px;
+
+    background: linear-gradient(
+        135deg,
+        #e6f4fb,
+        #d9edf7
+    );
+
+    border: 1px solid #9bc9dd;
+
+    border-left: 5px solid #0f7ea8;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 3px 8px rgba(15, 126, 168, 0.10);
+}
+
+
+/* Main label */
+
+.mechanism-row label {
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    color: #124b65;
+}
+
+
+/* Main selection box */
+
+.mechanism-row select {
+
+    width: 100%;
+
+    height: 40px;
+
+    padding: 7px 11px;
+
+    border: 2px solid #5fa9c5;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #0d4f6b;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Hover */
+
+.mechanism-row select:hover {
+
+    border-color: #197fa8;
+
+    background: #fafdff;
+}
+
+
+/* Focus */
+
+.mechanism-row select:focus {
+
+    outline: none;
+
+    border-color: #0f6f96;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 111, 150, 0.15);
+}
+.info-wrap {
+
+    position: relative;
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   INFO ICON
+========================================================= */
+
+.info-icon {
+
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 18px;
+
+    height: 18px;
+
+    margin-left: 5px;
+
+    border-radius: 50%;
+
+    background: #1f4e78;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    cursor: help;
+}
+
+
+/* =========================================================
+   INFO BOX / TOOLTIP
+========================================================= */
+
+.info-box {
+
+    position: absolute;
+
+    left: 25px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 230px;
+
+    padding: 10px 12px;
+
+    background: #263746;
+
+    color: #ffffff;
+
+    border-radius: 6px;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 1000;
+}
+
+.info-icon:hover + .info-box {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.result {
+
+    text-align: center;
+
+    font-weight: 700;
+
+    color: #173f63;
+
+    background: #f2f6fa !important;
+}
+
+.calculated,
+.result-value {
+
+    font-weight: 700;
+
+    color: #1f4e78;
+}
+
+button {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.calculate-btn {
+
+    margin-top: 20px;
+
+    padding: 11px 24px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #1f4e78;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.calculate-btn:hover {
+
+    background: #173f63;
+
+    transform:
+        translateY(-1px);
+}
+
+.calculate-btn:active {
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   TAB CONTENT HEADINGS
+========================================================= */
+
+.tabcontent > h2 {
+
+    padding-bottom: 8px;
+
+    border-bottom:
+        2px solid #d7dee5;
+}
+
+
+/* =========================================================
+   RESPONSIVE - LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    body {
+
+        padding:
+            18px;
+    }
+
+
+    /*
+       Convert the 12-column crane layout
+       to two columns on smaller screens.
+    */
+
+    .input-layout {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+/* ==========================================
+   MOTOR SPECIFICATION
+   ========================================== */
+
+.hoist-motor .motor-spec-content {
+    margin-top: 14px;
+    padding: 14px 18px;
+
+    background: #f3f6f9;
+    border: 1px solid #b7c4d1;
+    border-radius: 10px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+
+/* ==========================================
+   SPECIFICATION TEXT
+   ========================================== */
+
+.hoist-motor .motor-spec-content p {
+    margin: 0;
+    padding: 8px 12px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #364152;
+
+    line-height: 1.6;
+
+    border-bottom: 1px dashed #c5ced8;
+
+    letter-spacing: 0.2px;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Alternate rows */
+
+.hoist-motor .motor-spec-content p:nth-child(even) {
+    background: #e9eef3;
+}
+
+
+/* Hover */
+
+.hoist-motor .motor-spec-content p:hover {
+    background: #dce7f0;
+    padding-left: 17px;
+}
+
+
+/* ==========================================
+   PARAMETER NAME
+   ========================================== */
+
+.hoist-motor .motor-spec-content p b {
+    display: inline-block;
+
+    min-width: 185px;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #243447;
+
+    letter-spacing: 0.4px;
+}
+
+
+/* ==========================================
+   MOTOR FRAME SIZE
+   ========================================== */
+
+.hoist-motor .motor-spec-content .frame-size {
+    margin: 2px 0 8px 0;
+    padding: 8px 10px;
+
+    background: #e8f3f1;
+    border: 1px solid #9bc8bf;
+    border-left: 5px solid #16806f;
+
+    border-radius: 7px;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #174f47;
+    letter-spacing: 0.2px;
+
+    /* IMPORTANT */
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+/* Frame Size label */
+
+.hoist-motor .motor-spec-content .frame-size b {
+
+    color: #126052;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ==========================================
+   MH / AH VALUES
+   ========================================== */
+
+.hoist-motor .motor-spec-content .frame-size span {
+    display: inline-block;
+
+    min-width: 45px;
+    width: auto;
+
+    padding: 3px 8px;
+    margin: 0;
+
+    text-align: center;
+
+    background: #16806f;
+    color: #ffffff;
+
+    border-radius: 5px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+
+    letter-spacing: 0.5px;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+
+    flex-shrink: 0;
+}
+
+
+/* Last row */
+
+.hoist-motor .motor-spec-content p:last-child {
+    border-bottom: none;
+}
+/* ==========================================
+   MOTOR SPECIFICATION HEADING
+   ========================================== */
+
+.hoist-motor > summary {
+    display: block;
+
+    margin-bottom: 14px;
+    padding: 10px 16px;
+
+    background: #dceeea;
+
+    border-left: 5px solid #16806f;
+    border-bottom: 1px solid #9bc8bf;
+
+    border-radius: 6px;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    color: #126052;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: default;
+}
+/* ==========================================
+   MOTOR POLE
+   ========================================== */
+
+.hoist-motor .motor-pole {
+    margin: 0;
+    padding: 7px 12px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    color: #364152;
+
+    border-bottom: 1px dashed #c5ced8;
+}
+
+.hoist-motor .motor-pole b {
+    min-width: 185px;
+}
+
+
+/* ==========================================
+   MOTOR LABEL
+   ========================================== */
+
+.hoist-motor .motor-label {
+    font-weight: 700;
+    color: #174f47;
+    margin-left: 4px;
+}
+
+
+/* ==========================================
+   FRAME SEPARATOR
+   ========================================== */
+
+.hoist-motor .frame-separator {
+    margin: 0 6px;
+    color: #7a8f8b;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   FRAME INFORMATION
+   ========================================== */
+
+.hoist-motor .frame-recommendation {
+    margin-top: 6px;
+    padding: 6px 10px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* Exact */
+
+.hoist-motor .frame-exact {
+    display: block;
+    font-weight: 700;
+    color: #16806f;
+}
+
+
+/* Warning */
+
+.hoist-motor .frame-warning {
+    display: block;
+    font-weight: 700;
+    color: #b26a00;
+}
+
+
+/* Lower */
+
+.hoist-motor .frame-lower {
+    display: inline-block;
+    margin-right: 18px;
+
+    color: #59636e;
+    font-weight: 600;
+}
+
+
+/* Higher */
+
+.hoist-motor .frame-higher {
+    display: inline-block;
+
+    color: #59636e;
+    font-weight: 600;
+}
+
+
+/* Not available */
+
+.hoist-motor .frame-not-available {
+    display: block;
+    font-weight: 700;
+    color: #b42318;
+}
+/* ================= BRAKE TABLE ================= */
+
+.Brake-result {
+    grid-column: span 12;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Brake table must fit inside card */
+.Brake-result table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* All cells */
+.Brake-result th,
+.Brake-result td {
+    box-sizing: border-box;
+    padding: 8px 5px;
+    text-align: center;
+}
+
+/* Headings wrap */
+.Brake-result th {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-height: 1.25;
+    font-size: 13px;
+}
+
+/* Parameter column */
+.Brake-result th:first-child,
+.Brake-result td:first-child {
+    width: 15%;
+}
+
+/* Remaining 8 columns */
+.Brake-result th:not(:first-child),
+.Brake-result td:not(:first-child) {
+    width: 10.625%;
+}
+
+/* Result values */
+.Brake-result td {
+    white-space: normal;
+    word-break: break-word;
+}
+/* ==========================================
+   MOTOR FRAME SIZE - MH / AH / CT / LT
+   ========================================== */
+
+.hoist-motor .motor-spec-content p.frame-size {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0 0 12px 0;
+    padding: 10px 12px;
+
+    background: #e8f3f1;
+    border: 1px solid #9bc8bf;
+    border-left: 5px solid #16806f;
+    border-radius: 7px;
+}
+
+
+/* Motor Frame Size heading - full line */
+
+.hoist-motor .motor-spec-content p.frame-size > b {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+
+    margin: 0 0 3px 0 !important;
+    padding: 0 !important;
+
+    color: #126052;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+
+/* CT / LT / MH / AH individual box */
+
+.hoist-motor .motor-spec-content p.frame-size .frame-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 6px;
+
+    width: auto;
+    max-width: 100%;
+
+    padding: 4px 7px;
+
+    background: #ffffff;
+    border: 1px solid #b7d5ce;
+    border-radius: 5px;
+
+    box-sizing: border-box;
+}
+
+
+/* CT / LT label */
+
+.hoist-motor .motor-spec-content p.frame-size .frame-item strong {
+    display: inline-block !important;
+
+    color: #126052;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* Actual frame value */
+
+.hoist-motor .motor-spec-content p.frame-size .frame-item > span {
+    display: inline-block !important;
+
+    min-width: 45px;
+    max-width: 100%;
+
+    padding: 3px 8px;
+
+    background: #16806f;
+    color: #ffffff;
+
+    border-radius: 4px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    font-weight: bold;
+
+    text-align: center;
+
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+}
+/* ==========================================
+   COMMON RESULT SECTION TITLE
+   ========================================== */
+
+.section-title {
+    position: relative;
+
+    margin: 0 0 18px 0;
+    padding: 14px 20px;
+
+    background: linear-gradient(
+        135deg,
+        #d7f0eb,
+        #bfe3dc
+    );
+
+    border: 1px solid #8fc9bd;
+    border-left: 6px solid #087f6a;
+
+    border-radius: 8px;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+
+    color: #075f51;
+
+    letter-spacing: 0.5px;
+
+    box-sizing: border-box;
+
+    box-shadow: 0 4px 10px rgba(8, 127, 106, 0.15);
+}
+
+
+/* Small highlight line */
+
+.section-title::after {
+    content: "";
+
+    position: absolute;
+
+    left: 20px;
+    bottom: 5px;
+
+    width: 70px;
+    height: 3px;
+
+    background: #087f6a;
+
+    border-radius: 5px;
+}
+/* =====================================================
+   RECOMMENDED SHEAVE CARD
+   ===================================================== */
+
+.recommended-sheave {
+    grid-column: span 5;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CONTENT
+   ===================================================== */
+
+.recommended-sheave-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+
+    margin-top: 12px;
+}
+
+
+/* =====================================================
+   MH / AH BOX
+   ===================================================== */
+
+.sheave-recommendation {
+    min-width: 0;
+
+    padding: 12px;
+
+    background: #f3f6f9;
+
+    border: 1px solid #b7c4d1;
+    border-radius: 9px;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   MH / AH TITLE
+   ===================================================== */
+
+.recommendation-title {
+    margin-bottom: 8px;
+    padding: 7px 10px;
+
+    background: #dceeea;
+
+    border-left: 4px solid #16806f;
+    border-radius: 5px;
+
+    text-align: center;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+
+    color: #126052;
+
+    letter-spacing: 0.8px;
+}
+
+
+/* =====================================================
+   ROW
+   ===================================================== */
+
+.recommendation-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 5px;
+
+    border-bottom: 1px dashed #c5ced8;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+}
+
+
+/* Left text */
+
+.recommendation-row span:first-child {
+    color: #364152;
+    font-weight: 600;
+}
+
+
+/* Value */
+
+.recommendation-row strong {
+    color: #243447;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   FINAL RECOMMENDED PCD
+   ===================================================== */
+
+.recommendation-row.final-pcd {
+    margin-top: 3px;
+
+    padding: 9px 6px;
+
+    background: #e8f3f1;
+
+    border: 1px solid #9bc8bf;
+    border-radius: 5px;
+}
+
+.recommendation-row.final-pcd span:first-child {
+    color: #126052;
+    font-weight: 800;
+}
+
+.recommendation-row.final-pcd strong {
+    color: #16806f;
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .recommended-sheave-content {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =====================================================
+   RECOMMENDED WHEEL
+===================================================== */
+
+.recommended-wheel {
+    grid-column: span 5;
+}
+
+
+.recommended-wheel-content {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 14px;
+
+    padding: 12px;
+}
+
+
+.wheel-recommendation {
+    border: 1px solid #c8d2dc;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    background: #f7f9fb;
+}
+
+
+.wheel-recommendation .recommendation-title {
+
+    padding: 9px 12px;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    background: #e2ebf3;
+
+    border-bottom: 1px solid #c8d2dc;
+}
+
+
+.wheel-recommendation .recommendation-row {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-bottom: 1px dashed #c9d2da;
+
+    font-size: 13px;
+}
+
+
+.wheel-recommendation .recommendation-row:last-child {
+    border-bottom: none;
+}
+
+
+.wheel-recommendation .recommendation-row span {
+
+    color: #4b5563;
+}
+
+
+.wheel-recommendation strong {
+
+    white-space: nowrap;
+
+    font-size: 14px;
+
+    color: #1f2937;
+}
+
+
+/* FINAL RECOMMENDED DIA */
+
+.wheel-recommendation .final-wheel {
+
+    background: #edf4f1;
+
+    font-weight: 700;
+}
+
+
+.wheel-recommendation .final-wheel strong {
+
+    padding: 4px 9px;
+
+    border-radius: 5px;
+
+    background: #d8ebe3;
+}
