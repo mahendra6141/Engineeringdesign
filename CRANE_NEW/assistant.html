@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Engineering Assistant - Hoist</title>
+
+    <link rel="stylesheet" href="assistant.css">
+</head>
+
+<body>
+
+<div class="assistant-container">
+
+    <!-- ================================================= -->
+    <!-- HEADER -->
+    <!-- ================================================= -->
+
+    <header class="assistant-header">
+
+        <div>
+            <div class="assistant-title">
+                Engineering Assistant
+            </div>
+
+            <div class="assistant-subtitle">
+                EOT Crane – Engineering Calculation Reference
+            </div>
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                onclick="goBackToCalculator()"
+                class="back-btn">
+                ← Back to Calculator
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================================= -->
+    <!-- BODY -->
+    <!-- ================================================= -->
+
+    <div class="assistant-body">
+
+
+        <!-- ================================================= -->
+        <!-- SIDEBAR -->
+        <!-- ================================================= -->
+
+        <aside class="assistant-sidebar">
+
+            <div class="sidebar-title">
+                CALCULATIONS
+            </div>
+
+
+            <button
+                class="side-link active"
+                onclick="showSection('overview', this)">
+                📋 Overview
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('sequence', this)">
+                🔄 Calculation Sequence
+            </button>
+
+
+            <div class="side-heading">
+                HOIST
+            </div>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('total-load', this)">
+                01. Total Load
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('efficiency', this)">
+                02. Efficiency
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('mechanical-power', this)">
+                03. Mechanical Power
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('motor-power', this)">
+                04. Required Motor Power
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('motor-selection', this)">
+                05. Motor Selection
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('motor-specification', this)">
+                06. Motor Specification
+            </button>
+
+
+            <div class="side-heading">
+                REFERENCE
+            </div>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('standards', this)">
+                📚 Standards
+            </button>
+
+
+            <button
+                class="side-link"
+                onclick="showSection('summary', this)">
+                📊 Calculation Summary
+            </button>
+
+        </aside>
+
+
+        <!-- ================================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ================================================= -->
+
+        <main class="assistant-main">
+
+
+            <!-- ================================================= -->
+            <!-- OVERVIEW -->
+            <!-- ================================================= -->
+
+            <section id="overview" class="assistant-section active">
+
+                <div class="page-heading">
+                    Hoist Motor Calculation
+                </div>
+
+                <div class="page-description">
+                    This section explains the engineering calculations
+                    used for Main Hoist (MH) and Auxiliary Hoist (AH)
+                    motor power determination.
+                </div>
+
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+                        <span class="info-label">
+                            Mechanism
+                        </span>
+
+                        <strong>
+                            Hoist
+                        </strong>
+                    </div>
+
+
+                    <div class="info-card">
+                        <span class="info-label">
+                            Mechanisms
+                        </span>
+
+                        <strong>
+                            MH + AH
+                        </strong>
+                    </div>
+
+
+                    <div class="info-card">
+                        <span class="info-label">
+                            Calculation Type
+                        </span>
+
+                        <strong>
+                            Motor Power
+                        </strong>
+                    </div>
+
+
+                    <div class="info-card">
+                        <span class="info-label">
+                            Calculation Basis
+                        </span>
+
+                        <strong>
+                            Engineering Calculation
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="explanation-card">
+
+                    <div class="card-heading">
+                        Why this calculation is required?
+                    </div>
+
+                    <p>
+                        The hoist motor calculation determines the power
+                        required to lift the specified load at the rated
+                        hoisting speed while considering mechanical
+                        efficiency, service factor, electrical power
+                        margin and derating factor.
+                    </p>
+
+                </div>
+
+
+                <!-- LIVE DATA STATUS -->
+
+                <div id="data-status" class="status-box">
+                    Loading current crane calculation data...
+                </div>
+
+
+                <!-- INPUT VALUES -->
+
+                <div class="section-card">
+
+                    <div class="card-heading">
+                        Current Input Parameters
+                    </div>
+
+                    <div class="dual-table-wrapper">
+
+                        <!-- MH -->
+
+                        <div>
+
+                            <div class="mini-heading">
+                                Main Hoist (MH)
+                            </div>
+
+                            <table class="data-table">
+
+                                <tr>
+                                    <td>Safe Working Load Q</td>
+                                    <td id="mh_q">-</td>
+                                    <td>ton</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Bottom Block + Rope Q1</td>
+                                    <td id="mh_q1">-</td>
+                                    <td>ton</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Mass of Tong Q2</td>
+                                    <td id="mh_q2">-</td>
+                                    <td>ton</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Rated Speed V</td>
+                                    <td id="mh_v">-</td>
+                                    <td>m/min</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Gear Stages n</td>
+                                    <td id="mh_n">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Pulley Count m</td>
+                                    <td id="mh_m">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Derating Factor Camb</td>
+                                    <td id="mh_camb">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Power Margin</td>
+                                    <td id="mh_margin">-</td>
+                                    <td>%</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Motor Quantity</td>
+                                    <td id="mh_mo">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Motor Pole</td>
+                                    <td id="mh_pole">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- AH -->
+
+                        <div>
+
+                            <div class="mini-heading">
+                                Auxiliary Hoist (AH)
+                            </div>
+
+                            <table class="data-table">
+
+                                <tr>
+                                    <td>Safe Working Load Q</td>
+                                    <td id="ah_q">-</td>
+                                    <td>ton</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Bottom Block + Rope Q1</td>
+                                    <td id="ah_q1">-</td>
+                                    <td>ton</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Mass of Tong Q2</td>
+                                    <td id="ah_q2">-</td>
+                                    <td>ton</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Rated Speed V</td>
+                                    <td id="ah_v">-</td>
+                                    <td>m/min</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Gear Stages n</td>
+                                    <td id="ah_n">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Pulley Count m</td>
+                                    <td id="ah_m">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Derating Factor Camb</td>
+                                    <td id="ah_camb">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Power Margin</td>
+                                    <td id="ah_margin">-</td>
+                                    <td>%</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Motor Quantity</td>
+                                    <td id="ah_mo">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Motor Pole</td>
+                                    <td id="ah_pole">-</td>
+                                    <td>-</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- CALCULATION SEQUENCE -->
+            <!-- ================================================= -->
+
+            <section id="sequence" class="assistant-section">
+
+                <div class="page-heading">
+                    Calculation Sequence
+                </div>
+
+                <div class="sequence-container">
+
+                    <div class="sequence-step">
+                        <span>01</span>
+                        <strong>Input Load</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>02</span>
+                        <strong>Total Weight M</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>03</span>
+                        <strong>Overall Efficiency E</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>04</span>
+                        <strong>Mechanical Power Pmech</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>05</span>
+                        <strong>Required Motor Power Pele</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>06</span>
+                        <strong>Automatic Motor Selection</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>07</span>
+                        <strong>Manufacturer Override</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>08</span>
+                        <strong>Motor RPM</strong>
+                    </div>
+
+                    <div class="sequence-arrow">↓</div>
+
+                    <div class="sequence-step">
+                        <span>09</span>
+                        <strong>Frame Recommendation</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- TOTAL LOAD -->
+            <!-- ================================================= -->
+
+            <section id="total-load" class="assistant-section">
+
+                <div class="page-heading">
+                    01. Total Load / Total Weight
+                </div>
+
+
+                <div class="calculation-card">
+
+                    <div class="calculation-title">
+                        Total Weight M
+                    </div>
+
+                    <div class="purpose-box">
+                        <strong>Purpose</strong>
+
+                        <p>
+                            Total lifted mass is determined by adding the
+                            safe working load, bottom block including rope
+                            weight and additional load such as tong mass.
+                        </p>
+                    </div>
+
+
+                    <div class="formula-box">
+
+                        <div class="formula-label">
+                            Formula
+                        </div>
+
+                        <div class="formula">
+                            M = Q + Q₁ + Q₂
+                        </div>
+
+                    </div>
+
+
+                    <div class="parameter-title">
+                        Parameters
+                    </div>
+
+                    <table class="parameter-table">
+
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Description</th>
+                            <th>Unit</th>
+                        </tr>
+
+                        <tr>
+                            <td>Q</td>
+                            <td>Safe Working Load</td>
+                            <td>ton</td>
+                        </tr>
+
+                        <tr>
+                            <td>Q₁</td>
+                            <td>Bottom Block including Rope Weight</td>
+                            <td>ton</td>
+                        </tr>
+
+                        <tr>
+                            <td>Q₂</td>
+                            <td>Mass of Tong</td>
+                            <td>ton</td>
+                        </tr>
+
+                        <tr>
+                            <td>M</td>
+                            <td>Total Weight</td>
+                            <td>ton</td>
+                        </tr>
+
+                    </table>
+
+
+                    <div class="dual-calculation">
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                MH Calculation
+                            </div>
+
+                            <div class="value-line">
+                                Q =
+                                <span id="calc_mh_q">-</span>
+                                ton
+                            </div>
+
+                            <div class="value-line">
+                                Q₁ =
+                                <span id="calc_mh_q1">-</span>
+                                ton
+                            </div>
+
+                            <div class="value-line">
+                                Q₂ =
+                                <span id="calc_mh_q2">-</span>
+                                ton
+                            </div>
+
+                            <div class="calculation-expression">
+                                M = Q + Q₁ + Q₂
+                            </div>
+
+                            <div class="calculation-expression">
+                                M =
+                                <span id="calc_mh_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                M =
+                                <strong id="calc_mh_M">-</strong>
+                                ton
+                            </div>
+
+                        </div>
+
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                AH Calculation
+                            </div>
+
+                            <div class="value-line">
+                                Q =
+                                <span id="calc_ah_q">-</span>
+                                ton
+                            </div>
+
+                            <div class="value-line">
+                                Q₁ =
+                                <span id="calc_ah_q1">-</span>
+                                ton
+                            </div>
+
+                            <div class="value-line">
+                                Q₂ =
+                                <span id="calc_ah_q2">-</span>
+                                ton
+                            </div>
+
+                            <div class="calculation-expression">
+                                M = Q + Q₁ + Q₂
+                            </div>
+
+                            <div class="calculation-expression">
+                                M =
+                                <span id="calc_ah_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                M =
+                                <strong id="calc_ah_M">-</strong>
+                                ton
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reference-box">
+
+                        <div class="reference-title">
+                            Standard Reference
+                        </div>
+
+                        <div class="reference-pending">
+                            Standard / Clause / Table:
+                            <strong>To be verified</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- EFFICIENCY -->
+            <!-- ================================================= -->
+
+            <section id="efficiency" class="assistant-section">
+
+                <div class="page-heading">
+                    02. Overall Mechanical Efficiency
+                </div>
+
+
+                <div class="calculation-card">
+
+                    <div class="calculation-title">
+                        Overall Efficiency E
+                    </div>
+
+
+                    <div class="purpose-box">
+
+                        <strong>Purpose</strong>
+
+                        <p>
+                            Overall efficiency is calculated by applying
+                            the specified efficiency factors for gear
+                            stages and pulley count.
+                        </p>
+
+                    </div>
+
+
+                    <div class="formula-box">
+
+                        <div class="formula-label">
+                            Formula
+                        </div>
+
+                        <div class="formula">
+                            E = (0.985)<sup>n</sup> × (0.99)<sup>m</sup>
+                        </div>
+
+                    </div>
+
+
+                    <div class="parameter-title">
+                        Parameters
+                    </div>
+
+                    <table class="parameter-table">
+
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Description</th>
+                            <th>Unit</th>
+                        </tr>
+
+                        <tr>
+                            <td>n</td>
+                            <td>Number of Gear Stages</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>m</td>
+                            <td>Pulley Count</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>E</td>
+                            <td>Overall Efficiency</td>
+                            <td>—</td>
+                        </tr>
+
+                    </table>
+
+
+                    <div class="dual-calculation">
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                MH
+                            </div>
+
+                            <div>
+                                n =
+                                <span id="eff_mh_n">-</span>
+                            </div>
+
+                            <div>
+                                m =
+                                <span id="eff_mh_m">-</span>
+                            </div>
+
+                            <div class="calculation-expression">
+                                E = 0.985<sup>n</sup> × 0.99<sup>m</sup>
+                            </div>
+
+                            <div class="calculation-expression">
+                                E =
+                                <span id="eff_mh_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                E =
+                                <strong id="eff_mh_E">-</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                AH
+                            </div>
+
+                            <div>
+                                n =
+                                <span id="eff_ah_n">-</span>
+                            </div>
+
+                            <div>
+                                m =
+                                <span id="eff_ah_m">-</span>
+                            </div>
+
+                            <div class="calculation-expression">
+                                E = 0.985<sup>n</sup> × 0.99<sup>m</sup>
+                            </div>
+
+                            <div class="calculation-expression">
+                                E =
+                                <span id="eff_ah_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                E =
+                                <strong id="eff_ah_E">-</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reference-box">
+
+                        <div class="reference-title">
+                            Formula Source
+                        </div>
+
+                        <div class="reference-pending">
+                            Efficiency factors 0.985 and 0.99:
+                            <strong>Source to be verified</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- MECHANICAL POWER -->
+            <!-- ================================================= -->
+
+            <section id="mechanical-power" class="assistant-section">
+
+                <div class="page-heading">
+                    03. Mechanical Power
+                </div>
+
+
+                <div class="calculation-card">
+
+                    <div class="calculation-title">
+                        Mechanical Power P<sub>mech</sub>
+                    </div>
+
+
+                    <div class="purpose-box">
+
+                        <strong>Purpose</strong>
+
+                        <p>
+                            Mechanical power required for lifting the
+                            calculated total weight at the rated
+                            hoisting speed is determined.
+                        </p>
+
+                    </div>
+
+
+                    <div class="formula-box">
+
+                        <div class="formula-label">
+                            Formula
+                        </div>
+
+                        <div class="formula">
+                            P<sub>mech</sub> =
+                            M × V / (6.12 × E)
+                        </div>
+
+                    </div>
+
+
+                    <div class="parameter-title">
+                        Parameters
+                    </div>
+
+                    <table class="parameter-table">
+
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Description</th>
+                            <th>Unit</th>
+                        </tr>
+
+                        <tr>
+                            <td>M</td>
+                            <td>Total Weight</td>
+                            <td>ton</td>
+                        </tr>
+
+                        <tr>
+                            <td>V</td>
+                            <td>Rated Hoisting Speed</td>
+                            <td>m/min</td>
+                        </tr>
+
+                        <tr>
+                            <td>E</td>
+                            <td>Overall Efficiency</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>P<sub>mech</sub></td>
+                            <td>Mechanical Power</td>
+                            <td>kW</td>
+                        </tr>
+
+                    </table>
+
+
+                    <div class="dual-calculation">
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                MH
+                            </div>
+
+                            <div>
+                                M =
+                                <span id="power_mh_M">-</span>
+                                ton
+                            </div>
+
+                            <div>
+                                V =
+                                <span id="power_mh_V">-</span>
+                                m/min
+                            </div>
+
+                            <div>
+                                E =
+                                <span id="power_mh_E">-</span>
+                            </div>
+
+                            <div class="calculation-expression">
+                                P<sub>mech</sub> =
+                                M × V / (6.12 × E)
+                            </div>
+
+                            <div class="calculation-expression">
+                                =
+                                <span id="power_mh_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                P<sub>mech</sub> =
+                                <strong id="power_mh_result">-</strong>
+                                kW
+                            </div>
+
+                        </div>
+
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                AH
+                            </div>
+
+                            <div>
+                                M =
+                                <span id="power_ah_M">-</span>
+                                ton
+                            </div>
+
+                            <div>
+                                V =
+                                <span id="power_ah_V">-</span>
+                                m/min
+                            </div>
+
+                            <div>
+                                E =
+                                <span id="power_ah_E">-</span>
+                            </div>
+
+                            <div class="calculation-expression">
+                                P<sub>mech</sub> =
+                                M × V / (6.12 × E)
+                            </div>
+
+                            <div class="calculation-expression">
+                                =
+                                <span id="power_ah_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                P<sub>mech</sub> =
+                                <strong id="power_ah_result">-</strong>
+                                kW
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reference-box">
+
+                        <div class="reference-title">
+                            Formula Reference
+                        </div>
+
+                        <div class="reference-pending">
+                            Conversion factor 6.12:
+                            <strong>Source to be verified</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- REQUIRED MOTOR POWER -->
+            <!-- ================================================= -->
+
+            <section id="motor-power" class="assistant-section">
+
+                <div class="page-heading">
+                    04. Required Motor Power
+                </div>
+
+
+                <div class="calculation-card">
+
+                    <div class="calculation-title">
+                        Required Electrical Motor Power P<sub>ele</sub>
+                    </div>
+
+
+                    <div class="purpose-box">
+
+                        <strong>Purpose</strong>
+
+                        <p>
+                            Required motor power is obtained by applying
+                            the service factor, electrical power margin
+                            and ambient derating factor to the calculated
+                            mechanical power.
+                        </p>
+
+                    </div>
+
+
+                    <div class="formula-box">
+
+                        <div class="formula-label">
+                            Formula
+                        </div>
+
+                        <div class="formula">
+                            P<sub>ele</sub> =
+                            P<sub>mech</sub> × S ×
+                            (1 + Margin / 100) / C<sub>amb</sub>
+                        </div>
+
+                    </div>
+
+
+                    <table class="parameter-table">
+
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Description</th>
+                            <th>Unit</th>
+                        </tr>
+
+                        <tr>
+                            <td>P<sub>mech</sub></td>
+                            <td>Mechanical Power</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>S</td>
+                            <td>Service Factor</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>Margin</td>
+                            <td>Electrical Power Margin</td>
+                            <td>%</td>
+                        </tr>
+
+                        <tr>
+                            <td>C<sub>amb</sub></td>
+                            <td>Derating Factor</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>P<sub>ele</sub></td>
+                            <td>Required Motor Power</td>
+                            <td>kW</td>
+                        </tr>
+
+                    </table>
+
+
+                    <div class="dual-calculation">
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                MH
+                            </div>
+
+                            <div>
+                                P<sub>mech</sub> =
+                                <span id="pele_mh_pmech">-</span>
+                                kW
+                            </div>
+
+                            <div>
+                                S =
+                                <span id="pele_mh_s">-</span>
+                            </div>
+
+                            <div>
+                                Margin =
+                                <span id="pele_mh_margin">-</span>
+                                %
+                            </div>
+
+                            <div>
+                                C<sub>amb</sub> =
+                                <span id="pele_mh_camb">-</span>
+                            </div>
+
+                            <div class="calculation-expression">
+                                P<sub>ele</sub> =
+                                P<sub>mech</sub> × S ×
+                                (1 + Margin/100) / C<sub>amb</sub>
+                            </div>
+
+                            <div class="calculation-expression">
+                                =
+                                <span id="pele_mh_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                P<sub>ele</sub> =
+                                <strong id="pele_mh_result">-</strong>
+                                kW
+                            </div>
+
+                        </div>
+
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                AH
+                            </div>
+
+                            <div>
+                                P<sub>mech</sub> =
+                                <span id="pele_ah_pmech">-</span>
+                                kW
+                            </div>
+
+                            <div>
+                                S =
+                                <span id="pele_ah_s">-</span>
+                            </div>
+
+                            <div>
+                                Margin =
+                                <span id="pele_ah_margin">-</span>
+                                %
+                            </div>
+
+                            <div>
+                                C<sub>amb</sub> =
+                                <span id="pele_ah_camb">-</span>
+                            </div>
+
+                            <div class="calculation-expression">
+                                P<sub>ele</sub> =
+                                P<sub>mech</sub> × S ×
+                                (1 + Margin/100) / C<sub>amb</sub>
+                            </div>
+
+                            <div class="calculation-expression">
+                                =
+                                <span id="pele_ah_expression">-</span>
+                            </div>
+
+                            <div class="result-box">
+                                P<sub>ele</sub> =
+                                <strong id="pele_ah_result">-</strong>
+                                kW
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reference-box">
+
+                        <div class="reference-title">
+                            Standard Reference
+                        </div>
+
+                        <div class="reference-pending">
+                            Service factor / power margin / derating basis:
+                            <strong>Reference to be verified</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- MOTOR SELECTION -->
+            <!-- ================================================= -->
+
+            <section id="motor-selection" class="assistant-section">
+
+                <div class="page-heading">
+                    05. Motor Selection
+                </div>
+
+
+                <div class="calculation-card">
+
+                    <div class="calculation-title">
+                        Automatic + Manufacturer Motor Selection
+                    </div>
+
+
+                    <div class="purpose-box">
+
+                        <strong>Purpose</strong>
+
+                        <p>
+                            The required motor power is passed to the
+                            motor selection logic to determine the
+                            automatically selected standard motor rating.
+                            Manufacturer-provided values can then override
+                            the automatic selection.
+                        </p>
+
+                    </div>
+
+
+                    <div class="dual-calculation">
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                MH Motor Selection
+                            </div>
+
+                            <div class="selection-line">
+                                Required Power:
+                                <strong id="select_mh_required">-</strong>
+                                kW
+                            </div>
+
+                            <div class="selection-line">
+                                Auto Selected:
+                                <strong id="select_mh_auto">-</strong>
+                                kW
+                            </div>
+
+                            <div class="selection-line">
+                                Manufacturer:
+                                <strong id="select_mh_manufacturer">-</strong>
+                                kW
+                            </div>
+
+                            <div class="final-result">
+                                Final Motor:
+                                <strong id="select_mh_final">-</strong>
+                                kW
+                            </div>
+
+                        </div>
+
+
+                        <div class="mechanism-box">
+
+                            <div class="mechanism-title">
+                                AH Motor Selection
+                            </div>
+
+                            <div class="selection-line">
+                                Required Power:
+                                <strong id="select_ah_required">-</strong>
+                                kW
+                            </div>
+
+                            <div class="selection-line">
+                                Auto Selected:
+                                <strong id="select_ah_auto">-</strong>
+                                kW
+                            </div>
+
+                            <div class="selection-line">
+                                Manufacturer:
+                                <strong id="select_ah_manufacturer">-</strong>
+                                kW
+                            </div>
+
+                            <div class="final-result">
+                                Final Motor:
+                                <strong id="select_ah_final">-</strong>
+                                kW
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="reference-box">
+
+                        <div class="reference-title">
+                            Motor Selection Reference
+                        </div>
+
+                        <div class="reference-pending">
+                            Motor rating selection table / source:
+                            <strong>To be added</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- MOTOR SPECIFICATION -->
+            <!-- ================================================= -->
+
+            <section id="motor-specification" class="assistant-section">
+
+                <div class="page-heading">
+                    06. Motor Specification
+                </div>
+
+
+                <div class="spec-grid">
+
+                    <div class="spec-card">
+
+                        <div class="mechanism-title">
+                            Main Hoist (MH)
+                        </div>
+
+                        <p>
+                            <b>Motor Quantity:</b>
+                            <span id="spec_mh_qty">-</span>
+                        </p>
+
+                        <p>
+                            <b>Motor Pole:</b>
+                            <span id="spec_mh_pole">-</span>
+                        </p>
+
+                        <p>
+                            <b>Motor RPM:</b>
+                            <span id="spec_mh_rpm">-</span>
+                        </p>
+
+                        <p>
+                            <b>Frame Size:</b>
+                            <span id="spec_mh_frame">-</span>
+                        </p>
+
+                    </div>
+
+
+                    <div class="spec-card">
+
+                        <div class="mechanism-title">
+                            Auxiliary Hoist (AH)
+                        </div>
+
+                        <p>
+                            <b>Motor Quantity:</b>
+                            <span id="spec_ah_qty">-</span>
+                        </p>
+
+                        <p>
+                            <b>Motor Pole:</b>
+                            <span id="spec_ah_pole">-</span>
+                        </p>
+
+                        <p>
+                            <b>Motor RPM:</b>
+                            <span id="spec_ah_rpm">-</span>
+                        </p>
+
+                        <p>
+                            <b>Frame Size:</b>
+                            <span id="spec_ah_frame">-</span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="motor-standard-card">
+
+                    <div class="card-heading">
+                        Motor Specification
+                    </div>
+
+                    <p>
+                        <b>Motor Type:</b>
+                        3-Phase TEFC Squirrel Cage Induction Motor
+                    </p>
+
+                    <p>
+                        <b>Voltage:</b>
+                        415 ±10% V
+                    </p>
+
+                    <p>
+                        <b>Frequency:</b>
+                        50 ±5% Hz
+                    </p>
+
+                    <p>
+                        <b>Ambient:</b>
+                        50°C
+                    </p>
+
+                    <p>
+                        <b>Rating:</b>
+                        Continuous
+                    </p>
+
+                    <p>
+                        <b>Temperature Rise:</b>
+                        70°C
+                    </p>
+
+                    <p>
+                        <b>Insulation:</b>
+                        Class F with Class B Temperature Rise
+                    </p>
+
+                    <p>
+                        <b>Protection:</b>
+                        IP55
+                    </p>
+
+                    <p>
+                        <b>Combined Variation:</b>
+                        ±10% (Absolute Sum)
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- STANDARDS -->
+            <!-- ================================================= -->
+
+            <section id="standards" class="assistant-section">
+
+                <div class="page-heading">
+                    Standards & References
+                </div>
+
+
+                <div class="warning-card">
+
+                    <strong>Reference Verification</strong>
+
+                    <p>
+                        Standard numbers, clauses and tables will be
+                        added only after their actual source is confirmed.
+                        No IS or IPSS reference is assumed from the
+                        calculation formula alone.
+                    </p>
+
+                </div>
+
+
+                <div class="standard-card">
+
+                    <div class="standard-type">
+                        IS STANDARD
+                    </div>
+
+                    <div class="standard-number">
+                        Reference Pending
+                    </div>
+
+                    <table class="parameter-table">
+
+                        <tr>
+                            <td>Standard</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                        <tr>
+                            <td>Clause</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                        <tr>
+                            <td>Table</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                        <tr>
+                            <td>Figure</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+
+                <div class="standard-card">
+
+                    <div class="standard-type ipss">
+                        IPSS
+                    </div>
+
+                    <div class="standard-number">
+                        Reference Pending
+                    </div>
+
+                    <table class="parameter-table">
+
+                        <tr>
+                            <td>IPSS Number</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                        <tr>
+                            <td>Clause</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                        <tr>
+                            <td>Table</td>
+                            <td>To be verified</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- SUMMARY -->
+            <!-- ================================================= -->
+
+            <section id="summary" class="assistant-section">
+
+                <div class="page-heading">
+                    Calculation Summary
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="mini-heading">
+                        Main Hoist – MH
+                    </div>
+
+                    <table class="summary-table">
+
+                        <tr>
+                            <th>Calculation</th>
+                            <th>Result</th>
+                            <th>Unit</th>
+                        </tr>
+
+                        <tr>
+                            <td>Total Weight</td>
+                            <td id="summary_mh_M">-</td>
+                            <td>ton</td>
+                        </tr>
+
+                        <tr>
+                            <td>Efficiency</td>
+                            <td id="summary_mh_E">-</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mechanical Power</td>
+                            <td id="summary_mh_Pmech">-</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>Required Motor Power</td>
+                            <td id="summary_mh_Pele">-</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>Selected Motor</td>
+                            <td id="summary_mh_motor">-</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>Motor RPM</td>
+                            <td id="summary_mh_rpm">-</td>
+                            <td>rpm</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="mini-heading">
+                        Auxiliary Hoist – AH
+                    </div>
+
+                    <table class="summary-table">
+
+                        <tr>
+                            <th>Calculation</th>
+                            <th>Result</th>
+                            <th>Unit</th>
+                        </tr>
+
+                        <tr>
+                            <td>Total Weight</td>
+                            <td id="summary_ah_M">-</td>
+                            <td>ton</td>
+                        </tr>
+
+                        <tr>
+                            <td>Efficiency</td>
+                            <td id="summary_ah_E">-</td>
+                            <td>—</td>
+                        </tr>
+
+                        <tr>
+                            <td>Mechanical Power</td>
+                            <td id="summary_ah_Pmech">-</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>Required Motor Power</td>
+                            <td id="summary_ah_Pele">-</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>Selected Motor</td>
+                            <td id="summary_ah_motor">-</td>
+                            <td>kW</td>
+                        </tr>
+
+                        <tr>
+                            <td>Motor RPM</td>
+                            <td id="summary_ah_rpm">-</td>
+                            <td>rpm</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</div>
+
+
+<script src="assistant.js"></script>
+
+</body>
+</html>

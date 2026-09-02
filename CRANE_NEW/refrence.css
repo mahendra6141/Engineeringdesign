@@ -1,0 +1,327 @@
+/* =====================================================
+   REFERENCES TAB
+   IS 3177:2020
+   ===================================================== */
+
+.references-container {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.references-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   REFERENCE SECTION
+   ===================================================== */
+
+.reference-section {
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+.reference-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #d1d5db;
+}
+
+
+.reference-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #475569;
+}
+
+
+/* =====================================================
+   REFERENCE TABLE
+   ===================================================== */
+
+.reference-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.reference-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 13px;
+}
+
+
+.reference-table th,
+.reference-table td {
+    border: 1px solid #cbd5e1;
+    padding: 10px 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.reference-table th {
+    background: #e2e8f0;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+
+.reference-table td {
+    background: #ffffff;
+    color: #334155;
+}
+
+
+/* =====================================================
+   COLUMN WIDTH
+   ===================================================== */
+
+.reference-table th:nth-child(1),
+.reference-table td:nth-child(1) {
+    width: 16%;
+}
+
+
+.reference-table th:nth-child(2),
+.reference-table td:nth-child(2) {
+    width: 18%;
+}
+
+
+.reference-table th:nth-child(3),
+.reference-table td:nth-child(3) {
+    width: 28%;
+}
+
+
+.reference-table th:nth-child(4),
+.reference-table td:nth-child(4) {
+    width: 38%;
+}
+
+
+/* =====================================================
+   HOVER
+   ===================================================== */
+
+.reference-table tbody tr:hover td {
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   NOTE
+   ===================================================== */
+
+.reference-note {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: #f8fafc;
+    border-left: 4px solid #64748b;
+    color: #475569;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* =====================================================
+   REFERENCES MAIN LAYOUT
+   ===================================================== */
+
+.references-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+
+/* =====================================================
+   LEFT MENU
+   ===================================================== */
+
+.references-menu {
+    padding: 0;
+    overflow: hidden;
+}
+
+.references-menu .section-title {
+    margin: 0;
+}
+
+
+.reference-menu-item {
+    padding: 14px 16px;
+
+    border-top: 1px solid #ddd;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+/* Mouse Hover */
+
+.reference-menu-item:hover {
+    background: #f1f4f7;
+}
+
+
+/* Selected Menu */
+
+.reference-menu-item.active {
+    background: #e8eef5;
+
+    border-left: 4px solid #1f4e79;
+
+    padding-left: 12px;
+
+    color: #1f4e79;
+}
+
+
+/* =====================================================
+   RIGHT SIDE
+   ===================================================== */
+
+.references-data {
+    min-width: 0;
+}
+
+
+/* =====================================================
+   REFERENCE CONTENT
+   ===================================================== */
+
+.reference-content {
+    display: none;
+}
+
+
+.reference-content.active {
+    display: block;
+}
+
+
+/* =====================================================
+   REFERENCE TITLE
+   ===================================================== */
+
+.reference-title {
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   REFERENCE INFO
+   ===================================================== */
+
+.reference-info {
+    display: flex;
+
+    gap: 30px;
+
+    margin-bottom: 15px;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   REFERENCE TABLE
+   ===================================================== */
+
+.reference-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.reference-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.reference-table th,
+.reference-table td {
+
+    border: 1px solid #ccc;
+
+    padding: 10px 12px;
+
+    text-align: center;
+}
+
+
+.reference-table th {
+    font-weight: 700;
+}
+
+
+.reference-table tbody tr:hover {
+    background: #f7f7f7;
+}
+
+
+/* =====================================================
+   NOTE
+   ===================================================== */
+
+.reference-note {
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-left: 4px solid #777;
+
+    background: #f7f7f7;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .references-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .reference-info {
+
+        flex-direction: column;
+
+        gap: 5px;
+
+    }
+
+}
+

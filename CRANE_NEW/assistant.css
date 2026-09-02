@@ -1,0 +1,410 @@
+/* =====================================================
+   ENGINEERING ASSISTANT BUTTON
+===================================================== */
+
+.assistant-floating-btn {
+
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    background: #1f4e79;
+    color: white;
+
+    border: none;
+    border-radius: 50px;
+
+    padding: 14px 22px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    transition: 0.2s;
+}
+
+
+.assistant-floating-btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =====================================================
+   ASSISTANT PANEL
+===================================================== */
+
+.assistant-panel {
+
+    position: fixed;
+
+    top: 0;
+    right: -470px;
+
+    width: 450px;
+    height: 100vh;
+
+    background: #ffffff;
+
+    box-shadow: -5px 0 20px rgba(0,0,0,0.25);
+
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: right 0.3s ease;
+
+}
+
+
+/* OPEN */
+
+.assistant-panel.active {
+
+    right: 0;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.assistant-header {
+
+    min-height: 60px;
+
+    background: #1f4e79;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+}
+
+
+.assistant-header-title {
+
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+
+.assistant-close {
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+.assistant-body {
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 15px;
+
+    background: #f5f7fa;
+
+}
+
+
+/* =====================================================
+   CATEGORY ITEM
+===================================================== */
+
+.assistant-item {
+
+    background: white;
+
+    border: 1px solid #d9dee5;
+
+    border-radius: 8px;
+
+    padding: 14px;
+
+    margin-bottom: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+
+}
+
+
+.assistant-item:hover {
+
+    background: #eef4fa;
+
+    transform: translateX(-2px);
+
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.menuItem {
+
+    background: #e9eef4;
+
+    padding: 10px 12px;
+
+    border-radius: 6px;
+
+    margin-bottom: 12px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    color: #1f4e79;
+
+}
+
+
+/* =====================================================
+   HELP TITLE
+===================================================== */
+
+.helpTitle {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #1f4e79;
+
+    margin-bottom: 15px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 2px solid #1f4e79;
+
+}
+
+
+/* =====================================================
+   PARAMETER CARD
+===================================================== */
+
+.parameter {
+
+    background: white;
+
+    border: 1px solid #dce1e7;
+
+    border-radius: 8px;
+
+    padding: 14px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.parameter h3 {
+
+    margin-top: 0;
+
+    margin-bottom: 10px;
+
+    color: #1f4e79;
+
+    font-size: 16px;
+
+}
+
+
+.parameter p {
+
+    margin: 7px 0;
+
+    line-height: 1.5;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   FORMULA
+===================================================== */
+
+.assistant-formula {
+
+    background: #f1f5f9;
+
+    border-left: 4px solid #1f4e79;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   CALCULATION RESULT
+===================================================== */
+
+.assistant-calculation {
+
+    background: #eef7ee;
+
+    border-left: 4px solid #3c763d;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   STANDARD BOX
+===================================================== */
+
+.assistant-standard {
+
+    background: #fff8e6;
+
+    border-left: 4px solid #d99a00;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   ENGINEERING NOTE
+===================================================== */
+
+.assistant-note {
+
+    background: #f3f0ff;
+
+    border-left: 4px solid #6f42c1;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .assistant-panel {
+
+        width: 100%;
+
+        right: -100%;
+
+    }
+
+    .assistant-floating-btn {
+
+        right: 15px;
+        bottom: 15px;
+
+    }
+
+}
+/* =====================================================
+   ENGINEERING ASSISTANT
+   ===================================================== */
+
+.formula-box {
+    margin: 12px 0;
+    padding: 12px 14px;
+
+    background: #f5f7fa;
+    border-left: 4px solid #2563eb;
+
+    border-radius: 6px;
+
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.parameter ul,
+.parameter ol {
+    padding-left: 22px;
+}
+
+.parameter li {
+    margin-bottom: 6px;
+}
+
+.parameter h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
