@@ -1,0 +1,646 @@
+
+/* ========================================================= */
+/* ====================== REPORT BODY ====================== */
+/* ========================================================= */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #e5e7eb;
+    padding: 20px 0;
+}
+
+
+/* ========================================================= */
+/* ====================== A4 REPORT PAGE ==================== */
+/* ========================================================= */
+
+.report-page {
+    position: relative;
+
+    width: min(794px, 95vw);
+    aspect-ratio: 794 / 1123;
+
+    margin: 20px auto;
+
+    background: white;
+
+    overflow: visible;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ========================================================= */
+/* ======================== LETTER HEAD ==================== */
+/* ========================================================= */
+
+.letterhead {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    z-index: 0;
+}
+
+
+/* ========================================================= */
+/* ====================== REPORT CONTENT =================== */
+/* ========================================================= */
+
+.report-content {
+    position: absolute;
+
+    top: 12.3%;
+
+    left: 5.1%;
+    right: 5.1%;
+
+    z-index: 1;
+
+    box-sizing: border-box;
+}
+
+
+/* ========================================================= */
+/* ====================== COMMON GRID ======================= */
+/* ========================================================= */
+
+#hoist-report,
+#travel-report,
+#brake-report,
+#wire-rope-report,
+#sheave-report,
+#drum-report,
+#wheel-report {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    column-gap: 20px;
+    row-gap: 20px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding-top: 15px;
+}
+
+
+/* ========================================================= */
+/* ====================== GRID SPANS ======================== */
+/* ========================================================= */
+
+.span-12 {
+    grid-column: span 12;
+}
+
+.span-8 {
+    grid-column: span 8;
+}
+
+.span-6 {
+    grid-column: span 6;
+}
+
+.span-4 {
+    grid-column: span 4;
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+
+/* ========================================================= */
+/* ====================== HOIST COLUMNS ===================== */
+/* ========================================================= */
+
+.hoist-columns {
+
+    grid-column: span 12;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    align-items: start;
+}
+
+
+/* ========================================================= */
+/* ====================== HOIST BLOCK ======================= */
+/* ========================================================= */
+
+.hoist-block {
+
+    min-width: 0;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 18px;
+
+    background: #f8fafc;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+
+/* ========================================================= */
+/* ====================== HOIST TITLE ======================= */
+/* ========================================================= */
+
+.hoist-block > .calculation-subheading:first-child {
+
+    color: #1e3a8a;
+
+    background: #eff6ff;
+
+    border-left: 4px solid #2563eb;
+
+    padding: 9px 12px;
+
+    border-radius: 4px;
+
+    margin-top: 0;
+}
+
+
+/* ========================================================= */
+/* ====================== SUB HEADING ======================= */
+/* ========================================================= */
+
+.calculation-subheading {
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #334155;
+
+    margin-top: 14px;
+    margin-bottom: 7px;
+
+    overflow-wrap: break-word;
+}
+
+
+/* ========================================================= */
+/* ====================== CALCULATION CONTENT =============== */
+/* ========================================================= */
+
+.calculation-content {
+
+    margin: 0 0 12px 0;
+
+    padding: 9px 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 4px;
+
+    line-height: 1.6;
+
+    box-sizing: border-box;
+
+    max-width: 100%;
+
+    overflow-wrap: break-word;
+
+    word-break: normal;
+}
+
+
+/* ========================================================= */
+/* ====================== MAIN HEADING ====================== */
+/* ========================================================= */
+
+.calculation-heading {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+
+    background: #1e40af;
+
+    padding: 11px 15px;
+
+    margin: 0;
+
+    border-radius: 6px;
+
+    box-sizing: border-box;
+}
+
+
+/* ========================================================= */
+/* ====================== REPORT TITLE ====================== */
+/* ========================================================= */
+
+.report-title {
+
+    text-align: center;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: #1e3a8a;
+
+    background: #f8fafc;
+
+    padding: 13px;
+
+    margin: 10px 0 25px;
+
+    border-bottom: 2px solid #2563eb;
+
+    box-sizing: border-box;
+}
+
+
+/* ========================================================= */
+/* ====================== RESULT BOX ======================== */
+/* ========================================================= */
+
+.calculation-result-box {
+
+    display: inline-block;
+
+    padding: 5px 12px;
+
+    color: #166534;
+
+    background: #f0fdf4;
+
+    border: 1px solid #86efac;
+
+    border-radius: 5px;
+
+    font-weight: 700;
+
+    box-sizing: border-box;
+}
+
+
+/* ========================================================= */
+/* ====================== RESULT ============================ */
+/* ========================================================= */
+
+.calculation-result {
+
+    margin-top: 8px;
+
+    color: #166534;
+
+    font-weight: 700;
+}
+
+
+/* ========================================================= */
+/* ===================== PRINT BUTTON ======================== */
+/* ========================================================= */
+
+.print-report-btn {
+
+    position: fixed;
+
+    top: 15px;
+    right: 20px;
+
+    z-index: 1000;
+
+    padding: 10px 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #1e40af;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.print-report-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* ========================================================= */
+/* ========================= PRINT ========================== */
+/* ========================================================= */
+
+@media print {
+
+
+    /* ================= PRINT BUTTON ================= */
+
+    .no-print {
+        display: none !important;
+    }
+
+
+    /* ================= PAGE SETUP ================= */
+
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+
+    html,
+    body {
+
+        margin: 0;
+        padding: 0;
+
+        width: 210mm;
+
+        background: white;
+    }
+
+
+    /* ================= A4 PAGE ================= */
+
+    .report-page {
+
+        position: relative;
+
+        width: 210mm;
+        height: 297mm;
+
+        max-width: none;
+
+        aspect-ratio: auto;
+
+        margin: 0;
+
+        background: white;
+
+        overflow: hidden;
+
+        box-shadow: none;
+
+        break-after: page;
+
+        page-break-after: always;
+    }
+
+
+    .report-page:last-child {
+
+        break-after: auto;
+
+        page-break-after: auto;
+    }
+
+
+    /* ================= LETTER HEAD ================= */
+
+    .letterhead {
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 210mm;
+        height: 297mm;
+
+        z-index: 0;
+    }
+
+
+    /* ================= CONTENT AREA ================= */
+
+    .report-content {
+
+        position: absolute;
+
+        top: 12.3%;
+
+        left: 5.1%;
+        right: 5.1%;
+
+        width: auto;
+
+        box-sizing: border-box;
+
+        z-index: 1;
+    }
+
+
+    /* ================================================= */
+    /* ================= COMMON GRID =================== */
+    /* ================================================= */
+
+    #hoist-report,
+    #travel-report,
+    #brake-report,
+    #wire-rope-report,
+    #sheave-report,
+    #drum-report,
+    #wheel-report {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(12, minmax(0, 1fr));
+
+        column-gap: 10px;
+        row-gap: 15px;
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        padding-top: 15px;
+    }
+
+
+    /* ================================================= */
+    /* ================= HOIST ========================= */
+    /* ================================================= */
+
+    .hoist-columns {
+
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+
+        gap: 10px;
+
+        width: 100%;
+
+        min-width: 0;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ================================================= */
+    /* ================= HOIST BLOCK =================== */
+    /* ================================================= */
+
+    .hoist-block {
+
+        min-width: 0;
+
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        padding: 10px;
+
+        overflow: hidden;
+    }
+
+
+    /* ================================================= */
+    /* =============== CALCULATION CONTENT ============= */
+    /* ================================================= */
+
+    .calculation-content {
+
+        width: 100%;
+
+        max-width: 100%;
+
+        box-sizing: border-box;
+
+        overflow-wrap: break-word;
+
+        word-break: normal;
+    }
+
+
+    /* ================================================= */
+    /* ================= SUB HEADING =================== */
+    /* ================================================= */
+
+    .calculation-subheading {
+
+        font-size: 13px;
+
+        overflow-wrap: break-word;
+    }
+
+
+    /* ================================================= */
+    /* ================= MAIN HEADING ================== */
+    /* ================================================= */
+
+    .calculation-heading {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        font-size: 17px;
+
+        padding: 8px 10px;
+    }
+
+
+    /* ================================================= */
+    /* ================= REPORT TITLE ================== */
+    /* ================================================= */
+
+    .report-title {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        font-size: 20px;
+
+        padding: 10px;
+
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+
+    /* ================================================= */
+    /* ================= GRID SPANS ==================== */
+    /* ================================================= */
+
+    .span-12 {
+        grid-column: span 12;
+    }
+
+    .span-8 {
+        grid-column: span 8;
+    }
+
+    .span-6 {
+        grid-column: span 6;
+    }
+
+    .span-4 {
+        grid-column: span 4;
+    }
+
+    .span-3 {
+        grid-column: span 3;
+    }
+
+}
+
+
+/* ========================================================= */
+/* ====================== RESPONSIVE ======================== */
+/* ========================================================= */
+
+@media screen and (max-width: 800px) {
+
+    .hoist-columns {
+
+        grid-template-columns: 1fr;
+    }
+}
+

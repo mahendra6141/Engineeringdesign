@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Engineering Calculation Report</title>
+
+    <link rel="stylesheet" href="report.css">
+
+</head>
+
+
+<body>
+<button class="print-report-btn no-print" onclick="window.print()">
+    🖨 Print Report
+</button>
+
+<!-- ========================================================= -->
+<!-- ======================== PAGE 1 ========================== -->
+<!-- ========================= HOIST ========================== -->
+<!-- ========================================================= -->
+
+<div class="report-page">
+
+    <!-- LETTER HEAD -->
+
+    <img
+        src="letter.png"
+        class="letterhead"
+        alt="Letter Head"
+    >
+
+
+    <!-- PAGE CONTENT -->
+
+    <div class="report-content">
+
+
+        <!-- REPORT TITLE -->
+
+        <div class="report-title">
+            ENGINEERING CALCULATION REPORT
+        </div>
+
+
+        <!-- ================= HOIST REPORT ================= -->
+
+        <section id="hoist-report">
+
+
+            <!-- MAIN HEADING -->
+
+            <div class="calculation-heading span-12">
+                1. Hoist Motor Calculation
+            </div>
+
+
+            <!-- ================= MH + AH ================= -->
+
+            <div class="hoist-columns span-12">
+
+
+                <!-- ================= MAIN HOIST ================= -->
+
+                <div class="hoist-block">
+
+
+                    <div class="calculation-subheading">
+                        1.1 Main Hoist (MH)
+                    </div>
+
+
+                 
+
+                    <div
+                        id="mh-given-data"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.1.2 Total Weight
+                    </div>
+
+                    <div
+                        id="mh-total-weight"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.1.3 Overall Efficiency
+                    </div>
+
+                    <div
+                        id="mh-efficiency"
+                        class="calculation-content">
+                    </div>
+
+
+                   </div> 
+
+
+                <!-- ================= AUXILIARY HOIST ================= -->
+
+                <div class="hoist-block">
+
+
+                    <div class="calculation-subheading">
+                        1.2 Auxiliary Hoist (AH)
+                    </div>
+
+
+           
+                    <div
+                        id="ah-given-data"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.2.2 Total Weight
+                    </div>
+
+                    <div
+                        id="ah-total-weight"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.2.3 Overall Efficiency
+                    </div>
+
+                    <div
+                        id="ah-efficiency"
+                        class="calculation-content">
+                    </div>
+
+
+                   
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</div>
+
+
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                1. Hoist Motor Calculation — Continued
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+
+                <div class="calculation-subheading">
+                        1.1.4 Mechanical Power
+                    </div>
+
+                    <div
+                        id="mh-mechanical-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.1.5 Required Motor Power
+                    </div>
+
+                    <div
+                        id="mh-required-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.1.6 Motor Selection
+                    </div>
+
+                    <div
+                        id="mh-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.1.7 Motor Frame Selection
+                    </div>
+
+                    <div
+                        id="mh-frame-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                </div>
+
+                <!-- AH continuation -->
+                <div class="hoist-block">
+                     <div class="calculation-subheading">
+                        1.2.4 Mechanical Power
+                    </div>
+
+                    <div
+                        id="ah-mechanical-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.2.5 Required Motor Power
+                    </div>
+
+                    <div
+                        id="ah-required-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.2.6 Motor Selection
+                    </div>
+
+                    <div
+                        id="ah-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        1.2.7 Motor Frame Selection
+                    </div>
+
+                    <div
+                        id="ah-frame-selection"
+                        class="calculation-content">
+                    </div>
+                    ...
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>
+
+
+<!-- ========================================================= -->
+<!-- ======================== PAGE 2 ========================== -->
+<!-- ========================= TRAVEL ========================= -->
+<!-- ========================================================= -->
+
+<div class="report-page">
+
+    <!-- LETTER HEAD -->
+
+    <img
+        src="letter.png"
+        class="letterhead"
+        alt="Letter Head"
+    >
+
+
+    <!-- PAGE CONTENT -->
+
+    <div class="report-content">
+
+
+        <section id="travel-report">
+
+
+            <!-- ================= MAIN HEADING ================= -->
+
+            <div class="calculation-heading span-12">
+                2. Travel Motion Calculation
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- ================= CT + LT ======================== -->
+            <!-- ================================================= -->
+
+            <div class="hoist-columns span-12">
+
+
+                <!-- ================================================= -->
+                <!-- ===================== CT ========================= -->
+                <!-- ================================================= -->
+
+                <div class="hoist-block">
+
+
+                    <div class="calculation-subheading">
+                        2.1 Cross Travel (CT Normal)
+                    </div>
+
+                    <div
+                        id="ct-normal-given-data"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.1.2 Overall Efficiency
+                    </div>
+
+                    <div
+                        id="ct-normal-efficiency"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.1.3 Running Power
+                    </div>
+
+                    <div
+                        id="ct-normal-running-power"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================================================= -->
+                <!-- ===================== LT ========================= -->
+                <!-- ================================================= -->
+
+                <div class="hoist-block">
+
+
+                    <div class="calculation-subheading">
+                        2.2 Long Travel (LT Normal)
+                    </div>
+
+
+                    <div
+                        id="lt-normal-given-data"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.1.2 Overall Efficiency
+                    </div>
+
+                    <div
+                        id="lt-normal-efficiency"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.1.3 Running Power
+                    </div>
+
+                    <div
+                        id="lt-normal-running-power"
+                        class="calculation-content">
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</div>
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                1.Travel Motor Calculation — Continued
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+			
+                    <div class="calculation-subheading">
+                        2.1.1.4 Acceleration Power
+                    </div>
+
+                    <div
+                        id="ct-normal-acceleration-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.1.5 Mechanical Power
+                    </div>
+
+                    <div
+                        id="ct-normal-mechanical-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.1.6 Required Motor Power
+                    </div>
+
+                    <div
+                        id="ct-normal-required-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.1.7 Motor Selection
+                    </div>
+
+                    <div
+                        id="ct-normal-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.1.8 Motor RPM
+                    </div>
+
+                    <div
+                        id="ct-normal-motor-rpm"
+                        class="calculation-content">
+                    </div>
+				</div>
+				<div class="hoist-block">
+				<div class="calculation-subheading">
+                        2.2.1.4 Acceleration Power
+                    </div>
+
+                    <div
+                        id="lt-normal-acceleration-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.1.5 Mechanical Power
+                    </div>
+
+                    <div
+                        id="lt-normal-mechanical-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.1.6 Required Motor Power
+                    </div>
+
+                    <div
+                        id="lt-normal-required-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.1.7 Motor Selection
+                    </div>
+
+                    <div
+                        id="lt-normal-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.1.8 Motor RPM
+                    </div>
+
+                    <div
+                        id="lt-normal-motor-rpm"
+                        class="calculation-content">
+                    </div>
+				</div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                1. Travell Emergency Motor Calculation 
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+			<!-- ================= CT EMERGENCY ================= -->
+
+                    <div class="calculation-subheading">
+                        2.1.2 CT Emergency
+                    </div>
+
+
+                    <div
+                        id="ct-emergency-given-data"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.2.2 Overall Efficiency
+                    </div>
+
+                    <div
+                        id="ct-emergency-efficiency"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.2.3 Running Power
+                    </div>
+
+                    <div
+                        id="ct-emergency-running-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.2.4 Acceleration Power
+                    </div>
+
+                    <div
+                        id="ct-emergency-acceleration-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.2.5 Mechanical Power
+                    </div>
+
+                    <div
+                        id="ct-emergency-mechanical-power"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+                
+                <div class="hoist-block">
+				<!-- ================= LT EMERGENCY ================= -->
+
+                    <div class="calculation-subheading">
+                        2.2.2 LT Emergency
+                    </div>
+
+                    <div
+                        id="lt-emergency-given-data"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.2.2 Overall Efficiency
+                    </div>
+
+                    <div
+                        id="lt-emergency-efficiency"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.2.3 Running Power
+                    </div>
+
+                    <div
+                        id="lt-emergency-running-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.2.4 Acceleration Power
+                    </div>
+
+                    <div
+                        id="lt-emergency-acceleration-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.2.5 Mechanical Power
+                    </div>
+
+                    <div
+                        id="lt-emergency-mechanical-power"
+                        class="calculation-content">
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>					
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                2. Travell Emergency Motor Calculation — Continued
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+			<div class="calculation-subheading">
+                        2.1.2.6 Required Motor Power
+                    </div>
+
+                    <div
+                        id="ct-emergency-required-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.2.7 Auto Selected Motor
+                    </div>
+
+                    <div
+                        id="ct-emergency-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.2.8 Auto Selected Motor RPM
+                    </div>
+
+                    <div
+                        id="ct-emergency-motor-rpm"
+                        class="calculation-content">
+                    </div>
+
+
+                    <!-- ================= FINAL CT ================= -->
+
+                    <div class="calculation-subheading">
+                        2.1.3 Final CT Motor Selection
+                    </div>
+
+                    <div
+                        id="ct-final-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.1.4 CT Motor Frame Selection
+                    </div>
+
+                    <div
+                        id="ct-frame-selection"
+                        class="calculation-content">
+                    </div>
+
+
+
+
+                </div>
+
+                
+                <div class="hoist-block">
+				 <div class="calculation-subheading">
+                        2.2.2.6 Required Motor Power
+                    </div>
+
+                    <div
+                        id="lt-emergency-required-power"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.2.7 Auto Selected Motor
+                    </div>
+
+                    <div
+                        id="lt-emergency-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.2.8 Auto Selected Motor RPM
+                    </div>
+
+                    <div
+                        id="lt-emergency-motor-rpm"
+                        class="calculation-content">
+                    </div>
+
+
+                    <!-- ================= FINAL LT ================= -->
+
+                    <div class="calculation-subheading">
+                        2.2.3 Final LT Motor Selection
+                    </div>
+
+                    <div
+                        id="lt-final-motor-selection"
+                        class="calculation-content">
+                    </div>
+
+
+                    <div class="calculation-subheading">
+                        2.2.4 LT Motor Frame Selection
+                    </div>
+
+                    <div
+                        id="lt-frame-selection"
+                        class="calculation-content">
+                    </div>
+                     
+                    
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>
+
+
+<!-- ========================================================= -->
+<!-- ======================== PAGE 3 ========================== -->
+<!-- ========================== BRAKE ========================= -->
+<!-- ========================================================= -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                3. MH Brake Selection Calculation
+            </div>
+
+            <!-- ================= MH ================= -->
+
+            <div class="hoist-columns span-12">
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        3.1 Main Hoist (MH)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.1.1 Based on Installed Power
+                        (Electrical Power)
+                    </div>
+
+                    <div id="mh-electrical-brake"
+                         class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        3.1 Main Hoist (MH)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.1.2 Based on Consumed Power
+                        (Mechanical Power)
+                    </div>
+
+                    <div id="mh-mechanical-brake"
+                         class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            </section>
+
+
+        </div>
+        </div>
+
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                AH Brake Selection Calculation
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+			<div class="calculation-subheading">
+                        3.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.2.1 Based on Installed Power
+                        (Electrical Power)
+                    </div>
+
+                    <div id="ah-electrical-brake"
+                         class="calculation-content">
+                    </div>
+
+                </div>
+
+                <div class="hoist-block">
+				<div class="calculation-subheading">
+                        3.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.2.2 Based on Consumed Power
+                        (Mechanical Power)
+                    </div>
+
+                    <div id="ah-mechanical-brake"
+                         class="calculation-content">
+                    </div>
+                     
+                    
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                CT Brake Selection Calculation
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+			<div class="calculation-subheading">
+                        3.3 Cross Travel (CT)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.3.1 Based on Installed Power
+                        (Electrical Power)
+                    </div>
+
+                    <div id="ct-electrical-brake"
+                         class="calculation-content">
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="hoist-block">
+				         <div class="calculation-subheading">
+                        3.3 Cross Travel (CT)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.3.2 Based on Consumed Power
+                        (Mechanical Power)
+                    </div>
+
+                    <div id="ct-mechanical-brake"
+                         class="calculation-content">
+                    </div>
+                     
+                    
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>
+<div class="report-page">
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                LT Brake Selection Calculation
+            </div>
+
+            <div class="hoist-columns span-12">
+			<div class="hoist-block">
+			<div class="calculation-subheading">
+                        3.4 Long Travel (LT)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.4.1 Based on Installed Power
+                        (Electrical Power)
+                    </div>
+
+                    <div id="lt-electrical-brake"
+                         class="calculation-content">
+                    </div>
+
+
+
+
+                </div>
+
+                <!-- AH continuation -->
+                <div class="hoist-block">
+				
+				<div class="calculation-subheading">
+                        3.4 Long Travel (LT)
+                    </div>
+
+                    <div class="calculation-subheading">
+                        3.4.2 Based on Consumed Power
+                        (Mechanical Power)
+                    </div>
+
+                    <div id="lt-mechanical-brake"
+                         class="calculation-content">
+                    </div>
+                     
+                    
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+	</div>
+<!-- ========================================================= -->
+<!-- ======================== PAGE 4 ========================== -->
+<!-- ======================= WIRE ROPE ======================== -->
+<!-- ========================================================= -->
+
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                4. Wire Rope Selection Calculation
+            </div>
+
+
+            <!-- ================= MH ================= -->
+
+            <div class="hoist-columns span-12">
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        4.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-wire-rope-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        4.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-wire-rope-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================================= -->
+<!-- ======================== PAGE 5 ========================== -->
+<!-- ========================= SHEAVE ========================= -->
+<!-- ========================================================= -->
+
+<!-- ===================================================== -->
+<!-- ================= SHEAVE REPORT PAGE 1 ============== -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                5. Sheave Calculation
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        5.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-sheave-calculation-page1"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        5.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-sheave-calculation-page1"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ================= SHEAVE REPORT PAGE 2 ============== -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                5. Sheave Selection
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        5.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-sheave-calculation-page2"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        5.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-sheave-calculation-page2"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- ================= ROPE DRUM DIA REPORT ============== -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                6. Rope Drum Diameter Calculation
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        6.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-drum-dia-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        6.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-drum-dia-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ============== ROPE DRUM LENGTH REPORT ============== -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                7. Rope Drum Length Calculation
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        7.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-drum-length-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        7.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-drum-length-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================================================= -->
+<!-- ======================== PAGE 7 ========================== -->
+<!-- ========================== WHEEL ========================= -->
+<!-- ========================================================= -->
+
+<!-- ===================================================== -->
+<!-- ============ WHEEL LOAD REPORT - PAGE 1 ============= -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                8. Wheel Load Calculation
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= CT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        8.1 CT Wheel Load
+                    </div>
+
+                    <div
+                        id="ct-wheel-load-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        8.2 LT Wheel Load
+                    </div>
+
+                    <div
+                        id="lt-wheel-load-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ======== WHEEL SELECTION REPORT - PAGE 2 ============ -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                8. Wheel Selection Calculation
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= CT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        8.3 CT Wheel Selection
+                    </div>
+
+                    <div
+                        id="ct-wheel-selection-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        8.4 LT Wheel Selection
+                    </div>
+
+                    <div
+                        id="lt-wheel-selection-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ======== WHEEL SELECTION REPORT - PAGE 3 ============= -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                8. Recommended Wheel Selection
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= CT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        8.5 CT Recommended Wheel
+                    </div>
+
+                    <div
+                        id="ct-wheel-recommendation-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        8.6 LT Recommended Wheel
+                    </div>
+
+                    <div
+                        id="lt-wheel-recommendation-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ============ GEARBOX REPORT - PAGE 1 ================ -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                9. Gearbox Ratio Selection
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        9.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-gearbox-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        9.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-gearbox-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ============ GEARBOX REPORT - PAGE 2 ================ -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                9. Gearbox Ratio Selection — Travel
+            </div>
+
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= CT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        9.3 Cross Travel (CT)
+                    </div>
+
+                    <div
+                        id="ct-gearbox-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LT ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        9.4 Long Travel (LT)
+                    </div>
+
+                    <div
+                        id="lt-gearbox-calculation"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ===== BARREL COUPLING CALCULATION — PAGE 1 ========== -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                10. Barrel Coupling Calculation
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        10.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-barrel-coupling-calculation-page1"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        10.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-barrel-coupling-calculation-page1"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- ===== BARREL COUPLING CALCULATION — PAGE 2 ========== -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                10. Barrel Coupling Calculation — Continued
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        10.1 Main Hoist (MH) — Continued
+                    </div>
+
+                    <div
+                        id="mh-barrel-coupling-calculation-page2"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        10.2 Auxiliary Hoist (AH) — Continued
+                    </div>
+
+                    <div
+                        id="ah-barrel-coupling-calculation-page2"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<!-- ===================================================== -->
+<!-- ===== BARREL COUPLING SELECTION — PAGE 3 ============ -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                10. Barrel Coupling Selection
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        10.3 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-barrel-coupling-selection"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        10.4 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-barrel-coupling-selection"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ======== ROPE DRUM STRESS — PAGE 1 ================= -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                11. Rope Drum Stress Calculation
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        11.1 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-rope-drum-stress-page1"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        11.2 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-rope-drum-stress-page1"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ======== ROPE DRUM STRESS — PAGE 2 ================= -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                11. Rope Drum Stress Calculation — Continued
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        11.1 Main Hoist (MH) — Continued
+                    </div>
+
+                    <div
+                        id="mh-rope-drum-stress-page2"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        11.2 Auxiliary Hoist (AH) — Continued
+                    </div>
+
+                    <div
+                        id="ah-rope-drum-stress-page2"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+<!-- ===================================================== -->
+<!-- ======== ROPE DRUM STRESS — PAGE 3 ================= -->
+<!-- ===================================================== -->
+
+<div class="report-page">
+
+    <img src="letter.png" class="letterhead">
+
+    <div class="report-content">
+
+        <section id="hoist-report">
+
+            <div class="calculation-heading span-12">
+                11. Rope Drum Stress — Final Check
+            </div>
+
+            <div class="hoist-columns span-12">
+
+                <!-- ================= MH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        11.3 Main Hoist (MH)
+                    </div>
+
+                    <div
+                        id="mh-rope-drum-stress-page3"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+
+                <!-- ================= AH ================= -->
+
+                <div class="hoist-block">
+
+                    <div class="calculation-subheading">
+                        11.4 Auxiliary Hoist (AH)
+                    </div>
+
+                    <div
+                        id="ah-rope-drum-stress-page3"
+                        class="calculation-content">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!-- ======================== JAVASCRIPT ====================== -->
+<!-- ========================================================= -->
+
+<script src="report.js"></script>
+
+
+</body>
+
+</html>
+
